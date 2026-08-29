@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" id="Layer_1" width="72" height="72" x="0" y="0" version="1.1" viewBox="0 0 72 72">
+    <style id="style873" type="text/css">
+        .st1{fill:#0d2b45}.st2{fill:#4fc3f7}.st3{fill:#eaf6ff}
+    </style>
+    <path id="shield-outline" d="M36 2 4 14v24c0 20 14 30.5 32 32 18-1.5 32-12 32-32V14Z" class="st3"/>
+    <path id="shield-body" d="M36 6 8 16.5v21.3C8 55.8 20 65 36 66.4 52 65 64 55.8 64 37.8V16.5Z" class="st1"/>
+    <path id="chevron" d="M20 42 36 24l16 18h-9.5L36 33.2 29.5 42Z" class="st2"/>
+    <rect id="horizon" x="17" y="47" width="38" height="4" rx="2" class="st2"/>
+    <rect id="horizon-2" x="23" y="54" width="26" height="3" rx="1.5" class="st2" opacity=".55"/>
+</svg>

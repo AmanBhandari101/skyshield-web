@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SkyShield Technology</title>
+<meta name="description" content="SkyShield Technology builds the Ravin VTOL UAV, the SkyShield ground control station and an on-GPU AI analytics system — aerial intelligence deployed in three minutes.">
+<link rel="icon" href="assets/logo.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@600;700;800&family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+
+<header>
+  <div class="navbar">
+    <a class="brand" href="index.html">
+      <img src="assets/logo.svg" alt="">
+      <span class="brand-name">
+        <b>Sky<i>Shield</i></b>
+        <span>Technology</span>
+      </span>
+    </a>
+    <nav class="links">
+      <a href="index.html" aria-current="page">Home</a>
+      <a href="ravin.html">Ravin UAV</a>
+      <a href="gcs.html">Ground Station</a>
+      <a href="partner.html">Partner With Us</a>
+    </nav>
+    <a class="nav-cta" href="#contact">Request a briefing</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <p class="eyebrow">SkyShield Technology</p>
+      <h1>Deploy aerial intelligence in <em>three minutes.</em></h1>
+      <p class="lede">
+        A backpack-portable VTOL aircraft, the ground station that flies it, and
+        AI analytics that read the feed while it is still in the air. Built as
+        one system, by one company.
+      </p>
+      <div class="actions">
+        <a class="btn btn-primary" href="ravin.html">See the aircraft</a>
+        <a class="btn btn-ghost" href="#contact">Request a briefing</a>
+      </div>
+    </div>
+    <img class="hero-art" src="assets/ravin-render.png"
+         alt="The Ravin VTOL tailsitter in flight in a digital camouflage scheme, both wing propellers turning and wingtip navigation lights lit.">
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <div class="window flip">
+      <div class="window-body">
+        <span class="winlabel">The problem</span>
+        <h3 class="problem-thesis-h">Modern aerial platforms can maintain persistent flight indefinitely. Human visual attention cannot.</h3>
+        <p class="sub">The system uses advanced AI to continuously read the live video feed. It looks for key events and findings that matter to the mission and automatically alerts the operator when something important is detected.</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="gcs.html">See the ground station</a>
+        </div>
+      </div>
+      <div class="window-media">
+        <div class="screenframe">
+          <img src="assets/gcs-sar-flood.jpg"
+               alt="The ground station running detection on a flooded neighbourhood, with a cluster of people flagged and a SAR alert raised automatically.">
+        </div>
+        <p class="shot-cap">A tired operator can miss this. The station didn't.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band alt">
+  <div class="wrap">
+    <div class="sechead">
+      <p class="eyebrow">The system</p>
+      <h2 class="h2">One system, not three products.</h2>
+      <p class="lede">
+        The aircraft, the ground station and the analytics are all ours — designed
+        against one another rather than integrated after the fact. One company
+        answers for the whole thing, instead of three pointing at each other.
+      </p>
+    </div>
+
+    <div class="grid c3">
+      <div class="cell">
+        <span class="tag">Ground</span>
+        <h3>SkyShield GCS</h3>
+        <p>Mission planning, live flight, 3D terrain review and payload control in one desktop application.</p>
+      </div>
+      <div class="cell">
+        <span class="tag">Intelligence</span>
+        <h3>AI analytics</h3>
+        <p>GPU detection on the live feed — people and vehicles found, tracked and read for what's actually happening, as it happens.</p>
+      </div>
+      <div class="cell">
+        <span class="tag">Air</span>
+        <h3>Ravin VTOL UAV</h3>
+        <p>Launches vertically from any clear ground, cruises as a wing, lands back on its tail. No runway, no launcher, no net.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <div class="sechead">
+      <p class="eyebrow">In flight</p>
+      <h2 class="h2">Ravin, airborne.</h2>
+    </div>
+
+    <!-- Reserved slot for real Ravin flight footage. Drop the file in as
+         assets/ravin-flight.mp4 and it replaces the placeholder automatically —
+         no markup change needed. -->
+    <figure class="flightslot" id="flightSlot">
+      <div class="screenframe">
+        <video id="flightVideo" controls muted loop playsinline preload="metadata" hidden
+               poster="assets/ravin-flight-poster.jpg">
+          <source src="assets/ravin-flight.mp4" type="video/mp4">
+        </video>
+        <div class="vidplaceholder" id="flightPlaceholder">
+          <svg viewBox="0 0 72 72" aria-hidden="true">
+            <path d="M36 2 4 14v24c0 20 14 30.5 32 32 18-1.5 32-12 32-32V14Z" fill="#eaf6ff"/>
+            <path d="M36 6 8 16.5v21.3C8 55.8 20 65 36 66.4 52 65 64 55.8 64 37.8V16.5Z" fill="#0d2b45"/>
+            <path d="M20 42 36 24l16 18h-9.5L36 33.2 29.5 42Z" fill="#4fc3f7"/>
+            <rect x="17" y="47" width="38" height="4" rx="2" fill="#4fc3f7"/>
+            <rect x="23" y="54" width="26" height="3" rx="1.5" fill="#4fc3f7" opacity=".55"/>
+          </svg>
+          <span style="display:block">
+            <b>Flight footage</b>
+            <span>Ravin in the air — coming shortly</span>
+          </span>
+        </div>
+      </div>
+      <p class="shot-cap">Vertical launch, transition and wing-borne cruise.</p>
+    </figure>
+  </div>
+</section>
+
+<section class="band alt">
+  <div class="wrap">
+    <div class="sechead">
+      <p class="eyebrow">About us</p>
+      <h2 class="h2">A small team in Dehradun, building for what's next.</h2>
+    </div>
+    <div class="prose2">
+      <p>SkyShield Technology is a startup based in Dehradun, India — the same
+      mountain terrain in the screenshots throughout this site, not a studio
+      render or a stock demo. What you've seen on this site is what actually
+      runs, flown and tested on ground we know.</p>
+      <p>We build the aircraft, the ground station and the analytics ourselves,
+      as one system, because that's what we think autonomous aerial intelligence
+      actually needs to become useful — not three products stitched together
+      after the fact, but one team answering for the whole thing, built for
+      where the field is heading rather than just what's easiest to ship today.</p>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <p class="eyebrow">Contact</p>
+    <h2 class="h2">Get in touch.</h2>
+    <div class="cbox">
+      <div><span>Email</span><a href="mailto:aman101bhandari@outlook.com">aman101bhandari@outlook.com</a></div>
+      <div><span>Phone</span><a href="tel:+918923060977">+91 89230 60977</a></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="fbrand"><img src="assets/logo.svg" alt=""><b>SkyShield Technology</b></div>
+    <div class="note">© 2026 SkyShield Technology · Autonomous Aerial Systems</div>
+  </div>
+</footer>
+
+<script src="assets/site.js"></script>
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Partner With Us — SkyShield Technology</title>
+<meta name="description" content="Careers, partnerships, and anything else you'd bring to SkyShield Technology — tell us who you are and what you're proposing.">
+<link rel="icon" href="assets/logo.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@600;700;800&family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+
+<header>
+  <div class="navbar">
+    <a class="brand" href="index.html">
+      <img src="assets/logo.svg" alt="">
+      <span class="brand-name"><b>Sky<i>Shield</i></b><span>Technology</span></span>
+    </a>
+    <nav class="links">
+      <a href="index.html">Home</a>
+      <a href="ravin.html">Ravin UAV</a>
+      <a href="gcs.html">Ground Station</a>
+      <a href="partner.html" aria-current="page">Partner With Us</a>
+    </nav>
+    <a class="nav-cta" href="index.html#contact">Request a briefing</a>
+  </div>
+</header>
+
+<section class="pagehead">
+  <div class="wrap">
+    <p class="eyebrow">Work with us</p>
+    <h1>Become a <em>partner.</em></h1>
+    <p class="lede">
+      A role, a partnership, a supplier relationship, or something that doesn't fit
+      any of those labels — tell us who you are and what you're proposing, and it
+      goes to the team directly.
+    </p>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <div class="grid c3">
+      <div class="cell">
+        <span class="tag">Careers</span>
+        <h3>Join the team</h3>
+        <p>Engineering, operations, or something adjacent we haven't listed formally yet — say what you'd bring.</p>
+      </div>
+      <div class="cell">
+        <span class="tag">Partnerships</span>
+        <h3>Integrate or resell</h3>
+        <p>Systems integrators, distributors, and platforms looking to build on or alongside SkyShield.</p>
+      </div>
+      <div class="cell">
+        <span class="tag">Anything else</span>
+        <h3>Suppliers, offers, ideas</h3>
+        <p>Hardware, components, research collaboration, or a proposal that doesn't fit a category — send it anyway.</p>
+      </div>
+    </div>
+
+    <form id="partnerForm">
+      <div class="formgrid">
+        <div class="field">
+          <label for="pfName">Name</label>
+          <input type="text" id="pfName" name="name" placeholder="Your name" required>
+        </div>
+        <div class="field">
+          <label for="pfEmail">Email</label>
+          <input type="email" id="pfEmail" name="email" placeholder="you@example.com" required>
+        </div>
+        <div class="field">
+          <label for="pfPhone">Phone</label>
+          <input type="tel" id="pfPhone" name="phone" placeholder="Optional">
+        </div>
+        <div class="field">
+          <label for="pfInterest">Interested in</label>
+          <select id="pfInterest" name="interest">
+            <option value="Careers">Careers</option>
+            <option value="Partnership">Partnership</option>
+            <option value="Supplier">Supplier</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+        <div class="field full">
+          <label for="pfMessage">Details</label>
+          <textarea id="pfMessage" name="message" placeholder="What you're proposing, your background, or what you'd like to discuss." required></textarea>
+        </div>
+      </div>
+
+      <div class="actions" style="margin-top:22px">
+        <button type="submit" class="btn btn-primary">Send to the team</button>
+      </div>
+
+      <p class="formnote">
+        This site has no application backend behind it — submitting opens an email to
+        <a href="mailto:aman101bhandari@outlook.com">aman101bhandari@outlook.com</a> pre-filled with what
+        you entered, so you see exactly what's sent before it goes. Prefer to write directly?
+        Use that address, or call <a href="tel:+918923060977">+91 89230 60977</a>.
+      </p>
+      <p class="form-status" id="partnerFormStatus" role="status"></p>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="fbrand"><img src="assets/logo.svg" alt=""><b>SkyShield Technology</b></div>
+    <div class="note">© 2026 SkyShield Technology · Autonomous Aerial Systems</div>
+  </div>
+</footer>
+
+<script src="assets/site.js"></script>
+</body>
+</html>

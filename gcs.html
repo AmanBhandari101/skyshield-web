@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SkyShield GCS — SkyShield Technology</title>
+<meta name="description" content="The SkyShield ground control station: mission planning with terrain-aware altitudes, 3D review over real terrain, live map and video, payload control and analytics in one desktop application.">
+<link rel="icon" href="assets/logo.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@600;700;800&family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+
+<header>
+  <div class="navbar">
+    <a class="brand" href="index.html">
+      <img src="assets/logo.svg" alt="">
+      <span class="brand-name"><b>Sky<i>Shield</i></b><span>Technology</span></span>
+    </a>
+    <nav class="links">
+      <a href="index.html">Home</a>
+      <a href="ravin.html">Ravin UAV</a>
+      <a href="gcs.html" aria-current="page">Ground Station</a>
+      <a href="partner.html">Partner With Us</a>
+    </nav>
+    <a class="nav-cta" href="index.html#contact">Request a briefing</a>
+  </div>
+</header>
+
+<section class="pagehead">
+  <div class="wrap">
+    <p class="eyebrow">02 — The ground station</p>
+    <h1>Easy to use, focused on the mission, and <em>built to reduce mistakes.</em></h1>
+    <p class="lede">
+      Controls sit where you expect them, the video carries nothing you did not ask
+      for, and the planner checks the route against the ground before the aircraft
+      ever leaves it.
+    </p>
+  </div>
+</section>
+
+<section class="band" id="walkthrough">
+  <div class="wrap">
+
+    <div class="window">
+      <div class="window-media">
+        <div class="screenframe">
+          <div class="rotator">
+            <img class="active" src="assets/gcs-map-video.jpg"
+                 alt="Fly View: satellite map with the flight path on the left, live aerial video of a shoreline and field on the right showing vehicles and people on the ground, telemetry across the top.">
+            <img src="assets/gcs-map-video-2.jpg"
+                 alt="Fly View in full-map mode: an RTL return pattern looping over a river and airstrip, with the aircraft icon on its final approach and telemetry across the top.">
+          </div>
+        </div>
+        <p class="shot-cap">Fly View — split map and live feed.</p>
+      </div>
+      <div class="window-body">
+        <span class="winlabel">Fly View</span>
+        <h3>Fly the aircraft and work the camera at the same time</h3>
+        <ul class="ticks">
+          <li><b>Both halves are live at once</b> — re-task the aircraft on the map while the payload keeps tracking, with no mode to switch between them.</li>
+          <li><b>Aircraft controls left, payload controls right</b>, each fixed in place, so neither operator reaches across the other.</li>
+          <li><b>One operator or two</b> — the same screen works split between a pilot and a payload operator, or run by one person.</li>
+          <li><b>Live position against the planned route</b>, with detection running on the feed while it flies.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="window flip">
+      <div class="window-media">
+        <div class="screenframe">
+          <img src="assets/gcs-plan-view.jpg"
+               alt="Plan View: an eight-waypoint mission drawn over satellite terrain with a VTOL transition marker, and an editable mission table below listing sequence, command, latitude, longitude, altitude and altitude frame for every item.">
+        </div>
+        <p class="shot-cap">Plan View — mission and editable item table.</p>
+      </div>
+      <div class="window-body">
+        <span class="winlabel">Plan View</span>
+        <h3>A plan that tells you when it is wrong</h3>
+        <ul class="ticks">
+          <li><b>Terrain collision checked for you</b> — the station pulls real elevation for the route and compares every leg against the ground.</li>
+          <li><b>Errors shown against the item that caused them</b>, so a bad altitude is obvious in the table instead of buried in a log.</li>
+          <li><b>Built by following the prompts</b> — takeoff, waypoints, return, each step leading to the next, so nothing has to be remembered in order.</li>
+          <li><b>Per-item altitude frame</b> — relative to launch, above sea level, or held above the terrain.</li>
+          <li><b>Every item editable as a table row</b>, with distance, count and time totalled as the plan changes.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="window">
+      <div class="window-media">
+        <div class="screenframe">
+          <img src="assets/gcs-3d-plan.jpg"
+               alt="3D View: the planned route drawn in cyan climbing over a mountain ridge in real 3D terrain, with numbered waypoints sitting above the ridgeline.">
+        </div>
+        <p class="shot-cap">3D View — the route against the ridge it has to clear.</p>
+      </div>
+      <div class="window-body">
+        <span class="winlabel">3D View</span>
+        <h3>Understand the mission before you fly it</h3>
+        <ul class="ticks">
+          <li><b>Height is what a flat map hides</b> — in 3D a leg that clips a ridge is obvious at a glance instead of being a number in a column.</li>
+          <li><b>Walk the whole route</b> — climb-out, cruise legs, loiter orbits and the return, drawn over real elevation data.</li>
+          <li><b>Brief from it</b> — a crew can see the plan the way the aircraft will fly it, without reading coordinates.</li>
+          <li><b>Free camera</b> to look around from any angle, with one click to snap back to the aircraft.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="window flip">
+      <div class="window-media">
+        <div class="screenframe">
+          <img src="assets/gcs-video-mountain.jpg"
+               alt="The station in full-screen video over a mountain road, cars and pack animals visible along the route, with only the telemetry bar and camera toolbar over the picture — no floating panels, no analytics overlay.">
+        </div>
+        <p class="shot-cap">Video window — the feed, and nothing else.</p>
+      </div>
+      <div class="window-body">
+        <span class="winlabel">Video window</span>
+        <h3>Nothing sitting between the operator and the picture</h3>
+        <ul class="ticks">
+          <li><b>The feed fills the screen</b> — no floating panels, no docked widgets, nothing laid over the part of the frame being watched.</li>
+          <li><b>Telemetry stays on the bar</b>, so going full-frame costs no aircraft state.</li>
+          <li><b>Detection boxes are the only overlay</b>, and they switch off when the operator wants the raw picture.</li>
+          <li><b>Thermal alongside EO</b> — picture-in-picture, full frame, or blended with adjustable opacity.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- One window, not two: this is still the same Video window above, not a separate
+         screen. What changes is what is running on it -- the detector's output passed to
+         an incident classifier and a rule engine, so the alert names the situation (a
+         priority group, a rollover) rather than just the object. The two real captures
+         sweep on the same 3s rotator as Fly View above, rather than sitting as two
+         separate window blocks, since they are two examples of one capability, not two
+         different screens. -->
+    <div class="window">
+      <div class="window-media">
+        <div class="screenframe">
+          <div class="rotator">
+            <img class="active" src="assets/gcs-sar-flood.jpg"
+                 alt="The ground station running detection on a flooded neighbourhood: twenty-three objects tracked, a cluster of people on a rooftop each boxed and numbered with confidences from 88 to 98 percent, a group ring drawn around a second cluster, and an amber SAR alert reading 'Priority Group Detected — Possible Evacuation Needed (95%)'. A status line reads 'Intelligence Processing: Critical group detection in Zone 4 (Floodplain)'.">
+            <img src="assets/gcs-mine-rollover.jpg"
+                 alt="The ground station running detection at a rock quarry: a haul truck on its side boxed in red and labelled 'TRUCK DETECTED: #TRK1002, Confidence 99%', with an orange alert reading 'MINE SITE ALERT: Vehicle Rollover, Critical Event (100%)' and the zone's GPS coordinates shown. A status line reads 'Intelligence Processing: High-Priority event in Quarry Zone 7 (Mining Operations)'.">
+          </div>
+        </div>
+        <p class="shot-cap">Two real incidents — a flood rescue, a quarry rollover — read and raised automatically.</p>
+      </div>
+      <div class="window-body">
+        <span class="winlabel">Situational awareness</span>
+        <h3>Not a detector. A model that reads the situation</h3>
+        <ul class="ticks">
+          <li><b>Reads the situation, not just the object</b> — a cluster of people becomes a priority group, an overturned truck becomes a rollover, named by the incident classifier rather than left as a plain box.</li>
+          <li><b>Severity is assigned, not left to the operator</b> — graded and raised as an alert with a confidence score, ready to be triaged like an incoming report.</li>
+          <li><b>Position travels with the alert</b> — the zone and coordinates are logged automatically, so a tasking arrives with a location already attached.</li>
+          <li><b>The same engine, any situation</b> — no separate model per scenario; one detector and rule engine reads whatever the mission puts in front of it, on the live feed as it happens.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Demo capture sits after the window walk-through rather than ahead of it: it makes
+         far more sense once the reader knows what Plan View and the 3D view are. Autoplays
+         muted on a loop with no controls, so it behaves as moving evidence rather than
+         something the visitor has to decide to press. -->
+    <figure class="demoblock" id="demoVideoBlock" hidden>
+      <h3>Planned on the map. Checked against the mountain.</h3>
+      <div class="screenframe">
+        <video id="demoVideo" autoplay muted loop playsinline preload="auto"
+               poster="assets/gcs-demo-poster.jpg">
+          <source src="assets/skyshield-gcs-demo.mp4" type="video/mp4">
+        </video>
+      </div>
+      <figcaption>Recorded in the station — an eight-waypoint plan reviewed in 3D over real terrain.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="band alt">
+  <div class="wrap">
+    <div class="sechead">
+      <p class="eyebrow">Everything in the station</p>
+      <h2 class="h2">Every module, not just the headline screens.</h2>
+      <p class="lede">
+        A ground station is judged on the bad days — a sensor that will not calibrate,
+        a link that drops, a log that has to come off the aircraft after an incident.
+      </p>
+    </div>
+
+    <div class="modindex">
+      <div class="modgroup">
+        <span>Mission</span>
+        <ul>
+          <li>Fly View — map and video</li>
+          <li>Plan View — waypoint planning</li>
+          <li>Editable mission table</li>
+          <li>3D terrain mission review</li>
+          <li>Terrain / AMSL / relative frames</li>
+          <li>Vertical takeoff, loiter, return</li>
+          <li>Geofence and boundary limits</li>
+          <li>Pre-flight checklist</li>
+        </ul>
+      </div>
+      <div class="modgroup">
+        <span>Vehicle setup</span>
+        <ul>
+          <li>Airframe configuration</li>
+          <li>Radio / RC calibration</li>
+          <li>Flight mode assignment</li>
+          <li>Compass and accelerometer calibration</li>
+          <li>Level horizon alignment</li>
+          <li>Power and battery setup</li>
+          <li>Motor test and ordering</li>
+          <li>Safety and failsafe rules</li>
+          <li>Camera and gimbal setup</li>
+        </ul>
+      </div>
+      <div class="modgroup">
+        <span>Video &amp; payload</span>
+        <ul>
+          <li>Network video — RTSP, UDP, TCP</li>
+          <li>Local file playback</li>
+          <li>Thermal picture-in-picture</li>
+          <li>Thermal full-frame</li>
+          <li>Thermal blended, adjustable opacity</li>
+          <li>Laser rangefinder distance</li>
+          <li>Photo and video recording</li>
+          <li>Zoom and click-to-track</li>
+        </ul>
+      </div>
+      <div class="modgroup">
+        <span>AI analytics</span>
+        <ul>
+          <li>GPU object detection</li>
+          <li>Multi-object tracking</li>
+          <li>Distinct-object counting</li>
+          <li>Model and confidence control</li>
+          <li>Model-free visual tracker</li>
+          <li>Situational-awareness review</li>
+          <li>Graded incident alerts</li>
+        </ul>
+      </div>
+      <div class="modgroup">
+        <span>Comms</span>
+        <ul>
+          <li>Serial telemetry</li>
+          <li>TCP and UDP links</li>
+          <li>Bluetooth</li>
+          <li>Multi-link with failover</li>
+          <li>Telemetry logging</li>
+          <li>Remote ID</li>
+          <li>ADS-B traffic display</li>
+        </ul>
+      </div>
+      <div class="modgroup">
+        <span>Analysis</span>
+        <ul>
+          <li>On-board log download</li>
+          <li>Flight log replay</li>
+          <li>MAVLink inspector</li>
+          <li>MAVLink console</li>
+          <li>Vibration analysis</li>
+          <li>Image geotagging</li>
+          <li>Spoken status callouts</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<nav class="nextnav" aria-label="Continue">
+  <a href="ravin.html"><span>Back — 01</span><b>Ravin UAV</b><p>The aircraft the station flies.</p></a>
+</nav>
+
+<footer>
+  <div class="wrap">
+    <div class="fbrand"><img src="assets/logo.svg" alt=""><b>SkyShield Technology</b></div>
+    <div class="note">© 2026 SkyShield Technology · Autonomous Aerial Systems</div>
+  </div>
+</footer>
+
+<script src="assets/site.js"></script>
+</body>
+</html>

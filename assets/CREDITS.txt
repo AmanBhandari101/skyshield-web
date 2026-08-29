@@ -1,0 +1,27 @@
+SkyShield Technology — image credits
+=====================================
+
+Every image on this site is SkyShield's own: product screenshots, screen recordings,
+the airframe render and the pipeline diagram. No third-party photography is used.
+
+Of particular note, because they are the strongest claims the site makes — both are
+real captures from the ground station, shown on the GCS page's window walk-through
+(Situational awareness, after the Video window) rather than the Video Analytics page:
+
+  gcs-sar-flood.jpg      Flood-response scenario. The 23-object count, the per-person
+                         track numbers and confidences, the group ring and the SAR
+                         evacuation alert are produced by the software itself — they
+                         are not drawn by the web page.
+
+  gcs-mine-rollover.jpg  Quarry incident. The truck detection, its confidence and the
+                         "Vehicle Rollover, Critical Event" alert are the same:
+                         genuine detector and rule-engine output, not illustration.
+
+An earlier revision of this page used three Pexels photographs with detection boxes
+and alert banners rendered in CSS over them. Those were correctly licensed (Pexels
+permits commercial use without attribution), but the overlays were illustrative
+rather than real detector output, which is a poor thing to put in front of a
+procurement audience. They were removed in favour of the two genuine captures above.
+
+The airframe render (ravin-render.png) is a concept render of the Ravin, not a
+photograph of the built aircraft. It matches the production CAD geometry.

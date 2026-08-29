@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ravin UAV — SkyShield Technology</title>
+<meta name="description" content="Ravin is SkyShield's VTOL tailsitter UAV: vertical launch from unprepared ground, fixed-wing endurance, one operator, airborne in under three minutes.">
+<link rel="icon" href="assets/logo.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@600;700;800&family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+
+<header>
+  <div class="navbar">
+    <a class="brand" href="index.html">
+      <img src="assets/logo.svg" alt="">
+      <span class="brand-name"><b>Sky<i>Shield</i></b><span>Technology</span></span>
+    </a>
+    <nav class="links">
+      <a href="index.html">Home</a>
+      <a href="ravin.html" aria-current="page">Ravin UAV</a>
+      <a href="gcs.html">Ground Station</a>
+      <a href="partner.html">Partner With Us</a>
+    </nav>
+    <a class="nav-cta" href="index.html#contact">Request a briefing</a>
+  </div>
+</header>
+
+<section class="pagehead">
+  <div class="wrap">
+    <p class="eyebrow">01 — The aircraft</p>
+    <h1>Launch like a multirotor. <em>Fly like a wing.</em></h1>
+    <p class="lede">
+      Small UAS usually forces a choice: multirotors launch anywhere and run out of
+      endurance; fixed wings do the opposite and need a runway to prove it. Ravin sits
+      on its tail, lifts off vertically, then pitches over and flies as a wing —
+      the trade-off, gone.
+    </p>
+  </div>
+</section>
+
+<section class="band alt">
+  <div class="wrap">
+    <div class="ravin-stage">
+      <img class="stage-art" src="assets/ravin-render.png"
+           alt="The Ravin VTOL tailsitter in flight in a digital camouflage scheme, both wing propellers turning, red and green wingtip navigation lights lit, and RAVIN marked on the centre body.">
+      <div class="stage-specs">
+        <p class="eyebrow">Airframe specification</p>
+        <dl class="specgrid">
+          <div><dt>Configuration</dt><dd>VTOL tailsitter</dd></div>
+          <div><dt>Max takeoff weight</dt><dd>6 kg</dd></div>
+          <div><dt>Wingspan</dt><dd>1.5 m</dd></div>
+          <div><dt>Endurance</dt><dd>Up to 2 hours</dd></div>
+          <div><dt>Deployment</dt><dd>Under 3 minutes</dd></div>
+          <div><dt>Portability</dt><dd>Single backpack</dd></div>
+          <div><dt>Crew</dt><dd>1 operator</dd></div>
+          <div><dt>Recovery</dt><dd>Vertical landing, no net</dd></div>
+          <div><dt>Structure</dt><dd>Composite unibody</dd></div>
+          <div><dt>Payload bay</dt><dd>Modular, centre-body</dd></div>
+        </dl>
+      </div>
+    </div>
+
+    <div class="grid c4">
+      <div class="cell">
+        <h3>Unibody composite shell</h3>
+        <p>Wing, body and tail formed as one structure — fewer joints, less to fail and less to inspect between sorties.</p>
+      </div>
+      <div class="cell">
+        <h3>Twin motor pods per wing</h3>
+        <p>The same units lift the aircraft vertically and drive it forward once it is wing-borne.</p>
+      </div>
+      <div class="cell">
+        <h3>Modular sensor bay</h3>
+        <p>A defined volume in the centre body with its own access panel — swap the payload without touching flight structure.</p>
+      </div>
+      <div class="cell">
+        <h3>Wingtip lights and skids</h3>
+        <p>Lit for orientation in low light, and doubling as the aircraft's landing contact point.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <div class="sechead">
+      <p class="eyebrow">In flight</p>
+      <h2 class="h2">Ravin, airborne.</h2>
+    </div>
+
+    <!-- Reserved slot for real Ravin flight footage. Drop the file in as
+         assets/ravin-flight.mp4 and it replaces the placeholder automatically. -->
+    <figure class="flightslot" id="flightSlot">
+      <div class="screenframe">
+        <video id="flightVideo" controls muted loop playsinline preload="metadata" hidden
+               poster="assets/ravin-flight-poster.jpg">
+          <source src="assets/ravin-flight.mp4" type="video/mp4">
+        </video>
+        <div class="vidplaceholder" id="flightPlaceholder">
+          <svg viewBox="0 0 72 72" aria-hidden="true">
+            <path d="M36 2 4 14v24c0 20 14 30.5 32 32 18-1.5 32-12 32-32V14Z" fill="#eaf6ff"/>
+            <path d="M36 6 8 16.5v21.3C8 55.8 20 65 36 66.4 52 65 64 55.8 64 37.8V16.5Z" fill="#0d2b45"/>
+            <path d="M20 42 36 24l16 18h-9.5L36 33.2 29.5 42Z" fill="#4fc3f7"/>
+            <rect x="17" y="47" width="38" height="4" rx="2" fill="#4fc3f7"/>
+            <rect x="23" y="54" width="26" height="3" rx="1.5" fill="#4fc3f7" opacity=".55"/>
+          </svg>
+          <span style="display:block">
+            <b>Flight footage</b>
+            <span>Ravin in the air — coming shortly</span>
+          </span>
+        </div>
+      </div>
+      <p class="shot-cap">Vertical launch, transition and wing-borne cruise.</p>
+    </figure>
+  </div>
+</section>
+
+<section class="band alt">
+  <div class="wrap">
+    <div class="sechead">
+      <p class="eyebrow">Concept of operations</p>
+      <h2 class="h2">Backpack to overwatch, without a prepared site.</h2>
+    </div>
+    <div class="grid c3">
+      <div class="cell">
+        <span class="tag">Launch</span>
+        <h3>Any clear ground</h3>
+        <p>No runway, catapult or launch rail. The aircraft stands on its tail and climbs vertically from the spot it was set down.</p>
+      </div>
+      <div class="cell">
+        <span class="tag">Transit</span>
+        <h3>Wing-borne cruise</h3>
+        <p>It transitions to horizontal flight for the mission, trading rotor lift for wing efficiency and the endurance that comes with it.</p>
+      </div>
+      <div class="cell">
+        <span class="tag">Recovery</span>
+        <h3>Back onto its tail</h3>
+        <p>It returns to the vertical and settles onto its wingtip skids. No net, no belly landing, no recovery crew.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<nav class="nextnav" aria-label="Continue">
+  <a href="gcs.html"><span>Next — 02</span><b>SkyShield GCS</b><p>The station that plans and flies it.</p></a>
+</nav>
+
+<footer>
+  <div class="wrap">
+    <div class="fbrand"><img src="assets/logo.svg" alt=""><b>SkyShield Technology</b></div>
+    <div class="note">© 2026 SkyShield Technology · Autonomous Aerial Systems</div>
+  </div>
+</footer>
+
+<script src="assets/site.js"></script>
+</body>
+</html>
