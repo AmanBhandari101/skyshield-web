@@ -61,8 +61,7 @@
         <h3>Fly the aircraft and work the camera at the same time</h3>
         <ul class="ticks">
           <li><b>Both halves are live at once</b> — re-task the aircraft on the map while the payload keeps tracking, with no mode to switch between them.</li>
-          <li><b>Aircraft controls left, payload controls right</b>, each fixed in place, so neither operator reaches across the other.</li>
-          <li><b>One operator or two</b> — the same screen works split between a pilot and a payload operator, or run by one person.</li>
+          <li><b>Aircraft controls left, payload controls right</b>, each fixed in place, so nothing has to be reached across.</li>
           <li><b>Live position against the planned route</b>, with detection running on the feed while it flies.</li>
         </ul>
       </div>
@@ -80,7 +79,7 @@
         <span class="winlabel">Plan View</span>
         <h3>A plan that tells you when it is wrong</h3>
         <ul class="ticks">
-          <li><b>Terrain collision checked for you</b> — the station pulls real elevation for the route and compares every leg against the ground.</li>
+          <li><b>Terrain collision checked for you</b> — the station pulls real elevation for the route and compares every leg against the ground; the segment that collides is drawn in red, so it's obvious which one.</li>
           <li><b>Errors shown against the item that caused them</b>, so a bad altitude is obvious in the table instead of buried in a log.</li>
           <li><b>Built by following the prompts</b> — takeoff, waypoints, return, each step leading to the next, so nothing has to be remembered in order.</li>
           <li><b>Per-item altitude frame</b> — relative to launch, above sea level, or held above the terrain.</li>
@@ -108,6 +107,22 @@
         </ul>
       </div>
     </div>
+
+    <!-- Demo capture sits right after the 3D View window it's proof of, rather than at the
+         end of the whole walk-through -- it's the same eight-waypoint plan, reviewed in 3D
+         over real terrain, so it belongs beside the panel that explains what that is.
+         Autoplays muted on a loop with no controls, so it behaves as moving evidence rather
+         than something the visitor has to decide to press. -->
+    <figure class="demoblock" id="demoVideoBlock" hidden>
+      <h3>Planned on the map. Checked against the mountain.</h3>
+      <div class="screenframe">
+        <video id="demoVideo" autoplay muted loop playsinline preload="auto"
+               poster="assets/gcs-demo-poster.jpg">
+          <source src="assets/skyshield-gcs-demo.mp4" type="video/mp4">
+        </video>
+      </div>
+      <figcaption>Recorded in the station — an eight-waypoint plan reviewed in 3D over real terrain.</figcaption>
+    </figure>
 
     <div class="window flip">
       <div class="window-media">
@@ -159,21 +174,6 @@
         </ul>
       </div>
     </div>
-
-    <!-- Demo capture sits after the window walk-through rather than ahead of it: it makes
-         far more sense once the reader knows what Plan View and the 3D view are. Autoplays
-         muted on a loop with no controls, so it behaves as moving evidence rather than
-         something the visitor has to decide to press. -->
-    <figure class="demoblock" id="demoVideoBlock" hidden>
-      <h3>Planned on the map. Checked against the mountain.</h3>
-      <div class="screenframe">
-        <video id="demoVideo" autoplay muted loop playsinline preload="auto"
-               poster="assets/gcs-demo-poster.jpg">
-          <source src="assets/skyshield-gcs-demo.mp4" type="video/mp4">
-        </video>
-      </div>
-      <figcaption>Recorded in the station — an eight-waypoint plan reviewed in 3D over real terrain.</figcaption>
-    </figure>
   </div>
 </section>
 
