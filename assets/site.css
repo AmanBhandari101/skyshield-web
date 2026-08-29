@@ -333,26 +333,6 @@ section.band.alt{background:rgba(7,16,28,.34)}
 /* ---------- demo capture block ----------
    Narrower than the content column on purpose: at full width the capture competes with the
    screenshots above it, and it reads better as a closing exhibit than as another panel. */
-.demoblock{
-  max-width:920px;margin:clamp(30px,4vw,52px) auto 0;
-  padding-top:clamp(26px,3.5vw,42px);border-top:1px solid var(--line-soft);
-}
-.demoblock[hidden]{display:none}
-.demoblock h3{
-  font-size:clamp(21px,2.3vw,28px);margin:0 0 16px;text-align:center;
-}
-.demoblock video{width:100%;display:block;background:#000}
-.demoblock figcaption{
-  font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;
-  color:var(--muted-2);margin-top:12px;text-align:center;
-}
-
-.scenario-cap{
-  font-family:var(--mono);font-size:12px;letter-spacing:.09em;text-transform:uppercase;
-  color:var(--muted-2);margin:12px 0 0;
-}
-.scenario-cap b{color:var(--text);font-weight:500}
-
 /* ---------- flight video slot ----------
    Unlike the demo-capture block, this one shows a visible placeholder when the file is
    absent: it is a reserved slot for footage that does not exist yet, so it should look

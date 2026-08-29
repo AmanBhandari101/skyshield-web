@@ -173,23 +173,4 @@
     });
   }
 
-  /* ---- demo video ---------------------------------------------------------
-     Only reveal the player once the file is confirmed present and readable; a
-     missing source would otherwise render an empty black box, which is worse
-     than no video section at all. */
-  var block = document.getElementById('demoVideoBlock');
-  var video = document.getElementById('demoVideo');
-  if (block && video) {
-    whenReady(video, function () {
-      block.hidden = false;
-      // The block starts display:none so autoplay may have been skipped while it was not
-      // rendered. Ask again now that it is on screen; muted playback is allowed, and a
-      // rejected promise here is not an error worth surfacing.
-      var p = video.play();
-      if (p && typeof p.catch === 'function') { p.catch(function () {}); }
-    });
-    video.addEventListener('error', function () { block.hidden = true; }, true);
-    var src = video.querySelector('source');
-    if (src) { src.addEventListener('error', function () { block.hidden = true; }); }
-  }
 })();

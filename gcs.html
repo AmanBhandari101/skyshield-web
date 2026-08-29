@@ -90,11 +90,17 @@
 
     <div class="window">
       <div class="window-media">
+        <!-- Real screen capture in place of a still shot -- same screenframe, same size, so
+             it sits exactly like every other window's screenshot rather than looking like a
+             different kind of element. autoplay+muted+poster means it never shows an empty
+             box: the poster frame (a real still from this same recording) shows immediately
+             and stays put if the video itself is ever unreachable. -->
         <div class="screenframe">
-          <img src="assets/gcs-3d-plan.jpg"
-               alt="3D View: the planned route drawn in cyan climbing over a mountain ridge in real 3D terrain, with numbered waypoints sitting above the ridgeline.">
+          <video autoplay muted loop playsinline preload="auto" poster="assets/gcs-demo-poster.jpg">
+            <source src="assets/skyshield-gcs-demo.mp4" type="video/mp4">
+          </video>
         </div>
-        <p class="shot-cap">3D View — the route against the ridge it has to clear.</p>
+        <p class="shot-cap">3D View — recorded in the station, plan reviewed against real terrain.</p>
       </div>
       <div class="window-body">
         <span class="winlabel">3D View</span>
@@ -107,22 +113,6 @@
         </ul>
       </div>
     </div>
-
-    <!-- Demo capture sits right after the 3D View window it's proof of, rather than at the
-         end of the whole walk-through -- it's the same eight-waypoint plan, reviewed in 3D
-         over real terrain, so it belongs beside the panel that explains what that is.
-         Autoplays muted on a loop with no controls, so it behaves as moving evidence rather
-         than something the visitor has to decide to press. -->
-    <figure class="demoblock" id="demoVideoBlock" hidden>
-      <h3>Planned on the map. Checked against the mountain.</h3>
-      <div class="screenframe">
-        <video id="demoVideo" autoplay muted loop playsinline preload="auto"
-               poster="assets/gcs-demo-poster.jpg">
-          <source src="assets/skyshield-gcs-demo.mp4" type="video/mp4">
-        </video>
-      </div>
-      <figcaption>Recorded in the station — an eight-waypoint plan reviewed in 3D over real terrain.</figcaption>
-    </figure>
 
     <div class="window flip">
       <div class="window-media">
