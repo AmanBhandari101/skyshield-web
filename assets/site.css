@@ -102,31 +102,27 @@ header{
   text-transform:uppercase;color:var(--muted-2);margin-top:5px;
 }
 nav.links{margin-left:auto;display:flex;gap:26px}
-nav.links a{
+nav.links a,.nav-contact{
   font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;
   color:var(--muted);text-decoration:none;padding:6px 0;
   border-bottom:1px solid transparent;transition:color .18s,border-color .18s;
 }
-nav.links a:hover,nav.links a:focus-visible{color:var(--text);border-bottom-color:var(--accent)}
+nav.links a:hover,nav.links a:focus-visible,
+.nav-contact:hover,.nav-contact:focus-visible{color:var(--text);border-bottom-color:var(--accent)}
 nav.links a[aria-current="page"]{color:var(--text);border-bottom-color:var(--accent)}
-.nav-cta{
-  font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;
-  text-decoration:none;color:var(--ink);background:var(--accent);
-  padding:10px 16px;border-radius:2px;font-weight:500;white-space:nowrap;
-  transition:background .18s;margin-left:auto;
-}
-nav.links ~ .nav-cta{margin-left:0}
-.nav-cta:hover{background:#4dbcf9}
+/* Its own element rather than a fifth item inside nav.links, on purpose: nav.links
+   disappears below 940px (next rule), and this is what has to stay reachable on a phone
+   -- same job it did back when this was styled as a standalone button. margin-left:auto
+   with the sibling override at 0 is the same pairing nav.links itself uses, so the two
+   sit as one right-aligned cluster on desktop, and this alone remains on mobile. */
+.nav-contact{margin-left:auto}
+nav.links ~ .nav-contact{margin-left:0}
 @media (max-width:940px){nav.links{display:none}}
-/* On a narrow phone the enlarged brand plus the full-width CTA overran the viewport by a
-   few pixels (measured). Both scale back here so the bar fits without shortening the
-   button's label, which is the thing people actually tap. */
 @media (max-width:560px){
   .navbar{gap:12px}
   .brand img{width:34px;height:34px}
   .brand-name b{font-size:20px}
   .brand-name span{font-size:8.5px;letter-spacing:.22em;margin-top:4px}
-  .nav-cta{font-size:11px;padding:9px 12px;letter-spacing:.06em}
 }
 
 /* ---------- buttons ---------- */
