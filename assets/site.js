@@ -159,8 +159,14 @@
         // Also fires once for the blank initial load of the iframe itself -- only show the
         // message once an actual submission has gone through it.
         if (!submitted) { return; }
+        submitted = false;   // this frame's next load is a fresh submission, not a repeat
         status.textContent = 'Sent — thanks, we’ll be in touch.';
         status.classList.add('show');
+        // Clears the visible fields so the page doesn't keep showing what was just sent --
+        // without this it looks like nothing happened, since a hidden-iframe submit never
+        // navigates the visible page at all. Only done here, after the round trip actually
+        // completes, so nothing is lost if it clears while still typing.
+        partnerForm.reset();
       });
     }
   }
