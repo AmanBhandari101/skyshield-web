@@ -130,47 +130,39 @@
   }
 
   /* ---- partner / careers form ---------------------------------------------
-     No backend on this site, so there is nowhere to POST this to. Composing a mailto:
-     link is the honest option: it is exactly as capable as the plain "email us" link in
-     Contact, just pre-filled from what was typed. Native form-to-mailto submission
-     (action="mailto:...") is inconsistent across browsers, so this is done in script --
-     which is also why a plain, always-visible mailto link sits right under the form in
-     the markup, for the no-JS case. */
+     Submits for real now -- the <form> itself posts straight to a Google Form (see the
+     action= on the markup), which is what makes an entry land as a spreadsheet row rather
+     than an email. Nothing here calls preventDefault(): the native POST is what has to
+     fire, so this script only does two things around it -- folds the "Interested in" pick
+     into the free-text Details field just before submit (see the markup's own comment for
+     why that question can't be posted to directly yet), and shows a confirmation once the
+     hidden target iframe finishes loading the cross-origin response, which is the only
+     signal available -- the response body itself is unreadable from this origin, so this
+     is an honest "it was sent," not a confirmed "it was received." Both the fold and the
+     confirmation are enhancements on top of a submission that already works with JS off. */
   var partnerForm = document.getElementById('partnerForm');
   if (partnerForm) {
-    partnerForm.addEventListener('submit', function (e) {
-      e.preventDefault();
-      var val = function (id) {
-        var el = document.getElementById(id);
-        return el ? el.value.trim() : '';
-      };
-      var name = val('pfName');
-      var email = val('pfEmail');
-      var phone = val('pfPhone');
-      var interest = val('pfInterest');
-      var message = val('pfMessage');
-
-      var subject = 'Partner enquiry' + (interest ? ' — ' + interest : '') +
-        (name ? ' from ' + name : '');
-      var bodyLines = [
-        'Name: ' + (name || '(not given)'),
-        'Email: ' + (email || '(not given)'),
-        'Phone: ' + (phone || '(not given)'),
-        'Interested in: ' + (interest || '(not given)'),
-        '',
-        message || '(no message)'
-      ];
-      var mailto = 'mailto:aman101bhandari@outlook.com' +
-        '?subject=' + encodeURIComponent(subject) +
-        '&body=' + encodeURIComponent(bodyLines.join('\n'));
-
-      var status = document.getElementById('partnerFormStatus');
-      if (status) {
-        status.textContent = 'Opening your email app with these details filled in — review it there before sending.';
-        status.classList.add('show');
+    partnerForm.addEventListener('submit', function () {
+      var interest = document.getElementById('pfInterest');
+      var message = document.getElementById('pfMessage');
+      if (interest && message && interest.value) {
+        message.value = 'Interested in: ' + interest.value + '\n\n' + message.value;
       }
-      window.location.href = mailto;
     });
+
+    var hiddenFrame = document.getElementById('partnerHiddenFrame');
+    var status = document.getElementById('partnerFormStatus');
+    if (hiddenFrame && status) {
+      var submitted = false;
+      partnerForm.addEventListener('submit', function () { submitted = true; });
+      hiddenFrame.addEventListener('load', function () {
+        // Also fires once for the blank initial load of the iframe itself -- only show the
+        // message once an actual submission has gone through it.
+        if (!submitted) { return; }
+        status.textContent = 'Sent — thanks, we’ll be in touch.';
+        status.classList.add('show');
+      });
+    }
   }
 
 })();

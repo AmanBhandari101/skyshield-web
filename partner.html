@@ -61,23 +61,38 @@
       </div>
     </div>
 
-    <form id="partnerForm">
+    <!-- Posts straight into a Google Form (see partnerFormSheet in site.js for the sheet
+         link), so an entry lands as a spreadsheet row, not just an email. Field `name`
+         attributes are the form's own entry.NNNNNN ids -- Google reads the POST body by
+         name, not by field order, so these have to match exactly. target="hidden_iframe"
+         is what lets this submit cross-origin without JavaScript: a plain form POST to
+         another origin is not a CORS request the way fetch()/XHR would be, so this works
+         even with JS entirely off -- the visitor just won't see the on-page confirmation.
+         "Interested in" is folded into the Details text rather than sent as its own field:
+         the form's own "Interested in" question is still a placeholder with only "Option 1"
+         as a valid choice, and Google Forms silently drops a value that doesn't match a
+         defined choice on a strict multiple-choice question -- free text has no such
+         restriction, so this is where the value survives. Give that question real choices
+         in Google Forms and it can get its own entry.NNNNNN mapping later. -->
+    <form id="partnerForm"
+          action="https://docs.google.com/forms/d/e/1FAIpQLSctPcAwtDVjB-R4T5U6rBdxc9J7ZnZX15RA9fGKBdx6l93xQg/formResponse"
+          method="POST" target="hidden_iframe">
       <div class="formgrid">
         <div class="field">
           <label for="pfName">Name</label>
-          <input type="text" id="pfName" name="name" placeholder="Your name" required>
+          <input type="text" id="pfName" name="entry.618568336" placeholder="Your name" required>
         </div>
         <div class="field">
           <label for="pfEmail">Email</label>
-          <input type="email" id="pfEmail" name="email" placeholder="you@example.com" required>
+          <input type="email" id="pfEmail" name="entry.1453946027" placeholder="you@example.com" required>
         </div>
         <div class="field">
           <label for="pfPhone">Phone</label>
-          <input type="tel" id="pfPhone" name="phone" placeholder="Optional">
+          <input type="tel" id="pfPhone" name="entry.152203526" placeholder="Optional">
         </div>
         <div class="field">
           <label for="pfInterest">Interested in</label>
-          <select id="pfInterest" name="interest">
+          <select id="pfInterest">
             <option value="Careers">Careers</option>
             <option value="Partnership">Partnership</option>
             <option value="Supplier">Supplier</option>
@@ -86,7 +101,7 @@
         </div>
         <div class="field full">
           <label for="pfMessage">Details</label>
-          <textarea id="pfMessage" name="message" placeholder="What you're proposing, your background, or what you'd like to discuss." required></textarea>
+          <textarea id="pfMessage" name="entry.519035198" placeholder="What you're proposing, your background, or what you'd like to discuss." required></textarea>
         </div>
       </div>
 
@@ -95,13 +110,17 @@
       </div>
 
       <p class="formnote">
-        This site has no application backend behind it — submitting opens an email to
-        <a href="mailto:aman101bhandari@outlook.com">aman101bhandari@outlook.com</a> pre-filled with what
-        you entered, so you see exactly what's sent before it goes. Prefer to write directly?
-        Use that address, or call <a href="tel:+918923060977">+91 89230 60977</a>.
+        Submitting sends this straight into our team's tracking sheet — no email app, no
+        redirect. Prefer to write directly instead? Use
+        <a href="mailto:aman101bhandari@outlook.com">aman101bhandari@outlook.com</a>, or call
+        <a href="tel:+918923060977">+91 89230 60977</a>.
       </p>
       <p class="form-status" id="partnerFormStatus" role="status"></p>
     </form>
+    <!-- Swallows the cross-origin response so the visitor's own page never navigates away.
+         Google's response can't be read from here (a different origin), which is why the
+         confirmation message is optimistic — see the iframe's load listener in site.js. -->
+    <iframe name="hidden_iframe" id="partnerHiddenFrame" hidden></iframe>
   </div>
 </section>
 
