@@ -279,8 +279,6 @@ section.band.alt{background:rgba(7,16,28,.34)}
   background-repeat:no-repeat;background-position:right 14px center;padding-right:34px;
 }
 .field select option{background:var(--panel)}
-.formnote{color:var(--muted-2);font-size:13px;line-height:1.6;margin:18px 0 0;max-width:60ch}
-.formnote a{color:var(--accent)}
 .form-status{
   margin-top:14px;font-family:var(--mono);font-size:12.5px;letter-spacing:.03em;
   color:var(--accent);display:none;

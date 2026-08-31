@@ -134,19 +134,66 @@
      action= on the markup), which is what makes an entry land as a spreadsheet row rather
      than an email. Nothing here calls preventDefault(): the native POST is what has to
      fire, so this script only does two things around it -- folds the "Interested in" pick
-     into the free-text Details field just before submit (see the markup's own comment for
-     why that question can't be posted to directly yet), and shows a confirmation once the
-     hidden target iframe finishes loading the cross-origin response, which is the only
-     signal available -- the response body itself is unreadable from this origin, so this
-     is an honest "it was sent," not a confirmed "it was received." Both the fold and the
-     confirmation are enhancements on top of a submission that already works with JS off. */
+     and some passive context (see briefDevice/submit listener below) into the free-text
+     Details field just before submit (see the markup's own comment for why "Interested in"
+     can't be posted to directly yet), and shows a confirmation once the hidden target
+     iframe finishes loading the cross-origin response, which is the only signal available
+     -- the response body itself is unreadable from this origin, so this is an honest "it
+     was sent," not a confirmed "it was received." Both the fold and the confirmation are
+     enhancements on top of a submission that already works with JS off. */
+
+  /* Coarse, readable OS + browser label from the UA string -- e.g. "Windows · Chrome" --
+     rather than dumping the whole raw user-agent string into a spreadsheet cell. Order
+     matters: Edge's UA also contains "Chrome/", so Edge has to be checked first. */
+  function briefDevice(ua) {
+    ua = ua || '';
+    var os = 'Unknown OS';
+    if (/Windows/.test(ua)) { os = 'Windows'; }
+    else if (/Mac OS X/.test(ua)) { os = 'Mac'; }
+    else if (/Android/.test(ua)) { os = 'Android'; }
+    else if (/iPhone|iPad|iPod/.test(ua)) { os = 'iOS'; }
+    else if (/Linux/.test(ua)) { os = 'Linux'; }
+
+    var browser = 'Unknown browser';
+    if (/Edg\//.test(ua)) { browser = 'Edge'; }
+    else if (/Chrome\//.test(ua)) { browser = 'Chrome'; }
+    else if (/Firefox\//.test(ua)) { browser = 'Firefox'; }
+    else if (/Safari\//.test(ua)) { browser = 'Safari'; }
+
+    return os + ' · ' + browser;
+  }
+
   var partnerForm = document.getElementById('partnerForm');
   if (partnerForm) {
     partnerForm.addEventListener('submit', function () {
       var interest = document.getElementById('pfInterest');
       var message = document.getElementById('pfMessage');
+
+      /* Passive context only -- nothing here needs a permission prompt (no geolocation,
+         no camera/mic), so it's all gathered silently and folded into Details, same as
+         "Interested in" above and for the same reason: Details is the one field Google
+         will actually store whatever text we hand it. Google Forms already timestamps
+         every row itself, so a submission time isn't repeated here. */
+      var bits = [];
+      if (document.referrer) {
+        try {
+          var refHost = new URL(document.referrer).hostname;
+          if (refHost && refHost !== window.location.hostname) { bits.push('via ' + refHost); }
+        } catch (e) { /* malformed referrer -- skip it */ }
+      }
+      bits.push(briefDevice(navigator.userAgent));
+      if (navigator.language) { bits.push(navigator.language); }
+      try {
+        var tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+        if (tz) { bits.push(tz); }
+      } catch (e) { /* Intl not available -- skip it */ }
+
+      var context = '\n\n— ' + bits.join(' · ') + ' —';
+
       if (interest && message && interest.value) {
-        message.value = 'Interested in: ' + interest.value + '\n\n' + message.value;
+        message.value = 'Interested in: ' + interest.value + '\n\n' + message.value + context;
+      } else if (message) {
+        message.value = message.value + context;
       }
     });
 
