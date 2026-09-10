@@ -26,6 +26,7 @@
       <a href="index.html" aria-current="page">Home</a>
       <a href="ravin.html">Ravin UAV</a>
       <a href="gcs.html">Ground Station</a>
+      <a href="rent.html">Rent the GCS</a>
       <a href="partner.html">Partner With Us</a>
     </nav>
     <a class="nav-contact" href="#contact">Contact</a>
@@ -54,31 +55,36 @@
 
 <section class="band">
   <div class="wrap">
-    <div class="window flip">
-      <div class="window-body">
-        <span class="winlabel">GCS · 3D View</span>
-        <h3>Understand the mission before you fly it.</h3>
-        <p class="sub">The route drawn over real elevation instead of a flat map. A leg that clips a ridge is obvious at a glance rather than being a number in a column, and a crew can be briefed from the plan the way the aircraft will actually fly it.</p>
-        <div class="actions">
-          <a class="btn btn-primary" href="gcs.html">See the ground station</a>
-        </div>
-      </div>
-      <div class="window-media">
-        <!-- controls + preload="metadata" rather than the autoplay this same recording gets
-             on gcs.html, for two reasons: it matches the flight-footage slot further down
-             this page, and the file is 3.2MB — four times the rest of the home page put
-             together — which is not worth spending before a visitor asks for it. The poster
-             is a real frame from the recording, so the slot reads as a screenshot until
-             played rather than as an empty box. -->
-        <div class="screenframe">
-          <video controls muted loop playsinline preload="metadata"
-                 poster="assets/gcs-demo-poster.jpg">
-            <source src="assets/skyshield-gcs-demo.mp4" type="video/mp4">
-          </video>
-        </div>
-        <p class="shot-cap">3D View — recorded in the station, the plan reviewed against real terrain.</p>
-      </div>
+    <div class="sechead">
+      <p class="eyebrow">In flight</p>
+      <h2 class="h2">Ravin, airborne.</h2>
     </div>
+
+    <!-- Reserved slot for real Ravin flight footage. Drop the file in as
+         assets/ravin-flight.mp4 and it replaces the placeholder automatically —
+         no markup change needed. -->
+    <figure class="flightslot" id="flightSlot">
+      <div class="screenframe">
+        <video id="flightVideo" controls muted loop playsinline preload="metadata" hidden
+               poster="assets/ravin-flight-poster.jpg">
+          <source src="assets/ravin-flight.mp4" type="video/mp4">
+        </video>
+        <div class="vidplaceholder" id="flightPlaceholder">
+          <svg viewBox="0 0 72 72" aria-hidden="true">
+            <path d="M36 2 4 14v24c0 20 14 30.5 32 32 18-1.5 32-12 32-32V14Z" fill="#eaf6ff"/>
+            <path d="M36 6 8 16.5v21.3C8 55.8 20 65 36 66.4 52 65 64 55.8 64 37.8V16.5Z" fill="#0d2b45"/>
+            <path d="M20 42 36 24l16 18h-9.5L36 33.2 29.5 42Z" fill="#4fc3f7"/>
+            <rect x="17" y="47" width="38" height="4" rx="2" fill="#4fc3f7"/>
+            <rect x="23" y="54" width="26" height="3" rx="1.5" fill="#4fc3f7" opacity=".55"/>
+          </svg>
+          <span style="display:block">
+            <b>Flight footage</b>
+            <span>Ravin in the air — coming shortly</span>
+          </span>
+        </div>
+      </div>
+      <p class="shot-cap">Vertical launch, transition and wing-borne cruise.</p>
+    </figure>
   </div>
 </section>
 
@@ -147,6 +153,36 @@
 
 <section class="band">
   <div class="wrap">
+    <div class="window flip">
+      <div class="window-body">
+        <span class="winlabel">GCS · 3D View</span>
+        <h3>Understand the mission before you fly it.</h3>
+        <p class="sub">The route drawn over real elevation instead of a flat map. A leg that clips a ridge is obvious at a glance rather than being a number in a column, and a crew can be briefed from the plan the way the aircraft will actually fly it.</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="gcs.html">See the ground station</a>
+        </div>
+      </div>
+      <div class="window-media">
+        <!-- controls + preload="metadata" rather than the autoplay this same recording gets
+             on gcs.html, for two reasons: it matches the flight-footage slot further down
+             this page, and the file is 3.2MB — four times the rest of the home page put
+             together — which is not worth spending before a visitor asks for it. The poster
+             is a real frame from the recording, so the slot reads as a screenshot until
+             played rather than as an empty box. -->
+        <div class="screenframe">
+          <video controls muted loop playsinline preload="metadata"
+                 poster="assets/gcs-demo-poster.jpg">
+            <source src="assets/skyshield-gcs-demo.mp4" type="video/mp4">
+          </video>
+        </div>
+        <p class="shot-cap">3D View — recorded in the station, the plan reviewed against real terrain.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band alt">
+  <div class="wrap">
     <div class="sechead">
       <p class="eyebrow">The system</p>
       <h2 class="h2">One system, not three products.</h2>
@@ -174,41 +210,6 @@
         <p>Launches vertically from any clear ground, cruises as a wing, lands back on its tail. No runway, no launcher, no net.</p>
       </div>
     </div>
-  </div>
-</section>
-
-<section class="band alt">
-  <div class="wrap">
-    <div class="sechead">
-      <p class="eyebrow">In flight</p>
-      <h2 class="h2">Ravin, airborne.</h2>
-    </div>
-
-    <!-- Reserved slot for real Ravin flight footage. Drop the file in as
-         assets/ravin-flight.mp4 and it replaces the placeholder automatically —
-         no markup change needed. -->
-    <figure class="flightslot" id="flightSlot">
-      <div class="screenframe">
-        <video id="flightVideo" controls muted loop playsinline preload="metadata" hidden
-               poster="assets/ravin-flight-poster.jpg">
-          <source src="assets/ravin-flight.mp4" type="video/mp4">
-        </video>
-        <div class="vidplaceholder" id="flightPlaceholder">
-          <svg viewBox="0 0 72 72" aria-hidden="true">
-            <path d="M36 2 4 14v24c0 20 14 30.5 32 32 18-1.5 32-12 32-32V14Z" fill="#eaf6ff"/>
-            <path d="M36 6 8 16.5v21.3C8 55.8 20 65 36 66.4 52 65 64 55.8 64 37.8V16.5Z" fill="#0d2b45"/>
-            <path d="M20 42 36 24l16 18h-9.5L36 33.2 29.5 42Z" fill="#4fc3f7"/>
-            <rect x="17" y="47" width="38" height="4" rx="2" fill="#4fc3f7"/>
-            <rect x="23" y="54" width="26" height="3" rx="1.5" fill="#4fc3f7" opacity=".55"/>
-          </svg>
-          <span style="display:block">
-            <b>Flight footage</b>
-            <span>Ravin in the air — coming shortly</span>
-          </span>
-        </div>
-      </div>
-      <p class="shot-cap">Vertical launch, transition and wing-borne cruise.</p>
-    </figure>
   </div>
 </section>
 
