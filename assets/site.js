@@ -210,6 +210,23 @@
     return os + ' · ' + browser;
   }
 
+  /* Pre-select "Interested in" from ?interest= so someone arriving from the rental page's
+     CTA does not have to restate why they came. Matched against the option values rather
+     than used directly: this value ends up folded into the submitted Details text, so an
+     arbitrary query string must never become the text that gets sent. Anything
+     unrecognised, or absent, simply leaves the select on its default. */
+  var pfInterestEl = document.getElementById('pfInterest');
+  if (pfInterestEl && window.URLSearchParams) {
+    try {
+      var wanted = new URLSearchParams(window.location.search).get('interest');
+      if (wanted) {
+        for (var oi = 0; oi < pfInterestEl.options.length; oi++) {
+          if (pfInterestEl.options[oi].value === wanted) { pfInterestEl.selectedIndex = oi; break; }
+        }
+      }
+    } catch (e) { /* malformed query string -- keep the default selection */ }
+  }
+
   var partnerForm = document.getElementById('partnerForm');
   if (partnerForm) {
     partnerForm.addEventListener('submit', function () {

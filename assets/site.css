@@ -534,6 +534,11 @@ ul.ticks li b{color:var(--text);font-weight:600}
   border-bottom:1px solid var(--line-soft);
 }
 .contact .wrap{padding-block:clamp(56px,8vw,96px)}
+/* h2 margins live on .sechead h2.h2, and the contact block is not a .sechead -- on the
+   home page that never showed because there is no paragraph under the heading there. The
+   rental page puts a lede between the two, which then sat flush against it. */
+.contact .h2{margin-bottom:14px}
+.contact .lede{margin-bottom:0}
 .cbox{
   display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1px;
   background:var(--line);border:1px solid var(--line);margin-top:34px;
