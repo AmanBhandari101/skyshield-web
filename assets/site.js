@@ -51,7 +51,7 @@
      never ends up with permanently invisible sections. */
   if (!reduced && 'IntersectionObserver' in window) {
     var targets = document.querySelectorAll(
-      '.sechead, .grid, .window, .roadmap, .modindex, .ravin-stage, .dl, .nextnav, .flightslot, .cbox'
+      '.sechead, .grid, .window, .roadmap, .modindex, .ravin-stage, .dl, .nextnav, .flightslot, .cbox, .alertshow'
     );
     if (targets.length) {
       var list = Array.prototype.slice.call(targets);
@@ -127,6 +127,53 @@
         slides[i].classList.add('active');
       }, 3000);
     });
+  }
+
+  /* ---- AI alert slideshow -------------------------------------------------
+     Deliberately not the generic .rotator above: that one crossfades images only, and this
+     block has a caption to keep in step with them, so it needs its own class (.alertstage)
+     or the rotator's interval would drive the same slides a second time and fight this one
+     for the active class.
+
+     Everything here is additive. The first slide and caption already carry "active" in the
+     markup, so with the script absent — or blocked — the block is a single captioned
+     screenshot rather than an empty frame.
+
+     Note there are no manual controls by design, which makes the timer the only way to
+     reach slides 2-5. So unlike the rotator it keeps running under prefers-reduced-motion,
+     where stopping it would strand that visitor on the first alert; the CSS drops the
+     crossfade there instead, so the slide cuts over rather than animating. */
+  var alertShow = document.getElementById('alertShow');
+  if (alertShow) {
+    var aSlides = alertShow.querySelectorAll('.alertstage img');
+    var aCaps   = alertShow.querySelectorAll('.acap');
+
+    if (aSlides.length > 1) {
+      var aIdx = 0, aTimer = null;
+      var DWELL = 5000;   // five slides; long enough to actually read the caption
+
+      var aGo = function (n) {
+        aIdx = (n + aSlides.length) % aSlides.length;
+        for (var i = 0; i < aSlides.length; i++) {
+          aSlides[i].classList.toggle('active', i === aIdx);
+          if (aCaps[i]) { aCaps[i].classList.toggle('active', i === aIdx); }
+        }
+      };
+
+      var aStop  = function () { if (aTimer) { window.clearInterval(aTimer); aTimer = null; } };
+      var aStart = function () {
+        aStop();
+        aTimer = window.setInterval(function () { aGo(aIdx + 1); }, DWELL);
+      };
+
+      /* A slideshow that moves on while it is being read is worse than none at all, and
+         with the dots gone a missed slide costs a full cycle to come back around. Holding
+         on hover is now the only way to stay on one, so it matters more than it did. */
+      alertShow.addEventListener('mouseenter', aStop);
+      alertShow.addEventListener('mouseleave', aStart);
+
+      aStart();
+    }
   }
 
   /* ---- partner / careers form ---------------------------------------------

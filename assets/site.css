@@ -324,6 +324,60 @@ section.band.alt{background:rgba(7,16,28,.34)}
 }
 .shot-cap::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--accent);flex-shrink:0}
 
+/* ---------- AI alert slideshow ----------
+   Each slide carries the station's own alert banner still in frame, so the claim the
+   section makes and the proof of it are the same picture. One frame at full column width
+   rather than a grid of five — the banner text is the entire point of the shot, and at
+   grid size it falls below readable. The captions repeat it in the page's own type
+   because the baked-in banner is small on a phone, and a screenshot's text is invisible
+   to search and to a screen reader. */
+
+/* Capped well inside the 1680px column, the way .screenframe.native already is. At the
+   full column width the 1.71:1 capture renders about 980px tall, which fills a laptop
+   viewport on its own and pushes the caption off the bottom of the screen — you cannot
+   see the alert and what it says at the same time, which is the entire point of the
+   block. At this width the slide is roughly 650px tall and the caption sits under it in
+   the same view. The side margins this leaves are deliberate, not spare space. */
+.alertshow{position:relative;max-width:1120px;margin-inline:auto}
+
+/* The five captures came off the display a few pixels apart in height (932-945 at 1600
+   wide). Pinning the ratio stops the frame resizing between slides, which would otherwise
+   shunt everything below it up and down on every crossfade. */
+.alertstage{position:relative;aspect-ratio:1600/938;border-radius:2px;overflow:hidden;background:#000}
+.alertstage img{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;
+  opacity:0;transition:opacity .7s ease;
+}
+.alertstage img.active{opacity:1}
+
+/* All five captions share one grid cell, so the block is as tall as the longest of them
+   and nothing below moves when the slide changes; a caption wrapping to two lines would
+   otherwise shunt the section below it down on every crossfade. visibility (not display)
+   because it also takes the inactive captions out of the accessibility tree. */
+.alertcaps{display:grid;margin-top:16px}
+.acap{grid-area:1/1;opacity:0;visibility:hidden;transition:opacity .35s ease}
+.acap.active{opacity:1;visibility:visible}
+.acap .atype{
+  display:block;font-family:var(--mono);font-size:10.5px;letter-spacing:.15em;
+  text-transform:uppercase;color:var(--amber);margin-bottom:7px;
+}
+.acap b{
+  display:block;font-family:var(--display);font-weight:600;letter-spacing:.01em;
+  font-size:clamp(18px,1.7vw,23px);line-height:1.25;color:var(--text);
+}
+.acap .ameta{
+  display:block;font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;
+  color:var(--muted-2);margin-top:8px;
+}
+
+/* With the manual controls gone, the slideshow is the only way to reach slides 2-5, so it
+   has to keep advancing even here — stopping it would leave a reduced-motion visitor on
+   the first alert forever. What gets removed is the animation, not the progression: the
+   slide and its caption cut straight over instead of crossfading. */
+@media (prefers-reduced-motion:reduce){
+  .alertstage img,.acap{transition:none}
+}
+
 /* ---------- demo capture block ----------
    Narrower than the content column on purpose: at full width the capture competes with the
    screenshots above it, and it reads better as a closing exhibit than as another panel. */

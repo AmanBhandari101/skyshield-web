@@ -56,25 +56,96 @@
   <div class="wrap">
     <div class="window flip">
       <div class="window-body">
-        <span class="winlabel">GCS · AI Awareness</span>
-        <h3 class="problem-thesis-h">Modern aerial platforms can maintain persistent flight. Human visual attention cannot.</h3>
-        <p class="sub">The system uses advanced AI to continuously read the live video feed. It looks for key events and findings that matter to the mission and automatically alerts the operator when something important is detected.</p>
+        <span class="winlabel">GCS · 3D View</span>
+        <h3>Understand the mission before you fly it.</h3>
+        <p class="sub">The route drawn over real elevation instead of a flat map. A leg that clips a ridge is obvious at a glance rather than being a number in a column, and a crew can be briefed from the plan the way the aircraft will actually fly it.</p>
         <div class="actions">
           <a class="btn btn-primary" href="gcs.html">See the ground station</a>
         </div>
       </div>
       <div class="window-media">
+        <!-- controls + preload="metadata" rather than the autoplay this same recording gets
+             on gcs.html, for two reasons: it matches the flight-footage slot further down
+             this page, and the file is 3.2MB — four times the rest of the home page put
+             together — which is not worth spending before a visitor asks for it. The poster
+             is a real frame from the recording, so the slot reads as a screenshot until
+             played rather than as an empty box. -->
         <div class="screenframe">
-          <img src="assets/gcs-sar-flood.jpg"
-               alt="The ground station running detection on a flooded neighbourhood, with a cluster of people flagged and a SAR alert raised automatically.">
+          <video controls muted loop playsinline preload="metadata"
+                 poster="assets/gcs-demo-poster.jpg">
+            <source src="assets/skyshield-gcs-demo.mp4" type="video/mp4">
+          </video>
         </div>
-        <p class="shot-cap">A tired operator can miss this. The station didn't.</p>
+        <p class="shot-cap">3D View — recorded in the station, the plan reviewed against real terrain.</p>
       </div>
     </div>
   </div>
 </section>
 
 <section class="band alt">
+  <div class="wrap">
+    <div class="sechead">
+      <p class="eyebrow amber">AI alerts</p>
+      <h2 class="h2">It watches the whole feed.</h2>
+      <p class="lede">
+        An hour into a flight, attention drifts — the feed doesn't stop. The AI reads
+        every frame and raises the alert itself, so a person on a rooftop or a car in
+        the water isn't waiting on someone happening to look.
+      </p>
+    </div>
+
+    <!-- Captions are real markup rather than data- attributes on the slides: with the
+         script absent, the image and caption already carrying "active" are the ones that
+         show, so this degrades to a single captioned screenshot rather than an empty
+         frame or an unlabelled one. -->
+    <div class="alertshow" id="alertShow">
+      <div class="screenframe">
+        <div class="alertstage">
+          <img class="active" src="assets/alert-people-rooftop.jpg"
+               alt="The ground station over a flooded town, the water risen to the eaves. Four people in orange rescue gear are gathered on a tiled rooftop, each boxed and labelled — person #309 at 77 percent, person #310 at 68 percent, person #311 at 67 percent — with a truck picked out at 83 percent. An amber banner reads 'PEOPLE ALERT: People cut off by water - Investigate immediately — match 0.58 vs 0.03 · 3 people · 1 vehicles (55%)'.">
+          <img src="assets/alert-people-swimmer.jpg" loading="lazy"
+               alt="A wide stretch of open turquoise water seen from altitude, empty but for two swimmers far apart. Both are boxed and labelled, person #5 at 67 percent and person #4 at 78 percent. An amber banner reads 'PEOPLE ALERT: Person in water - Investigate immediately — match 0.65 vs 0.00 · 1 people (65%)'.">
+          <img src="assets/alert-vehicle-water.jpg" loading="lazy"
+               alt="A top-down view of a pale blue car stranded in brown floodwater beside a submerged roadway, wake streaming past it. The car is boxed and labelled car #351 at 94 percent. An amber banner reads 'VEHICLE ALERT: Vehicle in water - Investigate - occupants unknown — match 0.73 vs 0.24 · 1 vehicles · Flooding 0.70 (48%)'.">
+          <img src="assets/alert-vehicle-fire.jpg" loading="lazy"
+               alt="An overhead view of a car park where an articulated tanker is alight, black smoke streaming across the tarmac. Two fire engines already on scene are boxed and labelled at 62 and 66 percent, the burning trailer at 56 percent. An amber banner reads 'VEHICLE ALERT: Vehicle on fire - Investigate for occupants — match 0.84 vs 0.00 · 1 people · Fire seen 0.48 (84%)'.">
+          <img src="assets/alert-fire-wildfire.jpg" loading="lazy"
+               alt="Woodland seen from directly above, pale smoke drifting in sheets across burnt ground with small fronts of open flame showing orange between the trees and a cluster of outbuildings near the centre. An amber banner reads 'FIRE ALERT: Fire seen - Investigate extent — match 0.47 vs 0.00 (47%)'.">
+        </div>
+      </div>
+
+      <div class="alertcaps">
+        <div class="acap active">
+          <span class="atype">People alert</span>
+          <b>People cut off by water — investigate immediately</b>
+          <span class="ameta">3 people · 1 vehicle · match 0.58 vs 0.03 · 55%</span>
+        </div>
+        <div class="acap">
+          <span class="atype">People alert</span>
+          <b>Person in water — investigate immediately</b>
+          <span class="ameta">1 person · match 0.65 vs 0.00 · 65%</span>
+        </div>
+        <div class="acap">
+          <span class="atype">Vehicle alert</span>
+          <b>Vehicle in water — occupants unknown</b>
+          <span class="ameta">1 vehicle · flooding 0.70 · match 0.73 vs 0.24 · 48%</span>
+        </div>
+        <div class="acap">
+          <span class="atype">Vehicle alert</span>
+          <b>Vehicle on fire — investigate for occupants</b>
+          <span class="ameta">1 person · fire seen 0.48 · match 0.84 vs 0.00 · 84%</span>
+        </div>
+        <div class="acap">
+          <span class="atype">Fire alert</span>
+          <b>Fire seen — investigate extent</b>
+          <span class="ameta">match 0.47 vs 0.00 · 47%</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band">
   <div class="wrap">
     <div class="sechead">
       <p class="eyebrow">The system</p>
@@ -106,7 +177,7 @@
   </div>
 </section>
 
-<section class="band">
+<section class="band alt">
   <div class="wrap">
     <div class="sechead">
       <p class="eyebrow">In flight</p>
@@ -141,7 +212,7 @@
   </div>
 </section>
 
-<section class="band alt">
+<section class="band">
   <div class="wrap">
     <div class="sechead">
       <p class="eyebrow">About us</p>
@@ -168,6 +239,8 @@
     <div class="cbox">
       <div><span>Email</span><a href="mailto:aman101bhandari@outlook.com">aman101bhandari@outlook.com</a></div>
       <div><span>Phone</span><a href="tel:+918923060977">+91 89230 60977</a></div>
+      <div><span>LinkedIn</span><a href="https://www.linkedin.com/company/skyshield-technology-uav/"
+           target="_blank" rel="noopener">skyshield-technology-uav</a></div>
     </div>
   </div>
 </section>
