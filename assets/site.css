@@ -38,6 +38,9 @@
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
+/* The header is sticky and 70px tall, so without this every in-page jump -- #contact,
+   #connect, the partner form -- lands with its heading tucked underneath it. */
+html{scroll-padding-top:84px}
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   *,*::before,*::after{animation-duration:.001ms!important;transition-duration:.001ms!important}
@@ -117,12 +120,58 @@ nav.links a[aria-current="page"]{color:var(--text);border-bottom-color:var(--acc
    sit as one right-aligned cluster on desktop, and this alone remains on mobile. */
 .nav-contact{margin-left:auto}
 nav.links ~ .nav-contact{margin-left:0}
-@media (max-width:940px){nav.links{display:none}}
+/* ---------- mobile menu ----------
+   Below 940px the five links no longer fit beside the mark. They used to simply vanish,
+   which left a phone with no route to Ravin, the GCS, the rental page or the partner form
+   except through links buried inside the pages. They now fold behind a menu button.
+
+   The collapsed version is gated on .js, which an inline script in each page's <head>
+   sets before first paint. Without JS the button would be dead, so the links fall back to
+   a wrapped row under the mark instead -- always reachable, just not folded away. Setting
+   the flag that early, rather than from site.js at the end of the body, is what stops
+   that fallback row flashing up and then collapsing on every page load. */
+.nav-toggle{display:none}
+@media (max-width:940px){
+  .navbar{flex-wrap:wrap;height:auto;min-height:70px}
+  nav.links{order:3;flex-basis:100%;margin-left:0;flex-wrap:wrap;gap:2px 18px;padding-bottom:8px}
+  /* Pushes Contact to the right edge. The desktop pairing (nav.links carrying the auto
+     margin, this one zeroed) stops working once the links leave the row, and Contact was
+     left sitting hard against the mark. */
+  nav.links ~ .nav-contact{margin-left:auto}
+
+  .js .navbar{flex-wrap:nowrap;height:70px}
+  /* Solid, unlike the header's translucent tint: the page's headline showed through behind
+     the links. top clears the header's 1px border, which then reads as the divider. */
+  .js nav.links{
+    display:none;position:absolute;left:0;right:0;top:calc(100% + 1px);
+    flex-direction:column;gap:0;padding:4px clamp(14px,1.6vw,26px) 10px;
+    background:var(--ink);border-bottom:1px solid var(--line-soft);
+    box-shadow:0 18px 30px rgba(0,0,0,.35);
+  }
+  .js header.nav-open nav.links{display:flex}
+  .js nav.links a{padding:15px 0;font-size:13px;border-bottom:1px solid var(--line-soft)}
+  .js nav.links a:last-child{border-bottom:0}
+  .js nav.links a[aria-current="page"]{color:var(--accent);border-bottom-color:var(--line-soft)}
+
+  .js .nav-toggle{
+    display:flex;flex-direction:column;justify-content:center;align-items:center;gap:5px;
+    width:44px;height:44px;margin-right:-10px;padding:0;
+    background:transparent;border:0;cursor:pointer;color:var(--text);
+  }
+  .nav-toggle span{display:block;width:22px;height:2px;background:currentColor;transition:transform .2s,opacity .2s}
+  header.nav-open .nav-toggle span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  header.nav-open .nav-toggle span:nth-child(2){opacity:0}
+  header.nav-open .nav-toggle span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+  /* The two header controls that stay on screen, brought up to a 44px tap height. */
+  .nav-contact{padding:13px 4px}
+  .brand{padding-block:5px}
+}
 @media (max-width:560px){
   .navbar{gap:12px}
   .brand img{width:34px;height:34px}
   .brand-name b{font-size:20px}
-  .brand-name span{font-size:8.5px;letter-spacing:.22em;margin-top:4px}
+  .brand-name span{font-size:9.5px;letter-spacing:.22em;margin-top:4px}
 }
 
 /* ---------- buttons ---------- */
@@ -258,9 +307,12 @@ section.band.alt{background:rgba(7,16,28,.34)}
   display:block;font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;
   text-transform:uppercase;color:var(--muted-2);margin-bottom:8px;
 }
+/* 16px, not 15: iOS Safari zooms the whole page when a field under 16px takes focus,
+   and leaves it zoomed after the keyboard closes. Padding is 13px rather than 12 to take
+   the fields past a 44px tap height; they sat at 42. */
 .field input,.field select,.field textarea{
   width:100%;background:var(--panel);border:1px solid var(--line);border-radius:3px;
-  color:var(--text);font-family:var(--body);font-size:15px;padding:12px 14px;
+  color:var(--text);font-family:var(--body);font-size:16px;padding:13px 14px;
   transition:border-color .15s;
 }
 .field textarea{resize:vertical;min-height:110px;line-height:1.5}
@@ -553,6 +605,19 @@ ul.ticks li b{color:var(--text);font-weight:600}
   text-decoration:none;margin:0;letter-spacing:.01em;word-break:break-word;
 }
 .cbox a:hover{color:var(--accent)}
+/* The value is the only tappable thing in each cell, and at 28px tall it was well under a
+   thumb. The padding grows the hit area; the equal negative margin keeps the visible
+   layout exactly where it was. */
+.cbox a{display:inline-block;padding-block:8px;margin-block:-8px}
+
+/* ---------- small-screen type floor ----------
+   These mono labels are set at 10-10.5px against a desktop column, where they read as
+   deliberate small caps. On a phone held at arm's length in daylight the same size reads
+   as fine print, so below 560px they come up to 11.5px. Tracking is left alone: the
+   spacing is part of what makes them read as labels rather than body text. */
+@media (max-width:560px){
+  .stat span,.nextnav span,.dl span,.specgrid dt,.field label,.cbox span,.acap .atype,.vidplaceholder span{font-size:11.5px}
+}
 
 /* ---------- footer ---------- */
 footer{padding:34px 0 44px;color:var(--muted-2);font-size:13px}

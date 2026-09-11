@@ -10,6 +10,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@600;700;800&family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <link rel="stylesheet" href="assets/site.css">
+<script>document.documentElement.classList.add('js')</script>
 </head>
 <body>
 
@@ -19,7 +20,7 @@
       <img src="assets/logo.svg" alt="">
       <span class="brand-name"><b>Sky<i>Shield</i></b><span>Technology</span></span>
     </a>
-    <nav class="links">
+    <nav class="links" id="siteNav" aria-label="Main">
       <a href="index.html">Home</a>
       <a href="ravin.html">Ravin UAV</a>
       <a href="gcs.html">Ground Station</a>
@@ -27,6 +28,9 @@
       <a href="partner.html" aria-current="page">Partner With Us</a>
     </nav>
     <a class="nav-contact" href="index.html#contact">Contact</a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="siteNav" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </header>
 

@@ -14,6 +14,42 @@
     else { el.addEventListener('loadedmetadata', fn); }
   }
 
+  /* ---- mobile menu --------------------------------------------------------
+     Only matters below 940px, where the CSS folds the links behind the button. Closes on
+     a link tap (which matters for in-page anchors; other links leave the page anyway), on
+     Escape, on a tap anywhere outside the header, and when the window widens back past
+     the breakpoint -- otherwise it could be left "open" behind a desktop layout that no
+     longer shows the button, and reappear open the next time the window narrows. */
+  var siteHeader = document.querySelector('header');
+  var navToggle = document.querySelector('.nav-toggle');
+  if (siteHeader && navToggle) {
+    var setMenu = function (open) {
+      siteHeader.classList.toggle('nav-open', open);
+      navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    };
+    navToggle.addEventListener('click', function () {
+      setMenu(!siteHeader.classList.contains('nav-open'));
+    });
+    Array.prototype.forEach.call(siteHeader.querySelectorAll('nav.links a'), function (a) {
+      a.addEventListener('click', function () { setMenu(false); });
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && siteHeader.classList.contains('nav-open')) {
+        setMenu(false);
+        navToggle.focus();
+      }
+    });
+    document.addEventListener('click', function (e) {
+      if (siteHeader.classList.contains('nav-open') && !siteHeader.contains(e.target)) { setMenu(false); }
+    });
+    if (window.matchMedia) {
+      var wide = window.matchMedia('(min-width: 941px)');
+      var onWide = function () { if (wide.matches) { setMenu(false); } };
+      if (wide.addEventListener) { wide.addEventListener('change', onWide); }
+      else if (wide.addListener) { wide.addListener(onWide); }
+    }
+  }
+
   /* ---- animated stat counters --------------------------------------------
      Values live in the HTML as real text so they are correct before this runs
      and correct if it never runs; the count-up only replaces them temporarily. */
