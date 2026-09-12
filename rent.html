@@ -62,10 +62,12 @@
          this is a plain tour of the screens. Captions are real markup, and the first slide
          and caption carry "active", so with the script absent this is one captioned
          screenshot rather than an empty frame. -->
-    <div class="alertshow accent">
+    <div class="alertshow accent" id="screens">
       <div class="screenframe">
         <div class="alertstage">
-          <img class="active" src="assets/gcs-plan-view.jpg"
+          <img class="active" src="assets/gcs-rvt-viewer.jpg"
+               alt="The Remote Video Terminal open in a plain browser: a control bar with Video, Map and Split views, EO and IR camera sources, Pause and an AI boxes toggle, a green Live indicator, and an amber banner reading 'FLOOD: Buildings in water - Occupants may be cut off - investigate - match 0.61 vs 0.03 - 1 vehicles' over aerial video of a flooded valley road, with green detection boxes labelled truck 71 percent and car 56 percent.">
+          <img src="assets/gcs-plan-view.jpg" loading="lazy"
                alt="Plan View: an eight-waypoint mission drawn over satellite terrain with a VTOL transition marker, and an editable mission table below listing sequence, command, latitude, longitude, altitude and altitude frame for every item.">
           <img src="assets/gcs-3d-plan.jpg" loading="lazy"
                alt="The ground station's 3D view, a planned route drawn as a chain of waypoints over real mountain terrain with leg distances and maximum terrain height shown along the top.">
@@ -77,13 +79,16 @@
                alt="The ground station running detection on a flooded neighbourhood: twenty-three objects tracked, a cluster of people on a rooftop each boxed and numbered with confidences from 88 to 98 percent, a group ring drawn around a second cluster, and an amber SAR alert reading 'Priority Group Detected — Possible Evacuation Needed (95%)'. A status line reads 'Intelligence Processing: Critical group detection in Zone 4 (Floodplain)'.">
           <img src="assets/gcs-mine-rollover.jpg" loading="lazy"
                alt="The ground station running detection at a rock quarry: a haul truck on its side boxed in red and labelled 'TRUCK DETECTED: #TRK1002, Confidence 99%', with an orange alert reading 'MINE SITE ALERT: Vehicle Rollover, Critical Event (100%)' and the zone's GPS coordinates shown. A status line reads 'Intelligence Processing: High-Priority event in Quarry Zone 7 (Mining Operations)'.">
-          <img src="assets/gcs-rvt-viewer.jpg" loading="lazy"
-               alt="The Remote Video Terminal open in a plain browser: a control bar with Video, Map and Split views, EO and IR camera sources, Pause and an AI boxes toggle, a green Live indicator, and an amber banner reading 'FLOOD: Buildings in water - Occupants may be cut off - investigate - match 0.61 vs 0.03 - 1 vehicles' over aerial video of a flooded valley road, with green detection boxes labelled truck 71 percent and car 56 percent.">
         </div>
       </div>
 
       <div class="alertcaps">
         <div class="acap active">
+          <span class="atype">Remote video terminal</span>
+          <b>Watched from a phone, in a browser</b>
+          <span class="ameta">Live video, AI boxes and alerts, served by the station itself</span>
+        </div>
+        <div class="acap">
           <span class="atype">Plan view</span>
           <b>Plan the mission, then edit it as a table</b>
           <span class="ameta">Waypoints over satellite terrain, VTOL transition marked</span>
@@ -112,11 +117,6 @@
           <span class="atype">AI analytics</span>
           <b>Incidents graded and raised</b>
           <span class="ameta">A haul truck on its side, flagged the moment it appeared</span>
-        </div>
-        <div class="acap">
-          <span class="atype">Remote video terminal</span>
-          <b>Watched from a phone, in a browser</b>
-          <span class="ameta">Live video, AI boxes and alerts, served by the station itself</span>
         </div>
       </div>
     </div>
@@ -169,7 +169,7 @@
     <!-- Copied from the module index on gcs.html rather than summarised, because this is
          the page where "everything is included" has to be checkable. The two lists are
          meant to be identical: add a capability there and add it here too. -->
-<div class="modindex">
+<div class="modindex" id="features">
       <div class="modgroup">
         <span>Mission</span>
         <ul>
