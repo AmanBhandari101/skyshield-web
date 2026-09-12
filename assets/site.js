@@ -165,9 +165,12 @@
     });
   }
 
-  /* ---- AI alert slideshow -------------------------------------------------
-     Deliberately not the generic .rotator above: that one crossfades images only, and this
-     block has a caption to keep in step with them, so it needs its own class (.alertstage)
+  /* ---- captioned slideshows -------------------------------------------------
+     Drives every .alertshow on the page, each with its own timer and index: the home page's
+     alert captures and the rental page's tour of the screens are one component.
+
+     Deliberately not the generic .rotator above: that one crossfades images only, and these
+     blocks have a caption to keep in step with them, so it needs its own class (.alertstage)
      or the rotator's interval would drive the same slides a second time and fight this one
      for the active class.
 
@@ -176,17 +179,16 @@
      screenshot rather than an empty frame.
 
      Note there are no manual controls by design, which makes the timer the only way to
-     reach slides 2-5. So unlike the rotator it keeps running under prefers-reduced-motion,
-     where stopping it would strand that visitor on the first alert; the CSS drops the
+     reach the later slides. So unlike the rotator it keeps running under
+     prefers-reduced-motion, where stopping it would strand that visitor on slide one; the CSS drops the
      crossfade there instead, so the slide cuts over rather than animating. */
-  var alertShow = document.getElementById('alertShow');
-  if (alertShow) {
+  Array.prototype.forEach.call(document.querySelectorAll('.alertshow'), function (alertShow) {
     var aSlides = alertShow.querySelectorAll('.alertstage img');
     var aCaps   = alertShow.querySelectorAll('.acap');
 
     if (aSlides.length > 1) {
       var aIdx = 0, aTimer = null;
-      var DWELL = 5000;   // five slides; long enough to actually read the caption
+      var DWELL = 5000;   // long enough to actually read the caption
 
       var aGo = function (n) {
         aIdx = (n + aSlides.length) % aSlides.length;
@@ -210,7 +212,49 @@
 
       aStart();
     }
-  }
+  });
+
+  /* ---- YouTube embeds -----------------------------------------------------
+     Each .yt is a link to the video on YouTube with its thumbnail inside. Pressing it
+     swaps in the real player -- from youtube-nocookie, so YouTube sets nothing until
+     then -- and starts it. The markup's thumbnail is hqdefault, which exists for every
+     video but is only 480px wide; once it has loaded, the 1280px maxresdefault is tried
+     and swapped in if the video has one (a missing one comes back as a 120px
+     placeholder, not an error).
+
+     The referrer policy is spelled out because YouTube refuses to play an embed that
+     arrives with no referrer at all. The browser default sends one, but anything that
+     tightened it to no-referrer would otherwise break every video without an error. */
+  Array.prototype.forEach.call(document.querySelectorAll('.yt[data-yt]'), function (link) {
+    var id = link.getAttribute('data-yt');
+    if (!/^[\w-]{11}$/.test(id)) { return; }          // not a video id: leave the plain link
+    var thumb = link.querySelector('img');
+    if (thumb) {
+      var upgrade = function () {
+        var hi = new Image();
+        hi.onload = function () { if (hi.naturalWidth > 320) { thumb.src = hi.src; } };
+        hi.src = 'https://i.ytimg.com/vi/' + id + '/maxresdefault.jpg';
+      };
+      if (thumb.complete && thumb.naturalWidth) { upgrade(); }
+      else { thumb.addEventListener('load', upgrade, { once: true }); }
+    }
+    link.addEventListener('click', function (e) {
+      // Opened straight from disk (a file:// address) there is no origin to send, and
+      // YouTube's player refuses to start without one -- "Error 153". There, let the link
+      // do its plain job and open the video on YouTube rather than swap in a dead player.
+      if (window.location.protocol === 'file:') { return; }
+      e.preventDefault();
+      var f = document.createElement('iframe');
+      f.className = 'yt-frame';
+      f.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0&playsinline=1';
+      f.title = link.getAttribute('aria-label') || 'YouTube video';
+      f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+      f.allowFullscreen = true;
+      f.referrerPolicy = 'strict-origin-when-cross-origin';
+      link.parentNode.replaceChild(f, link);
+      f.focus();
+    });
+  });
 
   /* ---- partner / careers form ---------------------------------------------
      Submits for real now -- the <form> itself posts straight to a Google Form (see the

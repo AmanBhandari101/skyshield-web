@@ -421,6 +421,10 @@ section.band.alt{background:rgba(7,16,28,.34)}
   display:block;font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;
   color:var(--muted-2);margin-top:8px;
 }
+/* Amber on these labels means "the station raised an alert". The rental page uses the same
+   component for a plain tour of the screens, where amber would imply an alarm that isn't
+   there, so that one carries .accent and takes the ordinary blue. */
+.alertshow.accent .atype{color:var(--accent)}
 
 /* With the manual controls gone, the slideshow is the only way to reach slides 2-5, so it
    has to keep advancing even here — stopping it would leave a reduced-motion visitor on
@@ -609,6 +613,27 @@ ul.ticks li b{color:var(--text);font-weight:600}
    thumb. The padding grows the hit area; the equal negative margin keeps the visible
    layout exactly where it was. */
 .cbox a{display:inline-block;padding-block:8px;margin-block:-8px}
+
+/* ---------- YouTube embed ----------
+   A facade rather than an iframe: the page ships a thumbnail and a play button, and
+   YouTube's player -- around a megabyte of script, plus its cookies -- only loads once
+   someone presses play. Without JS the thumbnail is simply a link to the video on
+   YouTube, so it still works. */
+.yt{position:relative;display:block;aspect-ratio:16/9;background:#000;overflow:hidden;border-radius:2px}
+.yt img{width:100%;height:100%;object-fit:cover;display:block;transition:opacity .2s}
+.yt:hover img{opacity:.86}
+.yt-play{
+  position:absolute;left:50%;top:50%;width:78px;height:54px;transform:translate(-50%,-50%);
+  background:rgba(9,20,33,.82);border:1px solid var(--accent);border-radius:2px;transition:background .18s;
+}
+.yt-play::before{
+  content:"";position:absolute;left:50%;top:50%;transform:translate(-35%,-50%);
+  border-style:solid;border-width:11px 0 11px 18px;
+  border-color:transparent transparent transparent var(--accent);transition:border-color .18s;
+}
+.yt:hover .yt-play,.yt:focus-visible .yt-play{background:var(--accent)}
+.yt:hover .yt-play::before,.yt:focus-visible .yt-play::before{border-left-color:var(--ink)}
+.yt-frame{display:block;width:100%;aspect-ratio:16/9;border:0;border-radius:2px;background:#000}
 
 /* ---------- small-screen type floor ----------
    These mono labels are set at 10-10.5px against a desktop column, where they read as

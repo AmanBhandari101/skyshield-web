@@ -48,31 +48,215 @@
 
 <section class="band">
   <div class="wrap">
-    <div class="window flip">
-      <div class="window-body">
-        <span class="winlabel">The licence</span>
-        <h3>The whole station, from the first day.</h3>
-        <p class="sub">
-          You get the ground station we build and fly ourselves — the same one on
-          this site, not a cut-down rental build. Rent it for a season or a year;
-          it is the same software either way.
-        </p>
-        <ul class="ticks">
-          <li><b>Per device, per month</b> — priced against the machines you actually fly from, so a season's work costs a season rather than a purchase order.</li>
-          <li><b>Everything unlocked</b> — the full station from day one, not a starter tier you grow out of.</li>
-          <li><b>Updates while it runs</b> — you fly what we ship, not the build you happened to license.</li>
-          <li><b>Support from the team that wrote it</b> — Dehradun, direct, not a ticket queue.</li>
-        </ul>
-        <div class="actions" style="margin-top:26px">
-          <a class="btn btn-ghost" href="gcs.html">See the station in detail</a>
+    <div class="sechead">
+      <p class="eyebrow">What you're renting</p>
+      <h2 class="h2">The whole station, screen by screen.</h2>
+      <p class="lede">
+        Real captures from the software you would be running: planning, flight, payload
+        and the AI analytics. Not a rental build — the same station we fly ourselves.
+      </p>
+    </div>
+
+    <!-- Same component as the home page's alert captures, carrying .accent so the labels
+         take the ordinary blue: amber means "the station raised an alarm" on this site, and
+         this is a plain tour of the screens. Captions are real markup, and the first slide
+         and caption carry "active", so with the script absent this is one captioned
+         screenshot rather than an empty frame. -->
+    <div class="alertshow accent">
+      <div class="screenframe">
+        <div class="alertstage">
+          <img class="active" src="assets/gcs-plan-view.jpg"
+               alt="Plan View: an eight-waypoint mission drawn over satellite terrain with a VTOL transition marker, and an editable mission table below listing sequence, command, latitude, longitude, altitude and altitude frame for every item.">
+          <img src="assets/gcs-3d-plan.jpg" loading="lazy"
+               alt="The ground station's 3D view, a planned route drawn as a chain of waypoints over real mountain terrain with leg distances and maximum terrain height shown along the top.">
+          <img src="assets/gcs-map-video.jpg" loading="lazy"
+               alt="Fly View: satellite map with the flight path on the left, live aerial video of a shoreline and field on the right showing vehicles and people on the ground, telemetry across the top.">
+          <img src="assets/gcs-video-mountain.jpg" loading="lazy"
+               alt="The station in full-screen video over a mountain road, cars and pack animals visible along the route, with only the telemetry bar and camera toolbar over the picture — no floating panels, no analytics overlay.">
+          <img src="assets/gcs-sar-flood.jpg" loading="lazy"
+               alt="The ground station running detection on a flooded neighbourhood: twenty-three objects tracked, a cluster of people on a rooftop each boxed and numbered with confidences from 88 to 98 percent, a group ring drawn around a second cluster, and an amber SAR alert reading 'Priority Group Detected — Possible Evacuation Needed (95%)'. A status line reads 'Intelligence Processing: Critical group detection in Zone 4 (Floodplain)'.">
+          <img src="assets/gcs-mine-rollover.jpg" loading="lazy"
+               alt="The ground station running detection at a rock quarry: a haul truck on its side boxed in red and labelled 'TRUCK DETECTED: #TRK1002, Confidence 99%', with an orange alert reading 'MINE SITE ALERT: Vehicle Rollover, Critical Event (100%)' and the zone's GPS coordinates shown. A status line reads 'Intelligence Processing: High-Priority event in Quarry Zone 7 (Mining Operations)'.">
+          <img src="assets/gcs-rvt-viewer.jpg" loading="lazy"
+               alt="The Remote Video Terminal open in a plain browser: a control bar with Video, Map and Split views, EO and IR camera sources, Pause and an AI boxes toggle, a green Live indicator, and an amber banner reading 'FLOOD: Buildings in water - Occupants may be cut off - investigate - match 0.61 vs 0.03 - 1 vehicles' over aerial video of a flooded valley road, with green detection boxes labelled truck 71 percent and car 56 percent.">
         </div>
       </div>
-      <div class="window-media">
-        <div class="screenframe">
-          <img src="assets/gcs-3d-plan.jpg"
-               alt="The ground station's 3D view, a planned route drawn as a chain of waypoints over real mountain terrain with leg distances and maximum terrain height shown along the top.">
+
+      <div class="alertcaps">
+        <div class="acap active">
+          <span class="atype">Plan view</span>
+          <b>Plan the mission, then edit it as a table</b>
+          <span class="ameta">Waypoints over satellite terrain, VTOL transition marked</span>
         </div>
-        <p class="shot-cap">The same station whether you rent it for a month or a year.</p>
+        <div class="acap">
+          <span class="atype">3D view</span>
+          <b>Walk the route over real elevation</b>
+          <span class="ameta">Leg distances and maximum terrain height along the top</span>
+        </div>
+        <div class="acap">
+          <span class="atype">Fly view</span>
+          <b>Map and live feed, side by side</b>
+          <span class="ameta">Flight path, telemetry and the camera in one window</span>
+        </div>
+        <div class="acap">
+          <span class="atype">Video window</span>
+          <b>The feed, and nothing else</b>
+          <span class="ameta">Full frame, with only the telemetry bar and camera toolbar over it</span>
+        </div>
+        <div class="acap">
+          <span class="atype">AI analytics</span>
+          <b>Detection running on the live feed</b>
+          <span class="ameta">People on a rooftop, boxed and counted, the alert raised on its own</span>
+        </div>
+        <div class="acap">
+          <span class="atype">AI analytics</span>
+          <b>Incidents graded and raised</b>
+          <span class="ameta">A haul truck on its side, flagged the moment it appeared</span>
+        </div>
+        <div class="acap">
+          <span class="atype">Remote video terminal</span>
+          <b>Watched from a phone, in a browser</b>
+          <span class="ameta">Live video, AI boxes and alerts, served by the station itself</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band alt">
+  <div class="wrap">
+    <div class="sechead">
+      <p class="eyebrow">The terms</p>
+      <h2 class="h2">Rent the capability, not the capital.</h2>
+    </div>
+
+    <div class="grid c4">
+      <div class="cell">
+        <span class="tag">Per device</span>
+        <h3>Priced by the month</h3>
+        <p>Against the machines you actually fly from, so a season's work costs a season rather than a purchase order.</p>
+      </div>
+      <div class="cell">
+        <span class="tag">No tiers</span>
+        <h3>Everything unlocked</h3>
+        <p>The full station from the first day — nothing reserved for an edition above yours.</p>
+      </div>
+      <div class="cell">
+        <span class="tag">While it runs</span>
+        <h3>Updates included</h3>
+        <p>You fly what we ship, not the build you happened to license.</p>
+      </div>
+      <div class="cell">
+        <span class="tag">Direct</span>
+        <h3>Support from the makers</h3>
+        <p>Dehradun, the people who wrote it — not a ticket queue.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <div class="sechead">
+      <p class="eyebrow">Everything in the licence</p>
+      <h2 class="h2">One plan. Every module unlocked.</h2>
+      <p class="lede">
+        Planning through to post-flight analysis, on every licence we issue. The rental is
+        not a reduced build.
+      </p>
+    </div>
+
+    <!-- Copied from the module index on gcs.html rather than summarised, because this is
+         the page where "everything is included" has to be checkable. The two lists are
+         meant to be identical: add a capability there and add it here too. -->
+<div class="modindex">
+      <div class="modgroup">
+        <span>Mission</span>
+        <ul>
+          <li>Fly View — map and video</li>
+          <li>Plan View — waypoint planning</li>
+          <li>Editable mission table</li>
+          <li>3D terrain mission review</li>
+          <li>Terrain / AMSL / relative frames</li>
+          <li>Vertical takeoff, loiter, return</li>
+          <li>Geofence and boundary limits</li>
+          <li>Pre-flight checklist</li>
+        </ul>
+      </div>
+      <div class="modgroup">
+        <span>Vehicle setup</span>
+        <ul>
+          <li>Airframe configuration</li>
+          <li>Radio / RC calibration</li>
+          <li>Flight mode assignment</li>
+          <li>Compass and accelerometer calibration</li>
+          <li>Level horizon alignment</li>
+          <li>Power and battery setup</li>
+          <li>Motor test and ordering</li>
+          <li>Safety and failsafe rules</li>
+          <li>Camera and gimbal setup</li>
+        </ul>
+      </div>
+      <div class="modgroup">
+        <span>Video &amp; payload</span>
+        <ul>
+          <li>Network video — RTSP, UDP, TCP</li>
+          <li>Local file playback</li>
+          <li>Thermal picture-in-picture</li>
+          <li>Thermal full-frame</li>
+          <li>Thermal blended, adjustable opacity</li>
+          <li>Laser rangefinder distance</li>
+          <li>Photo and video recording</li>
+          <li>Zoom and click-to-track</li>
+        </ul>
+      </div>
+      <div class="modgroup">
+        <span>Remote video terminal</span>
+        <ul>
+          <li>Live video to any browser</li>
+          <li>Nothing to install to watch</li>
+          <li>Viewers join by QR code</li>
+          <li>Station can host its own Wi-Fi</li>
+          <li>Map and AI boxes travel with it</li>
+          <li>Alerts and telemetry on the page</li>
+          <li>Viewer limit and page port</li>
+        </ul>
+      </div>
+      <div class="modgroup">
+        <span>AI analytics</span>
+        <ul>
+          <li>GPU object detection</li>
+          <li>Multi-object tracking</li>
+          <li>Distinct-object counting</li>
+          <li>Model and confidence control</li>
+          <li>Model-free visual tracker</li>
+          <li>Situational-awareness review</li>
+          <li>Graded incident alerts</li>
+        </ul>
+      </div>
+      <div class="modgroup">
+        <span>Comms</span>
+        <ul>
+          <li>Serial telemetry</li>
+          <li>TCP and UDP links</li>
+          <li>Bluetooth</li>
+          <li>Multi-link with failover</li>
+          <li>Telemetry logging</li>
+          <li>Remote ID</li>
+          <li>ADS-B traffic display</li>
+        </ul>
+      </div>
+      <div class="modgroup">
+        <span>Analysis</span>
+        <ul>
+          <li>On-board log download</li>
+          <li>Flight log replay</li>
+          <li>MAVLink inspector</li>
+          <li>MAVLink console</li>
+          <li>Vibration analysis</li>
+          <li>Image geotagging</li>
+          <li>Spoken status callouts</li>
+        </ul>
       </div>
     </div>
   </div>
@@ -88,6 +272,7 @@
     </p>
     <div class="actions" style="margin-top:28px">
       <a class="btn btn-primary" href="partner.html?interest=Rent%20the%20GCS#partnerForm">Request a quote</a>
+      <a class="btn btn-ghost" href="gcs.html">See the station in detail</a>
     </div>
     <div class="cbox">
       <div><span>Email</span><a href="mailto:aman101bhandari@outlook.com">aman101bhandari@outlook.com</a></div>
