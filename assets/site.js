@@ -307,6 +307,74 @@
     } catch (e) { /* malformed query string -- keep the default selection */ }
   }
 
+  /* ---- resume / CV hand-off ------------------------------------------------
+     A file cannot be posted to a Google Form's formResponse endpoint: file-upload questions
+     only work inside Google's own UI, with the respondent signed in. Adding one to the form
+     this page posts to would force sign-in on every submission and break the plain
+     cross-origin POST, which is what makes this form work with JavaScript off. So a CV goes
+     to a SECOND, dedicated Google Form, and whatever has been typed here is carried into it
+     as prefill (Google's own usp=pp_url) so none of it has to be retyped.
+
+     To switch it on: create that form with a File upload question, open its "Get pre-filled
+     link" (the kebab menu), and copy the view URL and the entry.NNN ids out of the link it
+     produces. Until viewUrl is set the row stays hidden. Any id left blank simply doesn't
+     prefill that question. */
+  var CV_UPLOAD_FORM = {
+    viewUrl:      '',   /* https://docs.google.com/forms/d/e/<form id>/viewform */
+    nameEntry:    '',   /* entry.NNNNNNNNN */
+    emailEntry:   '',
+    phoneEntry:   '',
+    detailsEntry: ''
+  };
+
+  /* Prefill travels in the query string, and browsers and servers both cut over-long URLs, so
+     the free text carried across is capped. The applicant has the field in front of them to
+     finish it, which is not true of a request that silently arrives truncated. */
+  var CV_PREFILL_MAX = 1200;
+
+  function cvUploadUrl() {
+    var params = ['usp=pp_url'];
+
+    function add(entry, value) {
+      if (!entry || !value) { return; }
+      params.push(encodeURIComponent(entry) + '=' + encodeURIComponent(String(value).slice(0, CV_PREFILL_MAX)));
+    }
+
+    var name = document.getElementById('pfName');
+    var email = document.getElementById('pfEmail');
+    var phone = document.getElementById('pfPhone');
+    var message = document.getElementById('pfMessage');
+    var interest = document.getElementById('pfInterest');
+
+    add(CV_UPLOAD_FORM.nameEntry, name && name.value.trim());
+    add(CV_UPLOAD_FORM.emailEntry, email && email.value.trim());
+    add(CV_UPLOAD_FORM.phoneEntry, phone && phone.value.trim());
+
+    /* Same shape the main submission uses: "Interested in" folded into the free text rather
+       than sent as its own answer. */
+    var details = (message && message.value.trim()) || '';
+    if (interest && interest.value) {
+      details = 'Interested in: ' + interest.value + (details ? '\n\n' + details : '');
+    }
+    add(CV_UPLOAD_FORM.detailsEntry, details);
+
+    return CV_UPLOAD_FORM.viewUrl + (CV_UPLOAD_FORM.viewUrl.indexOf('?') === -1 ? '?' : '&') + params.join('&');
+  }
+
+  var cvField = document.getElementById('pfCvField');
+  var cvLink = document.getElementById('pfCvLink');
+  if (cvField && cvLink && CV_UPLOAD_FORM.viewUrl) {
+    cvField.hidden = false;
+    /* Rebuilt as the link is used rather than only on load, so it carries whatever has been
+       typed by then -- and kept as a real href throughout, so middle-click and "open in new
+       tab" get the prefilled form too instead of a bare one. */
+    var refreshCvLink = function () { cvLink.href = cvUploadUrl(); };
+    refreshCvLink();
+    cvLink.addEventListener('mousedown', refreshCvLink);
+    cvLink.addEventListener('focus', refreshCvLink);
+    cvLink.addEventListener('click', refreshCvLink);
+  }
+
   var partnerForm = document.getElementById('partnerForm');
   if (partnerForm) {
     partnerForm.addEventListener('submit', function () {

@@ -109,6 +109,19 @@
           <label for="pfMessage">Details</label>
           <textarea id="pfMessage" name="entry.519035198" placeholder="What you're proposing, your background, or what you'd like to discuss." required></textarea>
         </div>
+
+        <!-- Resume / CV. A file cannot be posted to a Google Form's formResponse endpoint -- its
+             file-upload questions only work inside Google's own UI with the respondent signed in,
+             and adding such a question to THIS form would force sign-in on every submission and
+             break the plain POST above (the one that works with JavaScript off). So a CV goes to a
+             second, dedicated form, carrying everything already typed here as prefill. Hidden until
+             that form is configured in site.js, so the page never offers a button to nowhere. -->
+        <div class="field full cvrow" id="pfCvField" hidden>
+          <label>Resume / CV</label>
+          <a class="btn btn-ghost" id="pfCvLink" href="#" target="_blank" rel="noopener">Attach a CV</a>
+          <p class="cvnote">Opens our upload form in a new tab, with what you have typed already filled
+            in. Attaching a file needs a Google account; nothing else on this page does.</p>
+        </div>
       </div>
 
       <div class="actions" style="margin-top:22px">

@@ -327,6 +327,13 @@ section.band.alt{background:rgba(7,16,28,.34)}
   background-repeat:no-repeat;background-position:right 14px center;padding-right:34px;
 }
 .field select option{background:var(--panel)}
+/* CV hand-off row: a button and its explanation, stacked, rather than the label-over-input every
+   other field uses. The [hidden] rule is not redundant -- .field.cvrow outranks [hidden]'s own
+   display:none, so without it the row would show even while unconfigured. */
+.field.cvrow{display:flex;flex-direction:column;align-items:flex-start;gap:10px}
+.field.cvrow[hidden]{display:none}
+.cvnote{color:var(--muted-2);font-size:13px;line-height:1.55;max-width:62ch;margin:0}
+
 .form-status{
   margin-top:14px;font-family:var(--mono);font-size:12.5px;letter-spacing:.03em;
   color:var(--accent);display:none;
