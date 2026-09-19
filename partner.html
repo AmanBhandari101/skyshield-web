@@ -66,8 +66,10 @@
       </div>
     </div>
 
-    <!-- Posts straight into a Google Form (see partnerFormSheet in site.js for the sheet
-         link), so an entry lands as a spreadsheet row, not just an email. Field `name`
+    <!-- Posts straight into a Google Form, so an entry lands as a row in the sheet linked from
+         that form's Responses tab, not just an email. The page can't see Google's reply, so a
+         closed or edited form drops entries silently: .github/workflows/partner-form-check.yml
+         checks the form every morning and fails loudly if that happens. Field `name`
          attributes are the form's own entry.NNNNNN ids -- Google reads the POST body by
          name, not by field order, so these have to match exactly. target="hidden_iframe"
          is what lets this submit cross-origin without JavaScript: a plain form POST to
