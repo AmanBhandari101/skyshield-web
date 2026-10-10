@@ -1,7 +1,7 @@
 {
-  "version": "2.0.1",
-  "url": "https://github.com/AmanBhandari101/skyshield-web/releases/download/gcs-v2.0.1/SkyShield-2.0.1-Setup.exe",
-  "sha256": "50fe0cbc9820fdf534cb8dddb125b7789209012a11f7cab8b40a12d668f17af7",
-  "size": 675107964,
-  "notes": "Video fits the split-screen pane, command parameters in the Plan View table, clearer toolbar labels."
+  "version": "2.0.2",
+  "url": "https://github.com/AmanBhandari101/skyshield-web/releases/download/gcs-v2.0.2/SkyShield-2.0.2-Setup.exe",
+  "sha256": "536b20663db3e7a3a11f86ae2a003f43f7ce97ac8ad0d81ed3e3f2e08399b5b5",
+  "size": 675135608,
+  "notes": "Updates itself from now on. Gimbal controls in the camera panel, smoother Remote Video Terminal video, and matching alerts for remote viewers."
 }
