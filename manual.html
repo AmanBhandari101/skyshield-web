@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SkyShield GCS User Manual — SkyShield Technology</title>
+<meta name="description" content="The operator manual for the SkyShield Ground Control Station: every screen, every control, and step-by-step use cases.">
+<link rel="icon" href="assets/logo.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@600;700;800&family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+.doc { background:#fff; color:#1c2530; font-family:"Segoe UI",Arial,sans-serif; font-size:16px; line-height:1.55;
+       max-width:920px; margin:0 auto 64px; padding:32px 40px 56px; border-radius:6px; }
+.doc h1 { font-size:30px; color:#0d2b45; border-bottom:3px solid #1e88c9; padding-bottom:6px; margin:56px 0 14px;
+          font-family:inherit; letter-spacing:0; text-transform:none; line-height:1.2; }
+.doc h2 { font-size:22px; color:#0d2b45; margin:30px 0 8px; font-family:inherit; letter-spacing:0; text-transform:none; line-height:1.25; }
+.doc h3 { font-size:18px; color:#0d2b45; margin:22px 0 6px; font-family:inherit; letter-spacing:0; text-transform:none; }
+.doc p { margin:8px 0; color:#1c2530; max-width:none; }
+.doc ul, .doc ol { margin:8px 0 8px 22px; padding:0; }
+.doc li { margin:3px 0; }
+.doc table { border-collapse:collapse; width:100%; margin:10px 0 16px; font-size:14.5px; }
+.doc th { background:#0d2b45; color:#fff; text-align:left; padding:6px 9px; }
+.doc td { border-bottom:1px solid #d5dde5; padding:5px 9px; vertical-align:top; }
+.doc td.n { width:32px; font-weight:700; color:#b3261e; text-align:center; }
+.doc figure { margin:16px 0 18px; text-align:center; }
+.doc figure img { max-width:100%; height:auto; border:1px solid #d5dde5; border-radius:3px; }
+.doc figure.narrow img { max-width:76%; }
+.doc figure.small img { max-width:38%; }
+.doc figcaption { font-size:13.5px; color:#5a6875; margin-top:5px; }
+.doc .note, .doc .warn, .doc .danger { border-left:4px solid #1e88c9; background:#eef6fc; padding:9px 13px; margin:12px 0; }
+.doc .warn { border-color:#b45309; background:#fdf4e3; }
+.doc .danger { border-color:#b3261e; background:#fdecea; }
+.doc .note b:first-child, .doc .warn b:first-child, .doc .danger b:first-child { display:block; }
+.doc kbd, .doc .ui { font-family:inherit; font-weight:600; color:#0d2b45; }
+.doc a { color:#1e88c9; text-decoration:none; }
+.doc .cover { text-align:center; padding:28px 0 8px; }
+.doc .cover h1 { border:0; font-size:44px; margin:0 0 4px; }
+.doc .cover .sub { font-size:22px; color:#1e88c9; }
+.doc .cover .meta { margin-top:18px; color:#5a6875; }
+.doc .toc ol { list-style:none; margin-left:0; }
+.doc .toc > ol > li { font-weight:600; margin-top:8px; }
+.doc .toc ol ol { font-weight:400; margin-left:18px; color:#5a6875; }
+.docbar { max-width:920px; margin:0 auto; padding:28px 8px 18px; display:flex; gap:14px; flex-wrap:wrap; align-items:center; }
+@media (max-width:700px) { .doc { padding:20px 16px 40px; border-radius:0; } .doc figure.narrow img, .doc figure.small img { max-width:100%; } .doc table { font-size:13px; } }
+</style>
+<script>document.documentElement.classList.add('js')</script>
+</head>
+<body>
+
+<header>
+  <div class="navbar">
+    <a class="brand" href="index.html">
+      <img src="assets/logo.svg" alt="">
+      <span class="brand-name"><b>Sky<i>Shield</i></b><span>Technology</span></span>
+    </a>
+    <nav class="links" id="siteNav" aria-label="Main">
+      <a href="index.html">Home</a>
+      <a href="ravin.html">Ravin UAV</a>
+      <a href="gcs.html" aria-current="page">Ground Station</a>
+      <a href="rent.html">Rent the GCS</a>
+      <a href="partner.html">Partner With Us</a>
+    </nav>
+    <a class="nav-contact" href="index.html#contact">Contact</a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="siteNav" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<div class="docbar">
+  <a class="btn btn-ghost" href="gcs.html#download">Back to the Ground Station</a>
+  <a class="btn btn-ghost" href="downloads/SkyShield-GCS-User-Manual.pdf">Download as PDF</a>
+</div>
+<main class="doc">
+
+<section class="cover">
+  <h1>SkyShield</h1>
+  <div class="sub">Ground Control Station &mdash; User Manual</div>
+  <p class="meta">For SkyShield 2.0 on Windows<br>Document edition 1 &middot; October 2026<br>&copy; 2026 SkyShield Technology</p>
+</section>
+
+<section class="toc">
+<h1>Contents</h1>
+<ol>
+  <li><a href="#about">1. About this manual</a></li>
+  <li><a href="#start">2. Getting started</a>
+    <ol><li>Installing and activating</li><li>The screen at a glance</li><li>The application menu</li><li>Connecting an aircraft</li><li>Training without an aircraft</li></ol></li>
+  <li><a href="#fly">3. Fly View</a>
+    <ol><li>Toolbar readouts</li><li>Status, flight mode and other drop-downs</li><li>Compass and attitude display</li><li>Action strip and confirmations</li><li>Working on the map</li><li>Changing altitude in flight</li><li>Pre-flight checks</li></ol></li>
+  <li><a href="#video">4. Video and the camera panel</a></li>
+  <li><a href="#ai">5. AI detection and alerts</a></li>
+  <li><a href="#track">6. Visual tracking and gimbal follow</a></li>
+  <li><a href="#plan">7. Plan View</a></li>
+  <li><a href="#3d">8. 3D view</a></li>
+  <li><a href="#rvt">9. Remote Video Terminal</a></li>
+  <li><a href="#replay">10. Flight replay and Analyze Tools</a></li>
+  <li><a href="#settings">11. Settings reference</a></li>
+  <li><a href="#vehicle">12. Vehicle Configuration</a></li>
+  <li><a href="#updates">13. Updates, licence and configuration files</a></li>
+  <li><a href="#usecases">14. Use cases, step by step</a></li>
+  <li><a href="#trouble">15. Troubleshooting</a></li>
+  <li><a href="#alerts">Appendix A. Alert reference</a></li>
+  <li><a href="#glossary">Appendix B. Glossary</a></li>
+</ol>
+</section>
+
+<!-- ============================================================ -->
+<h1 id="about">1. About this manual</h1>
+<p>SkyShield is a ground control station for unmanned aircraft. It plans missions, flies them, shows the aircraft's video, watches that video with on-board AI for people, vehicles, fire, flood and other conditions, and shares the picture with other people on site through an ordinary web browser.</p>
+<p>This manual is written for the operator: the person at the ground station during a flight. It has two layers:</p>
+<ul>
+  <li><b>Reference chapters (2 to 13)</b> describe each screen and every control on it.</li>
+  <li><b>Use cases (chapter 14)</b> walk through complete tasks from start to finish.</li>
+</ul>
+<p>Names of buttons, menus and settings are printed <span class="ui">like this</span>, exactly as they appear on screen. Numbered red circles on a screenshot refer to the numbered rows in the table beneath it.</p>
+<div class="note"><b>About the screenshots</b>All screenshots were taken from the running application with a simulated aircraft and a recorded aerial video, so the telemetry values and scenes are examples. Your screen will show your own aircraft and camera.</div>
+<div class="danger"><b>Safety</b>SkyShield commands a real aircraft. Any action that moves the aircraft or changes its state asks for confirmation with a slider. Read what the confirmation says before you slide. The AI layer is an aid to an operator, not a replacement for one: it can miss things and it can raise alerts that turn out to be nothing.</div>
+
+<!-- ============================================================ -->
+<h1 id="start">2. Getting started</h1>
+
+<h2>2.1 Installing and activating</h2>
+<ol class="steps">
+  <li>Run the installer, <span class="ui">SkyShield-&lt;version&gt;-Setup.exe</span>, and follow its prompts.</li>
+  <li>Start SkyShield. On a computer that has not been activated, the only window that opens is <span class="ui">SkyShield &mdash; Activation Required</span>. It shows <span class="ui">This copy is not activated</span> and a <span class="ui">THIS DEVICE</span> ID.</li>
+  <li>Click <span class="ui">Save Request&hellip;</span> and send the saved file (or read out the device ID) to your SkyShield supplier.</li>
+  <li>When you receive a licence file (<span class="ui">.lic</span>), click <span class="ui">Import Licence&hellip;</span> and select it.</li>
+  <li>When the window shows <span class="ui">Licensed &mdash; restart to continue</span>, click <span class="ui">Restart SkyShield</span>.</li>
+</ol>
+<p>The device ID is derived from hashed hardware identifiers. No hardware serial number or network address leaves the computer. A licence is tied to the computer it was issued for and cannot be copied to another.</p>
+<div class="note"><b>The licence is never checked in flight</b>SkyShield evaluates the licence when it starts and while the aircraft is on the ground. A licence that reaches its expiry date during a flight does not affect an aircraft that is already airborne. It prevents the next start. The <span class="ui">Licence</span> page warns you from 14 days before expiry.</div>
+
+<h2>2.2 The screen at a glance</h2>
+<p>SkyShield opens in the <b>Fly View</b>. This is where you spend a flight.</p>
+<figure><img src="assets/manual/fly-overview.jpg" alt="Fly View"><figcaption>Figure 2.1 &mdash; The Fly View with an aircraft connected, video playing and an alert raised.</figcaption></figure>
+<table>
+  <tr><th></th><th>Area</th><th>What it is for</th></tr>
+  <tr><td class="n">1</td><td>Status</td><td>Overall state of the aircraft, such as <span class="ui">Ready To Fly</span> or <span class="ui">No Vehicle Connected</span>. Click it for messages and sensor health.</td></tr>
+  <tr><td class="n">2</td><td>Toolbar readouts</td><td>Flight mode, altitudes, GNSS, heading, speeds, time, distances, link and batteries. See 3.1.</td></tr>
+  <tr><td class="n">3</td><td>Application menu</td><td>The round SkyShield badge. Opens settings and tools. See 2.3.</td></tr>
+  <tr><td class="n">4</td><td>Compass and attitude</td><td>Heading ring and artificial horizon. Can be dragged anywhere, or switched off.</td></tr>
+  <tr><td class="n">5</td><td>Action strip</td><td><span class="ui">3D View</span>, <span class="ui">Plan</span>, <span class="ui">Arm</span>, <span class="ui">Pause</span>, <span class="ui">Return</span>, <span class="ui">Actions</span>.</td></tr>
+  <tr><td class="n">6</td><td>Map</td><td>The aircraft, its position, its mission and its home. Click the map for location actions.</td></tr>
+  <tr><td class="n">7</td><td>AI status line</td><td>Whether detection is running, on which device, how many objects, and how fast.</td></tr>
+  <tr><td class="n">8</td><td>Alert banner</td><td>The single most important thing the AI is currently reporting.</td></tr>
+  <tr><td class="n">9</td><td>Camera panel</td><td>Photo, record, zoom, tracking, camera type, gimbal, AI on/off, keyboard control.</td></tr>
+  <tr><td class="n">10</td><td>Video</td><td>The aircraft's camera, with detection boxes drawn over it.</td></tr>
+</table>
+<p>The map and the video share the screen side by side. Drag the divider between them to give either one more room (the map can take between a quarter and three quarters of the width). Double-click the video to make it fill the screen, and double-click again to return.</p>
+
+<h2>2.3 The application menu</h2>
+<figure class="small"><img src="assets/manual/app-menu.jpg" alt="Application menu"><figcaption>Figure 2.2 &mdash; The application menu.</figcaption></figure>
+<p>Click the round badge at the top right to open the menu. The rest of the screen dims, but the toolbar and action strip stay usable.</p>
+<table>
+  <tr><th>Entry</th><th>Opens</th><th>Chapter</th></tr>
+  <tr><td>General</td><td>Everyday switches, units, updates, simulator, configuration file</td><td>11.1</td></tr>
+  <tr><td>Maps</td><td>Map provider and offline map areas</td><td>11.2</td></tr>
+  <tr><td>Payload Configuration</td><td>Video source and recording</td><td>4</td></tr>
+  <tr><td>AI Detection</td><td>Detection, alerts, voice, autonomous actions</td><td>5</td></tr>
+  <tr><td>Video Terminal</td><td>Sharing video with browsers</td><td>9</td></tr>
+  <tr><td>Licence</td><td>Licence status and device ID</td><td>13</td></tr>
+  <tr><td>Communication Link</td><td>How SkyShield connects to aircraft</td><td>2.4</td></tr>
+  <tr><td>Analyze Tools</td><td>Log download and diagnostics (shown only in Advanced Mode)</td><td>10</td></tr>
+  <tr><td>Advanced</td><td><span class="ui">Application Settings</span> and <span class="ui">Vehicle Configuration</span></td><td>11.3, 12</td></tr>
+</table>
+<p>Every page opened from the menu has a back arrow and the page title at the top left. Click it to return to where you were.</p>
+<p><b>Advanced Mode.</b> Hold <kbd>Shift</kbd> and click the version number at the bottom of the menu to turn Advanced Mode on or off. It reveals <span class="ui">Analyze Tools</span> and some rarely needed options.</p>
+
+<h2>2.4 Connecting an aircraft</h2>
+<p>SkyShield connects by itself to an aircraft that appears on a supported link. Plug in the telemetry radio or autopilot USB cable, or power the aircraft's data link, and wait for the status at the top left to change from <span class="ui">No Vehicle Connected</span>.</p>
+<figure class="narrow"><img src="assets/manual/settings-commlink.jpg" alt="Communication Link"><figcaption>Figure 2.3 &mdash; Communication Link.</figcaption></figure>
+<p>Open <span class="ui">Communication Link</span> from the application menu to control this.</p>
+<table>
+  <tr><th>Section</th><th>What it does</th></tr>
+  <tr><td>AutoConnect</td><td>One switch per link type SkyShield will connect to without being asked: <span class="ui">Pixhawk</span>, <span class="ui">SiK Radio</span>, <span class="ui">LibrePilot</span>, <span class="ui">UDP</span>, <span class="ui">Zero-Conf</span>, <span class="ui">RTK</span>. Switch one off if a device is being connected to by mistake.</td></tr>
+  <tr><td>NMEA GPS</td><td>An optional GPS receiver attached to the ground station itself.</td></tr>
+  <tr><td>Links</td><td>Connections you have defined by hand. Each has edit and delete icons and a <span class="ui">Connect</span> or <span class="ui">Disconnect</span> button.</td></tr>
+  <tr><td>Add New Link</td><td><span class="ui">Add</span> creates a serial, UDP, TCP or Bluetooth link, or a log replay link.</td></tr>
+</table>
+<p>The first time SkyShield loads an aircraft's parameters it shows a progress bar under the toolbar. Wait for it to finish before planning or arming.</p>
+
+<h2>2.5 Training without an aircraft</h2>
+<p>SkyShield can run a flight simulator on the ground station so that an operator can practise with nothing connected. The simulator behaves like a real aircraft in every screen of the application.</p>
+<figure class="narrow"><img src="assets/manual/settings-simulation.jpg" alt="Simulation settings"><figcaption>Figure 2.4 &mdash; Simulation (training) in General settings.</figcaption></figure>
+<ol class="steps">
+  <li>Open the application menu and choose <span class="ui">General</span>. Scroll to <span class="ui">Simulation (training)</span>.</li>
+  <li>Click <span class="ui">Start Simulator</span>. After a few seconds the Fly View shows the simulated aircraft.</li>
+  <li>When you have finished, return to the same page and click <span class="ui">Stop Simulator</span>.</li>
+</ol>
+<table>
+  <tr><th>Field</th><th>Meaning</th></tr>
+  <tr><td>Simulator</td><td>Location of the simulator program on this computer. The simulator is not part of SkyShield. If it is not at this location the button is disabled and the status says so.</td></tr>
+  <tr><td>Airframe</td><td>The type of aircraft simulated.</td></tr>
+  <tr><td>Parameters</td><td>A parameter file loaded into the simulated aircraft.</td></tr>
+  <tr><td>Start location</td><td>Latitude, longitude, altitude in metres and heading, separated by commas.</td></tr>
+</table>
+<p>The four fields can only be edited while the simulator is stopped. The simulator appears in <span class="ui">Communication Link</span> as <span class="ui">Simulator (SITL)</span> and can be disconnected there like any other aircraft.</p>
+<p>To practise with video and AI as well, play a recorded video file in place of a camera. See 4.2.</p>
+
+<!-- ============================================================ -->
+<h1 id="fly">3. Fly View</h1>
+
+<h2>3.1 Toolbar readouts</h2>
+<figure><img src="assets/manual/fly-toolbar.jpg" alt="Toolbar"><figcaption>Figure 3.1 &mdash; The toolbar.</figcaption></figure>
+<table>
+  <tr><th></th><th>Readout</th><th>Meaning</th></tr>
+  <tr><td class="n">1</td><td>Status</td><td>Overall aircraft state. Click for the <span class="ui">Arm</span> button, vehicle messages and sensor health.</td></tr>
+  <tr><td class="n">2</td><td>Flight Mode</td><td>The mode the autopilot is in. Click to change it.</td></tr>
+  <tr><td class="n">3</td><td>Relative Alt</td><td>Height above the home (take-off) point.</td></tr>
+  <tr><td class="n">4</td><td>Terrain Alt</td><td>Height above the ground directly below the aircraft.</td></tr>
+  <tr><td class="n">5</td><td>GNSS</td><td>Number of satellites and horizontal accuracy (HDOP; lower is better). Click for detail.</td></tr>
+  <tr><td class="n">6</td><td>Heading</td><td>Compass direction the aircraft is pointing, in degrees.</td></tr>
+  <tr><td class="n">7</td><td>Ground Speed</td><td>Speed over the ground.</td></tr>
+  <tr><td class="n">8</td><td>Air Speed</td><td>Speed through the air.</td></tr>
+  <tr><td class="n">9</td><td>Time in Air</td><td>Time since take-off, as hours:minutes:seconds.</td></tr>
+  <tr><td class="n">10</td><td>Distance Travelled</td><td>Total distance flown this flight.</td></tr>
+  <tr><td class="n">11</td><td>Distance to Home</td><td>Straight-line distance back to the home point.</td></tr>
+  <tr><td class="n">12</td><td>LINK</td><td>Percentage of telemetry packets arriving. Click for radio detail.</td></tr>
+  <tr><td class="n">13</td><td>GCS Battery</td><td>The battery of this computer, not the aircraft.</td></tr>
+  <tr><td class="n">14</td><td>Drone Battery</td><td>The aircraft's battery. Shows <span class="ui">N/A</span> until the aircraft reports one.</td></tr>
+  <tr><td class="n">15</td><td>Application menu</td><td>See 2.3.</td></tr>
+</table>
+<p>Readouts never disappear. When a value is not available yet, its place shows <span class="ui">--</span> or <span class="ui">N/A</span>, so the toolbar always has the same layout.</p>
+<p><b>Flashing readouts.</b> You can make a readout flash red when it crosses a limit, for example when relative altitude falls below a height or when distance to home exceeds a range. Set the limits in <span class="ui">Advanced &gt; Application Settings &gt; Fly View &gt; Telemetry Alerts</span> (11.3).</p>
+
+<h2>3.2 Status, flight mode and other drop-downs</h2>
+<p>Click a readout to open its panel. Click anywhere else, or press <kbd>Esc</kbd>, to close it.</p>
+<figure class="narrow"><img src="assets/manual/fly-status.jpg" alt="Status panel"><figcaption>Figure 3.2 &mdash; Status panel: the Arm button, messages from the aircraft, and the health of each sensor.</figcaption></figure>
+<p>The <b>status panel</b> lists recent messages from the aircraft and the state of each sensor (<span class="ui">Normal</span>, <span class="ui">Disabled</span> or an error). If the aircraft will not arm, look here first: the reason is normally in the messages.</p>
+<figure class="small"><img src="assets/manual/fly-flightmode.jpg" alt="Flight mode list"><figcaption>Figure 3.3 &mdash; Flight mode list. The modes offered depend on the aircraft type.</figcaption></figure>
+<p>The <b>flight mode list</b> shows every mode the aircraft supports. Click one to command it.</p>
+<div class="warn"><b>Changing mode changes how the aircraft flies</b>Choose a mode only if you know what the aircraft will do in it. Modes are defined by the autopilot, not by SkyShield. Refer to your aircraft's flight manual.</div>
+<figure class="narrow"><img src="assets/manual/fly-gps.jpg" alt="GPS panel"><figcaption>Figure 3.4 &mdash; GNSS panel: satellites, lock type, HDOP, VDOP and course over ground.</figcaption></figure>
+<figure class="narrow"><img src="assets/manual/fly-link.jpg" alt="Link panel"><figcaption>Figure 3.5 &mdash; Link panel: link quality and, when a telemetry radio reports them, signal strength, noise and error counts.</figcaption></figure>
+<figure class="narrow"><img src="assets/manual/fly-gcsbatt.jpg" alt="GCS battery panel"><figcaption>Figure 3.6 &mdash; GCS battery panel: charge and whether the computer is on mains power.</figcaption></figure>
+
+<h2>3.3 Compass and attitude display</h2>
+<figure class="narrow"><img src="assets/manual/fly-compass.jpg" alt="Compass"><figcaption>Figure 3.7 &mdash; Compass ring and artificial horizon.</figcaption></figure>
+<p>The outer ring is a compass with the aircraft's heading shown beneath it. The centre is an artificial horizon showing pitch and roll. Drag the display to move it. It floats over the map or the video. Switch it on or off with <span class="ui">General &gt; Show compass and HUD</span>.</p>
+
+<h2>3.4 Action strip and confirmations</h2>
+<table>
+  <tr><th>Button</th><th>What it does</th></tr>
+  <tr><td>3D View</td><td>Switches the map to a three-dimensional view (chapter 8). Disabled until <span class="ui">Show 3D view</span> is on in General settings.</td></tr>
+  <tr><td>Plan</td><td>Opens Plan View (chapter 7).</td></tr>
+  <tr><td>Arm / Disarm</td><td>Arms the aircraft so that its motors can run, or disarms it. The button shows whichever applies.</td></tr>
+  <tr><td>Pause</td><td>Holds the aircraft where it is, interrupting a mission.</td></tr>
+  <tr><td>Return</td><td>Commands the aircraft to return to its home point.</td></tr>
+  <tr><td>Actions</td><td>Opens further actions that apply right now, such as <span class="ui">Start Mission</span>, <span class="ui">Change Altitude</span> or <span class="ui">Continue Mission</span>.</td></tr>
+</table>
+<p>Buttons that cannot be used at the moment are greyed out, not hidden.</p>
+<figure class="narrow"><img src="assets/manual/fly-actions.jpg" alt="Actions panel"><figcaption>Figure 3.8 &mdash; The Actions panel on the ground with a mission loaded.</figcaption></figure>
+<h3>Confirming an action</h3>
+<p>Every action that affects the aircraft shows a confirmation at the top of the screen that says what will happen.</p>
+<figure class="narrow"><img src="assets/manual/fly-arm-confirm.jpg" alt="Arm confirmation"><figcaption>Figure 3.9 &mdash; Confirmation for arming.</figcaption></figure>
+<figure class="narrow"><img src="assets/manual/fly-mission-confirm.jpg" alt="Mission start confirmation"><figcaption>Figure 3.10 &mdash; Confirmation for taking off and starting the mission.</figcaption></figure>
+<ul>
+  <li>To go ahead, drag the round handle to the right, or hold the <kbd>Space</kbd> bar.</li>
+  <li>To cancel, click the <span class="ui">X</span>.</li>
+</ul>
+<div class="danger"><b>Read the confirmation text</b>The text is the only statement of what is about to happen. A confirmation can be waiting on screen when you return to the Fly View. If you did not ask for it, cancel it.</div>
+
+<h2>3.5 Working on the map</h2>
+<ul>
+  <li><b>Move and zoom:</b> drag the map, use the mouse wheel, or use the <span class="ui">+</span> and <span class="ui">-</span> buttons at the bottom left. The scale bar is beside them.</li>
+  <li><b>The aircraft</b> is drawn as an arrow pointing where it is heading. Its latitude and longitude are printed beside it to six decimal places.</li>
+  <li><b>The mission</b> is drawn as lines between numbered waypoints. The home point is marked.</li>
+</ul>
+<p>Click a point on the map to open a panel of actions for that location:</p>
+<table>
+  <tr><th>Action</th><th>Available</th><th>What it does</th></tr>
+  <tr><td>Go to location</td><td>In flight</td><td>Flies the aircraft to the point. Asks for confirmation.</td></tr>
+  <tr><td>Orbit at location</td><td>In flight, if the aircraft supports it</td><td>Circles the point.</td></tr>
+  <tr><td>ROI at location</td><td>If the aircraft supports it</td><td>Points the camera at the location and keeps it there. <span class="ui">Cancel ROI</span> releases it.</td></tr>
+  <tr><td>Mark location</td><td>Always</td><td>Drops a marker on the map for your own reference.</td></tr>
+  <tr><td>Set home</td><td>Disarmed only</td><td>Moves the aircraft's home point to the location.</td></tr>
+  <tr><td>Calibrate gyro</td><td>Disarmed only</td><td>Runs the gyro calibration. Keep the aircraft still.</td></tr>
+  <tr><td>Calibrate airspeed &amp; baro</td><td>Disarmed only</td><td>Zeroes the airspeed sensor and barometer. Shield the pitot tube from wind.</td></tr>
+</table>
+<p>The panel also shows the latitude and longitude of the point clicked. <span class="ui">Go to location</span> is limited to the distance set in <span class="ui">Application Settings &gt; Fly View &gt; Go To Location Max Distance</span> (1000 m unless changed).</p>
+
+<h2>3.6 Changing altitude in flight</h2>
+<p>Choose <span class="ui">Actions &gt; Change Altitude</span>. A box opens with the cursor already in it. Type the new altitude and confirm. Before you confirm, the box states the change in words, for example a climb or descent from the current altitude to the new one and by how much, and it shows the permitted range. <span class="ui">Cancel</span> leaves the aircraft as it is. After the command is sent, the Fly View shows the altitude the aircraft reports it is heading for, so you can see that it accepted the value.</p>
+
+<h2>3.7 Pre-flight checks</h2>
+<p>SkyShield can show a checklist before arming. Turn it on with <span class="ui">Application Settings &gt; Fly View &gt; Use Preflight Checklist</span>. With <span class="ui">Enforce Preflight Checklist</span> also on, the aircraft cannot be armed from SkyShield until every item passes.</p>
+<p>The checklist covers battery, GNSS, radio control, sensor health and sound output. For fixed-wing aircraft it also checks <b>terrain following</b> and tells you which of these applies:</p>
+<ul>
+  <li>Terrain following is on.</li>
+  <li>It is on in some flight modes only.</li>
+  <li>It is off, and the aircraft's terrain database is disabled.</li>
+  <li>It is off: the aircraft would hold height above home, not above the ground.</li>
+</ul>
+<div class="warn"><b>Terrain following is a pre-flight decision</b>Over rising ground, an aircraft that holds height above home gets closer to the terrain as it flies out. Check this item on every flight over hills.</div>
+
+<!-- ============================================================ -->
+<h1 id="video">4. Video and the camera panel</h1>
+
+<h2>4.1 Choosing the video source</h2>
+<p>Open <span class="ui">Payload Configuration</span> from the application menu.</p>
+<figure class="narrow"><img src="assets/manual/settings-payload.jpg" alt="Payload Configuration"><figcaption>Figure 4.1 &mdash; Payload Configuration with a local video file selected.</figcaption></figure>
+<table>
+  <tr><th>Setting</th><th>Meaning</th></tr>
+  <tr><td>Source</td><td>Where video comes from: an RTSP stream, UDP H.264, UDP H.265, TCP, MPEG-TS, a preset for a known device, <span class="ui">Local Video File</span>, or disabled. If the aircraft announces its camera stream itself, the source is set automatically and this section is locked.</td></tr>
+  <tr><td>RTSP URL / TCP URL / UDP URL</td><td>The address of the stream. Only the field for the chosen source is shown.</td></tr>
+  <tr><td>Video File</td><td>For <span class="ui">Local Video File</span>: the file to play. <span class="ui">Browse&hellip;</span> selects one.</td></tr>
+  <tr><td>Record File Format</td><td>Format of recordings you make: mkv, mov or mp4.</td></tr>
+  <tr><td>Auto-Delete Saved Recordings</td><td>Deletes the oldest recordings when the total passes <span class="ui">Max Storage Usage</span>.</td></tr>
+  <tr><td>Aspect Ratio</td><td>Shape of the picture, width divided by height. 1.777777 is 16:9.</td></tr>
+  <tr><td>Stop recording when disarmed</td><td>Ends a recording automatically when the aircraft disarms.</td></tr>
+  <tr><td>Low Latency Mode</td><td>Shows frames as soon as they arrive. Less delay, at the cost of a less smooth picture on a poor link.</td></tr>
+  <tr><td>Video buffer</td><td>How long video is held before it is shown, in milliseconds (200 unless changed). A larger buffer smooths a bad link.</td></tr>
+  <tr><td>Video decode priority</td><td>Which decoder to prefer. Leave on <span class="ui">Default</span> unless advised otherwise.</td></tr>
+</table>
+<div class="danger"><b>A large video buffer means you are looking at the past</b>When the buffer is above one second, the page warns that the video is being held back and that you must not fly on that picture. Use a large buffer only for observation.</div>
+
+<h2>4.2 Playing a recorded video file</h2>
+<p>Set <span class="ui">Source</span> to <span class="ui">Local Video File</span> and choose a file (mp4, mov, mkv, avi, ts, webm or m4v). The file plays in the Fly View exactly as a live camera would, including AI detection and alerts, and starts again when it reaches the end. Use this for training, for demonstrations, and to see how the AI responds to footage of your own.</p>
+
+<h2>4.3 The camera panel</h2>
+<figure class="small"><img src="assets/manual/fly-camera-panel.jpg" alt="Camera panel"><figcaption>Figure 4.2 &mdash; The camera panel at the right of the video.</figcaption></figure>
+<table>
+  <tr><th>Control</th><th>What it does</th></tr>
+  <tr><td>Camera name</td><td>The camera in use, or <span class="ui">No Camera</span>.</td></tr>
+  <tr><td>Photo</td><td>Takes a still picture.</td></tr>
+  <tr><td>Record</td><td>Starts and stops a video recording. The counter beneath shows the length of the recording.</td></tr>
+  <tr><td>Zoom</td><td>Opens <span class="ui">-</span> and <span class="ui">+</span> buttons beside the panel to zoom out and in.</td></tr>
+  <tr><td>Track</td><td>Lets you draw a box on the video around something to follow. See chapter 6.</td></tr>
+  <tr><td>EO</td><td>Switches the camera between daylight (EO), thermal (IR) and the mixed modes the camera offers (<span class="ui">IR PiP</span>, <span class="ui">IR Mix</span>). Greyed out when the camera has no thermal sensor.</td></tr>
+  <tr><td>Gimbal</td><td>Opens the gimbal controls (below).</td></tr>
+  <tr><td>AI</td><td>Turns AI detection on or off for this session. Highlighted when on.</td></tr>
+  <tr><td>Keyboard</td><td>Turns keyboard control of radio channels on or off. See 11.3.</td></tr>
+  <tr><td>Space / Batt</td><td>Free storage and battery of the camera, when it reports them.</td></tr>
+</table>
+<figure class="narrow"><img src="assets/manual/fly-gimbal.jpg" alt="Gimbal controls"><figcaption>Figure 4.3 &mdash; Gimbal controls.</figcaption></figure>
+<table>
+  <tr><th>Gimbal control</th><th>What it does</th></tr>
+  <tr><td>Yaw Lock</td><td>Holds the camera on a compass direction while the aircraft turns, or releases it to follow the aircraft's nose.</td></tr>
+  <tr><td>Center</td><td>Points the camera straight ahead.</td></tr>
+  <tr><td>Tilt 90</td><td>Points the camera straight down.</td></tr>
+  <tr><td>Point Home</td><td>Points the camera at the home point.</td></tr>
+  <tr><td>Retract</td><td>Stows the gimbal.</td></tr>
+  <tr><td>Acquire Control</td><td>Takes control of the gimbal for this ground station when more than one controller is present.</td></tr>
+  <tr><td>Settings</td><td>Gimbal options, including on-screen control: click or drag on the video to aim the camera.</td></tr>
+</table>
+<p>Camera and gimbal controls normally appear only when the aircraft reports that hardware. Turn on <span class="ui">General &gt; Show all camera and gimbal controls (no MAVLink needed)</span> to show them all the time, for example to learn where they are. A press still only acts on real hardware.</p>
+
+<!-- ============================================================ -->
+<h1 id="ai">5. AI detection and alerts</h1>
+<p>SkyShield examines the video on the ground station itself. Nothing is sent to the internet and no network is needed. It does two separate things:</p>
+<ul>
+  <li><b>Object detection</b> finds people, vehicles, boats, aircraft and animals, draws a box on each, and follows each one from frame to frame.</li>
+  <li><b>Scene assessment</b> judges what is happening in the picture as a whole, such as fire, flooding or a damaged building, and raises an <b>alert</b>.</li>
+</ul>
+
+<h2>5.1 What you see on the video</h2>
+<figure><img src="assets/manual/fly-alert.jpg" alt="AI overlay"><figcaption>Figure 5.1 &mdash; Detection boxes and a fire alert.</figcaption></figure>
+<table>
+  <tr><th></th><th>Item</th><th>Meaning</th></tr>
+  <tr><td class="n">1</td><td>AI status line</td><td>A green dot means detection is running. <span class="ui">GPU</span> or <span class="ui">CPU</span> is the device doing the work. Then the number of objects in view, the time taken per frame in milliseconds, and frames examined per second.</td></tr>
+  <tr><td class="n">2</td><td>Alert banner</td><td>The alert that currently matters most. See 5.2.</td></tr>
+  <tr><td class="n">3</td><td>Detection box</td><td>Corner brackets around an object, so the object itself stays visible. The label gives the type, a track number and a confidence percentage, for example <span class="ui">truck #96 72%</span>.</td></tr>
+  <tr><td class="n">4</td><td>AI button</td><td>Turns detection on and off for this session.</td></tr>
+</table>
+<p>The <b>track number</b> stays with an object for as long as it is followed. If the same number is still on a vehicle a minute later, it is the same vehicle. Boxes are blue normally and orange while an alert is active.</p>
+
+<h2>5.2 Alerts</h2>
+<figure><img src="assets/manual/fly-alert-flood.jpg" alt="Flood alert"><figcaption>Figure 5.2 &mdash; A flood alert.</figcaption></figure>
+<p>An alert banner reads, in order:</p>
+<ol>
+  <li><b>Category</b>, such as <span class="ui">FIRE ALERT</span>, <span class="ui">FLOOD ALERT</span> or <span class="ui">PEOPLE ALERT</span>.</li>
+  <li><b>What was seen</b>, such as <span class="ui">Buildings in water</span>.</li>
+  <li><b>What to do about it</b>, such as <span class="ui">Occupants may be cut off - investigate</span>.</li>
+  <li><b>The evidence</b>: <span class="ui">match 0.51 vs 0.01</span> compares how strongly the picture matches the alert with how strongly it matches the things most often mistaken for it. A wide gap is a strong alert. Then the number of people or vehicles counted in the affected area, and a confidence percentage.</li>
+</ol>
+<p>How alerts behave:</p>
+<ul>
+  <li><b>One alert at a time.</b> A burning building could be described as fire, smoke and a building on fire all at once. SkyShield shows the most serious and treats the others as supporting detail.</li>
+  <li><b>Alerts that name an object need that object.</b> <span class="ui">Person in water</span> is raised only when the detector has also found a person.</li>
+  <li><b>Alerts about movement need movement.</b> <span class="ui">Person not moving</span> or <span class="ui">Vehicle convoy</span> are decided from how tracked objects move relative to the rest of the scene.</li>
+  <li><b>Spoken alerts.</b> Alerts are read aloud by a voice that runs on this computer. The same kind of alert is not repeated until the <span class="ui">Minimum gap between announcements</span> has passed.</li>
+  <li><b>While an alert is up</b>, boxes are drawn only for objects inside the affected area, so that you can see what is in it.</li>
+</ul>
+<p>Appendix A lists every alert with its severity.</p>
+<div class="warn"><b>Alerts are prompts to look, not findings</b>An alert means the picture resembles something worth investigating. Confirm with your own eyes before acting or reporting. Flood alerts are less reliable than fire alerts. No alert does not mean nothing is there.</div>
+
+<h2>5.3 AI Detection settings</h2>
+<p>Open <span class="ui">AI Detection</span> from the application menu.</p>
+<figure class="narrow"><img src="assets/manual/settings-ai.jpg" alt="AI Detection settings"><figcaption>Figure 5.3 &mdash; AI Detection settings.</figcaption></figure>
+<table>
+  <tr><th>Setting</th><th>Meaning</th><th>Default</th></tr>
+  <tr><td>Enable AI detection</td><td>Master switch. When off, the AI button in the Fly View cannot turn detection on.</td><td>Off</td></tr>
+  <tr><td>Bounding boxes</td><td><span class="ui">All objects</span>; <span class="ui">Only critical objects</span> (boxes appear only inside the area of an active alert); or <span class="ui">Hidden</span>. Hiding boxes does not stop detection or alerts.</td><td>All objects</td></tr>
+  <tr><td>Alert voice</td><td>British male (Alan), American neutral (Lessac) or American female (Amy).</td><td>British male</td></tr>
+  <tr><td>Minimum gap between announcements</td><td>Seconds between spoken alerts, from 3 to 300.</td><td>60 s</td></tr>
+  <tr><td>Detect every N frames</td><td>1 examines every frame. A higher number (up to 10) examines fewer frames and eases the load on a slower computer.</td><td>1</td></tr>
+  <tr><td>Confidence threshold</td><td>How sure the detector must be before it draws a box, from 0.05 to 0.95. Lower finds more and makes more mistakes.</td><td>0.5</td></tr>
+  <tr><td>Compute device</td><td><span class="ui">Auto</span>, <span class="ui">Graphics card (GPU)</span> or <span class="ui">Processor (CPU)</span>.</td><td>Auto</td></tr>
+  <tr><td>Classes</td><td>Which kinds of object to detect.</td><td>See below</td></tr>
+</table>
+<figure class="narrow"><img src="assets/manual/settings-ai-classes.jpg" alt="Object classes"><figcaption>Figure 5.4 &mdash; Choosing object classes.</figcaption></figure>
+<p><b>Object classes.</b> Click the <span class="ui">Classes</span> pill and tick the kinds of object you want. The choices are person, bicycle, car, motorcycle, airplane, bus, train, truck, boat, bird, cat, dog, horse, sheep, cow, elephant, bear, zebra and giraffe. Until you change anything, people, vehicles and boats are detected and animals are not, because animal detections from the air are mostly wrong.</p>
+<div class="warn"><b>If nothing is ever detected</b>On a computer with older built-in graphics, set <span class="ui">Compute device</span> to <span class="ui">Processor (CPU)</span>. Some built-in graphics chips load the AI and then return nothing, without any error.</div>
+
+<h2>5.4 Autonomous actions</h2>
+<p>By default the AI only watches and reports. The <span class="ui">Autonomous Actions</span> section lets you permit it to act, one kind of action at a time.</p>
+<table>
+  <tr><th>Permission</th><th>What the AI may do</th></tr>
+  <tr><td>Enable autonomous actions</td><td>Master switch for the four below. While off, the page states that the AI will not move the camera, the aircraft, or release anything.</td></tr>
+  <tr><td>Point the camera at detections</td><td>Aim the gimbal at something it has found.</td></tr>
+  <tr><td>Zoom in to confirm</td><td>Zoom the camera for a closer look.</td></tr>
+  <tr><td>Pause the mission to inspect</td><td>Hold the aircraft while it looks.</td></tr>
+  <tr><td>Release payload on a confirmed find</td><td>Drop a carried payload. Set <span class="ui">Payloads carried</span> to the number on board (0 to 16).</td></tr>
+</table>
+<p>All are off unless you turn them on. Detection, alerts and logging continue whatever these switches say.</p>
+<div class="danger"><b>Payload release cannot be undone</b>A release must also be armed in the Fly View, and it is blocked if the release point appears to be water. Enable it only under your organisation's procedures and with the area below the aircraft under your control.</div>
+
+<h2>5.5 Records</h2>
+<p>SkyShield keeps AI logs in an <span class="ui">AILogs</span> folder in its data folder. They include the score of every alert on every pass, whether or not it was raised. These files are useful when reviewing a flight and when reporting a missed or false alert to support.</p>
+
+<!-- ============================================================ -->
+<h1 id="track">6. Visual tracking and gimbal follow</h1>
+<p>Visual tracking follows <em>anything</em> you point out on the video. It does not depend on AI detection and does not need the object to be of a known type.</p>
+<figure><img src="assets/manual/fly-track.jpg" alt="Track mode"><figcaption>Figure 6.1 &mdash; Track mode: drag a box around the target.</figcaption></figure>
+<ol class="steps">
+  <li>Click <span class="ui">Track</span> in the camera panel. The video shows <span class="ui">Drag on the video to select a target</span>.</li>
+  <li>Drag a box tightly around the target.</li>
+  <li>SkyShield follows that patch of the picture and draws the box as it moves.</li>
+  <li>Click <span class="ui">Track</span> again to stop.</li>
+</ol>
+<h2>6.1 Making the gimbal follow the target</h2>
+<p>Tracking alone only draws a box. <b>Gimbal follow</b> moves the camera to keep the target centred, by sending radio-channel commands to the gimbal. It is set up once, in <span class="ui">Advanced &gt; Application Settings &gt; Follow</span>.</p>
+<figure><img src="assets/manual/appset-follow.jpg" alt="Follow settings"><figcaption>Figure 6.2 &mdash; Gimbal Follow settings.</figcaption></figure>
+<table>
+  <tr><th>Setting</th><th>Meaning</th><th>Default</th></tr>
+  <tr><td>Enable gimbal follow</td><td>Allows follow to be used. Until it is on, the Fly View reminds you: <span class="ui">Enable gimbal follow in Settings &gt; Follow</span>.</td><td>Off</td></tr>
+  <tr><td>Dry run (calculate, do not send)</td><td>Works out the commands and shows them, but sends nothing. Use this to check direction before letting it move the gimbal.</td><td>On</td></tr>
+  <tr><td>Pan (yaw) channel, Tilt (pitch) channel, Roll channel</td><td>The radio channel that drives each gimbal axis. Channels 1 to 4 are marked <span class="ui">(flight)</span> because they normally fly the aircraft.</td><td>None</td></tr>
+  <tr><td>Centre PWM</td><td>The signal that means "do not move".</td><td>1500 us</td></tr>
+  <tr><td>Maximum PWM offset</td><td>The largest correction that will ever be sent.</td><td>150 us</td></tr>
+  <tr><td>Centre deadzone</td><td>How far off centre the target may drift before the gimbal is moved.</td><td>0.03</td></tr>
+  <tr><td>Command rate</td><td>Commands per second.</td><td>20 Hz</td></tr>
+  <tr><td>Stop after target lost</td><td>How long after losing the target the gimbal is released.</td><td>500 ms</td></tr>
+</table>
+<p>With follow enabled, further options set the response of each axis (gains and inversion). The roll axis is for gimbals mounted sideways. Its gains start at zero so that it does nothing until you set it up.</p>
+<div class="danger"><b>Never assign a flight channel</b>Selecting channel 1, 2, 3 or 4 for gimbal follow would send camera corrections to the aircraft's flight controls. Set follow up on the ground, with <span class="ui">Dry run</span> on, and confirm the gimbal moves the right way before a flight.</div>
+
+<!-- ============================================================ -->
+<h1 id="plan">7. Plan View</h1>
+<p>Plan View is where you build a mission: the route the aircraft flies by itself. Open it with <span class="ui">Plan</span> in the action strip.</p>
+<figure><img src="assets/manual/plan-overview.jpg" alt="Plan View"><figcaption>Figure 7.1 &mdash; Plan View with a four-item mission.</figcaption></figure>
+<table>
+  <tr><th></th><th>Area</th><th>What it is for</th></tr>
+  <tr><td class="n">1</td><td>Back</td><td>Returns to the Fly View.</td></tr>
+  <tr><td class="n">2</td><td>Upload</td><td>Sends the plan to the aircraft. Highlighted when the plan on screen differs from the one on the aircraft.</td></tr>
+  <tr><td class="n">3</td><td>Mission summary</td><td><span class="ui">Waypoints</span>, total <span class="ui">Distance</span>, <span class="ui">Max Telem</span> (the farthest the route goes from home), and estimated <span class="ui">Time</span>.</td></tr>
+  <tr><td class="n">4</td><td>Clear</td><td>Removes the plan from the screen and from the aircraft. Asks first.</td></tr>
+  <tr><td class="n">5</td><td>Tools</td><td><span class="ui">Read</span> loads the plan from the aircraft. <span class="ui">Upload</span> sends it. <span class="ui">Save</span> stores it as a file. <span class="ui">Create</span> starts a new plan. <span class="ui">3D View</span> previews the plan in three dimensions.</td></tr>
+  <tr><td class="n">6</td><td>Map</td><td>The route. Click to add waypoints and drag a waypoint to move it.</td></tr>
+  <tr><td class="n">7</td><td>Mission table</td><td>Every step of the mission, one per row.</td></tr>
+</table>
+
+<h2>7.1 Creating a plan</h2>
+<ol class="steps">
+  <li>Click <span class="ui">Create</span>. If a plan is already on screen you are asked whether to replace it.</li>
+  <li>Answer <span class="ui">How should altitude be measured?</span> Choose <span class="ui">Terrain</span> to keep the same height above the ground below the aircraft, or <span class="ui">Relative to Launch</span> to hold a fixed height above the take-off point.</li>
+  <li>Enter the altitude new waypoints should fly at, and click <span class="ui">Start</span>.</li>
+  <li>Click on the map where you want the aircraft to fly. Each click adds a waypoint. <span class="ui">Undo</span> removes the last one.</li>
+  <li>Click <span class="ui">Done</span>.</li>
+</ol>
+<p>The Create panel also offers <span class="ui">Pattern</span> tools such as a survey over an area, and layers for a <span class="ui">Fence</span> (an area the aircraft must stay inside) and <span class="ui">Safe Landing</span> points. An area can be traced on the map or loaded from a KML or shapefile.</p>
+<p>Two tools build a route for you:</p>
+<ul>
+  <li><b>Auto Plan</b> covers the geofence, an existing survey area, or a square around the centre of the map, in that order of preference. Altitude and sweep direction are worked out for you.</li>
+  <li><b>Route To</b> builds a route from the aircraft (or from the planned home when no aircraft is connected) to a point you click. Altitude and speed are chosen for you.</li>
+</ul>
+<p>A route built this way is shown as a proposal. Click <span class="ui">Use as Mission</span> to accept it or <span class="ui">Dismiss</span> to discard it.</p>
+
+<h2>7.2 Editing in the mission table</h2>
+<figure><img src="assets/manual/plan-table.jpg" alt="Mission table"><figcaption>Figure 7.2 &mdash; The mission table with the last row selected.</figcaption></figure>
+<table>
+  <tr><th>Column</th><th>Meaning</th></tr>
+  <tr><td>S/N</td><td>Order of the step. Row 0 is the mission start.</td></tr>
+  <tr><td>Command</td><td>What the aircraft does at this step, chosen from a drop-down: take-off, waypoint, loiter, return to launch, land and others.</td></tr>
+  <tr><td>Lat, Long</td><td>Position. Type a value directly into the cell.</td></tr>
+  <tr><td>Alt (m)</td><td>Altitude for the step.</td></tr>
+  <tr><td>Frame</td><td>What the altitude is measured from, for example <span class="ui">Relative To Launch</span> or <span class="ui">AMSL</span> (above mean sea level).</td></tr>
+</table>
+<p>Click a row to select it. The selected step is highlighted on the map, and any extra values that the command needs can be edited for that row. <span class="ui">Center</span>, above the table, brings the mission into the middle of the map.</p>
+
+<h2>7.3 Terrain check</h2>
+<p>The route is drawn green where it is clear and <b>red where it would hit the ground</b>. SkyShield checks the whole path between waypoints against terrain height, not only the waypoints themselves, so a line that clips a hill between two safe waypoints is caught. Fix every red section before uploading: raise the altitude, move the waypoint, or switch the plan to terrain-relative altitude.</p>
+
+<h2>7.4 Uploading and flying</h2>
+<ol class="steps">
+  <li>Click <span class="ui">Upload</span> and wait for <span class="ui">Done</span>.</li>
+  <li>Return to the Fly View. The mission is drawn on the map.</li>
+  <li>Choose <span class="ui">Actions &gt; Start Mission</span> and confirm.</li>
+</ol>
+<p>You can plan while the aircraft is flying. A plan started in the air does not need a take-off step.</p>
+
+<!-- ============================================================ -->
+<h1 id="3d">8. 3D view</h1>
+<p>The 3D view replaces the flat map with a three-dimensional globe showing real terrain, the aircraft and its path.</p>
+<ol class="steps">
+  <li>Turn on <span class="ui">General &gt; Show 3D view</span>. This is needed once.</li>
+  <li>In the Fly View or Plan View, click <span class="ui">3D View</span>. Click it again to return to the flat map.</li>
+</ol>
+<h2>8.1 In the Fly View</h2>
+<figure><img src="assets/manual/fly-3d.jpg" alt="3D view in the Fly View"><figcaption>Figure 8.1 &mdash; The 3D view in the Fly View, with the aircraft on the ground and its mission rising from it.</figcaption></figure>
+<table>
+  <tr><th></th><th>Item</th><th>What it is for</th></tr>
+  <tr><td class="n">1</td><td>3D View</td><td>Switches between the 3D view and the flat map with video.</td></tr>
+  <tr><td class="n">2</td><td>Recenter on Vehicle</td><td>Brings the camera back to the aircraft after you have moved the view.</td></tr>
+</table>
+<p>The 3D view takes over the main area of the Fly View. The toolbar, action strip and camera panel stay in place, so every flight control remains available. The camera follows the aircraft. Drag to look around and use the mouse wheel to zoom, then click <span class="ui">Recenter on Vehicle</span> to return. The mission is drawn as a line through numbered points at their real heights.</p>
+
+<h2>8.2 In Plan View</h2>
+<figure><img src="assets/manual/plan-3d.jpg" alt="3D preview in Plan View"><figcaption>Figure 8.2 &mdash; A mission previewed in 3D in Plan View. This mission climbs steeply to a high loiter point.</figcaption></figure>
+<table>
+  <tr><th></th><th>Item</th><th>What it is for</th></tr>
+  <tr><td class="n">1</td><td>3D View</td><td>Switches between the 3D preview and the flat planning map.</td></tr>
+  <tr><td class="n">2</td><td>Mission path</td><td>Each numbered point is a step of the mission, drawn at its planned altitude above the terrain.</td></tr>
+  <tr><td class="n">3</td><td>Recenter on Vehicle</td><td>Returns the camera to the aircraft.</td></tr>
+</table>
+<p>The mission is previewed over the terrain, even with no aircraft connected. This is the quickest way to see whether a route clears a ridge, and how high a step really is compared with the ground around it. The mission table is reduced to its row numbers while the preview is open. Click <span class="ui">3D View</span> again to edit the plan.</p>
+<p>Terrain is shown at about 30 m resolution for the area in view.</p>
+<p>Map imagery and terrain that you have already viewed or downloaded are used without an internet connection. The first time the 3D view is opened on a computer it needs an internet connection to load its display component.</p>
+<div class="note"><b>Dialogs and the 3D view</b>While a dialog box is open, the 3D view hides itself so that the dialog can be seen. It returns when the dialog closes.</div>
+
+<!-- ============================================================ -->
+<h1 id="rvt">9. Remote Video Terminal</h1>
+<p>The Remote Video Terminal lets other people watch the aircraft's video on a phone, tablet or laptop by opening a web page. There is nothing to install on their device. The aircraft is not involved: the ground station shares a copy of the video it is already receiving. Viewers can only watch. They cannot command the aircraft.</p>
+
+<h2>9.1 Turning it on</h2>
+<p>Open <span class="ui">Video Terminal</span> from the application menu.</p>
+<figure class="narrow"><img src="assets/manual/settings-rvt.jpg" alt="Video Terminal settings"><figcaption>Figure 9.1 &mdash; Video Terminal with the service running on an existing network.</figcaption></figure>
+<ol class="steps">
+  <li>Turn on <span class="ui">Enable Remote Video Terminal</span>.</li>
+  <li>Decide how viewers will reach the ground station (9.2).</li>
+  <li>Have each viewer scan the code, or send them the link with <span class="ui">Copy link</span>.</li>
+</ol>
+<table>
+  <tr><th>Item</th><th>Meaning</th></tr>
+  <tr><td>Service</td><td><span class="ui">Running</span> when the page is being served.</td></tr>
+  <tr><td>Viewers connected</td><td>How many people are watching, out of the maximum allowed.</td></tr>
+  <tr><td>Video</td><td><span class="ui">Receiving from aircraft</span>, or <span class="ui">No video yet</span>. The second is normal before the aircraft's camera starts.</td></tr>
+  <tr><td>Web page port</td><td>The network port of the page (8081 unless changed). The next port up is also used.</td></tr>
+  <tr><td>Maximum viewers</td><td>From 1 to 16 (4 unless changed). Further viewers are refused with a reason.</td></tr>
+</table>
+<p>Changing the port or the viewer limit restarts the service and disconnects everyone watching.</p>
+
+<h2>9.2 Three ways for viewers to connect</h2>
+<h3>The ground station's own Wi-Fi network</h3>
+<p>Use this when there is no network on site. Turn on <span class="ui">Broadcast a Wi-Fi network for viewers</span>. Two codes appear:</p>
+<ol>
+  <li><span class="ui">1. JOIN</span> &mdash; the viewer scans this first and their phone offers to join the network. The network name and password are printed beneath it.</li>
+  <li><span class="ui">2. WATCH</span> &mdash; the viewer scans this second and the video page opens.</li>
+</ol>
+<p>The order matters: a phone cannot open the page until it has joined the network.</p>
+<div class="warn"><b>Do not broadcast if the aircraft link uses this computer's Wi-Fi</b>Broadcasting takes over the Wi-Fi radio. If the computer also uses Wi-Fi for its internet connection, viewers get a poor picture, because one radio is doing two jobs. Connect the computer to the internet by cable or USB instead.</div>
+<h3>An existing network</h3>
+<p>If the viewers are already on the same wired or wireless network as the ground station, leave broadcasting off. One code appears, <span class="ui">SCAN TO WATCH</span>. If the ground station has more than one network address, the others are listed so that you can give a viewer the one they can reach.</p>
+<h3>From another site, over a VPN</h3>
+<p>Put the ground station and the remote viewers on the same private network (VPN), then send them the link with <span class="ui">Copy link</span>. Start the VPN before enabling the Video Terminal, or turn the Video Terminal off and on again afterwards.</p>
+
+<h2>9.3 What a viewer sees</h2>
+<figure><img src="assets/manual/rvt-viewer-video.jpg" alt="Viewer video"><figcaption>Figure 9.2 &mdash; The viewer page showing video.</figcaption></figure>
+<figure><img src="assets/manual/rvt-viewer-split.jpg" alt="Viewer split"><figcaption>Figure 9.3 &mdash; The viewer page in Split view: video and map.</figcaption></figure>
+<table>
+  <tr><th>Control</th><th>What it does</th></tr>
+  <tr><td>Video / Map / Split</td><td>Shows the video, the map, or both side by side.</td></tr>
+  <tr><td>EO / IR</td><td>Chooses the daylight or thermal camera. A camera that is not being received is greyed out.</td></tr>
+  <tr><td>Pause</td><td>Freezes the picture to study it. Alerts still arrive while paused. Resuming jumps to live.</td></tr>
+  <tr><td>AI boxes</td><td>Shows or hides detection boxes.</td></tr>
+  <tr><td>Fullscreen</td><td>Fills the screen.</td></tr>
+  <tr><td>Status</td><td>Picture size, data rate and frames received, and <span class="ui">Live</span> when connected.</td></tr>
+</table>
+<p>The map shows the aircraft pointing the way it is heading (green when armed), its recent track, flight mode, altitude, ground speed and position. Buttons at the bottom right follow the aircraft and zoom. Alerts appear as a banner in the same colours as on the ground station.</p>
+<p>Each viewer's choices affect only their own screen. The map shows the areas the operator has already viewed on the ground station. Other areas appear as blank squares when the ground station has no internet connection.</p>
+
+<h2>9.4 Security</h2>
+<ul>
+  <li>The link contains an access key that is created fresh each time the service starts. A link from an earlier session does not work.</li>
+  <li>The connection is not encrypted by SkyShield. It relies on the network underneath: the Wi-Fi password, your own network, or the VPN.</li>
+  <li>Do not expose the ground station directly to the internet.</li>
+  <li>Turn the Video Terminal off when you have finished.</li>
+</ul>
+
+<!-- ============================================================ -->
+<h1 id="replay">10. Flight replay and Analyze Tools</h1>
+<h2>10.1 Replaying a flight</h2>
+<p>SkyShield records the telemetry of every flight, and the video when you record it, in a folder named for that flight.</p>
+<ol class="steps">
+  <li>Turn on <span class="ui">General &gt; Show Flight Replay Bar</span>. A bar appears along the bottom of the window.</li>
+  <li>Choose the flight from the list. Flights are named by aircraft, flight number and date. <span class="ui">Browse...</span> opens a log file directly.</li>
+  <li>Press play. The telemetry replays in the Fly View as if the aircraft were connected, and the recorded video starts with it.</li>
+  <li>Click <span class="ui">Close</span> when finished.</li>
+</ol>
+<p>Dragging the slider moves the telemetry only. The video does not jump with it. Older logs recorded before flights had their own folders are listed without a flight number.</p>
+
+<h2>10.2 Analyze Tools</h2>
+<p>Shown in the application menu when Advanced Mode is on (2.3).</p>
+<figure><img src="assets/manual/analyze.jpg" alt="Analyze Tools"><figcaption>Figure 10.1 &mdash; Analyze Tools, Log Download page.</figcaption></figure>
+<table>
+  <tr><th>Page</th><th>What it is for</th></tr>
+  <tr><td>Log Download</td><td>Lists the flight logs stored on the aircraft. <span class="ui">Refresh</span> reads the list, <span class="ui">Download</span> copies the ticked logs, <span class="ui">Erase All</span> clears the aircraft's log storage.</td></tr>
+  <tr><td>GeoTag Images</td><td>Writes positions from a flight log into photographs taken on that flight.</td></tr>
+  <tr><td>MAVLink Console</td><td>A command line to the autopilot, for technicians.</td></tr>
+  <tr><td>MAVLink Inspector</td><td>Shows every message the aircraft is sending, with live values and charts.</td></tr>
+  <tr><td>Vibration</td><td>Vibration levels measured by the autopilot.</td></tr>
+</table>
+
+<!-- ============================================================ -->
+<h1 id="settings">11. Settings reference</h1>
+
+<h2>11.1 General</h2>
+<figure class="narrow"><img src="assets/manual/settings-general.jpg" alt="General settings"><figcaption>Figure 11.1 &mdash; General settings.</figcaption></figure>
+<table>
+  <tr><th>Setting</th><th>Meaning</th></tr>
+  <tr><td>Remote Video Terminal (serve video to browsers)</td><td>The same switch as on the Video Terminal page (chapter 9).</td></tr>
+  <tr><td>Show Flight Replay Bar</td><td>Shows the replay bar (10.1).</td></tr>
+  <tr><td>Show all camera and gimbal controls (no MAVLink needed)</td><td>Keeps every camera and gimbal control visible without the hardware connected (4.3).</td></tr>
+  <tr><td>Language</td><td>Language of the application.</td></tr>
+  <tr><td>Color Scheme</td><td><span class="ui">Indoor</span> (dark) or <span class="ui">Outdoor</span>.</td></tr>
+  <tr><td>Stream GCS Position</td><td>Whether the ground station sends its own position to the aircraft: never, always, or only in Follow Me flight mode.</td></tr>
+  <tr><td>Mute all audio output</td><td>Silences spoken messages and alerts.</td></tr>
+  <tr><td>Show compass and HUD</td><td>Shows the compass and attitude display (3.3).</td></tr>
+  <tr><td>Show 3D view</td><td>Makes the 3D view available (chapter 8).</td></tr>
+  <tr><td>Clear all settings on next start</td><td>Returns every setting to its default the next time SkyShield starts.</td></tr>
+  <tr><td>UI Scaling</td><td><span class="ui">-</span> and <span class="ui">+</span> make all text and controls smaller or larger.</td></tr>
+  <tr><td>Application Load/Save Path</td><td>The folder where plans, logs, recordings and other files are kept. <span class="ui">Browse</span> changes it.</td></tr>
+  <tr><td>Configuration file</td><td>See 13.3.</td></tr>
+  <tr><td>Updates</td><td>See 13.1.</td></tr>
+  <tr><td>Simulation (training)</td><td>See 2.5.</td></tr>
+  <tr><td>Units</td><td>Units for horizontal distance, vertical distance, area, speed and temperature.</td></tr>
+</table>
+
+<h2>11.2 Maps</h2>
+<figure class="narrow"><img src="assets/manual/settings-maps.jpg" alt="Maps settings"><figcaption>Figure 11.2 &mdash; Maps.</figcaption></figure>
+<table>
+  <tr><th>Setting</th><th>Meaning</th></tr>
+  <tr><td>Provider, Type</td><td>The source of map imagery and its style, such as satellite, street or hybrid.</td></tr>
+  <tr><td>Elevation Provider</td><td>The source of terrain heights used for terrain altitude and the terrain check.</td></tr>
+  <tr><td>Default Tile Set</td><td>Map imagery saved automatically as you look around, with its size. <span class="ui">Edit</span> shows details.</td></tr>
+  <tr><td>Add New Set</td><td><span class="ui">Add</span> downloads an area of your choice for use without internet. Select the area on the map and the zoom levels to keep.</td></tr>
+  <tr><td>Import / Export Map Tiles</td><td>Moves saved maps between computers.</td></tr>
+</table>
+<div class="note"><b>Before going to a site with no internet</b>Download the operating area with <span class="ui">Add New Set</span> while you still have a connection. The map, the terrain check, the 3D view and the Remote Video Terminal map all rely on these saved maps.</div>
+
+<h2>11.3 Application Settings</h2>
+<p>Open with <span class="ui">Advanced &gt; Application Settings</span>. Pages are listed down the left side.</p>
+<figure class="small"><img src="assets/manual/appset-sidebar.jpg" alt="Application Settings pages"><figcaption>Figure 11.3 &mdash; Application Settings pages.</figcaption></figure>
+
+<h3>Fly View</h3>
+<figure><img src="assets/manual/appset-flyview-1.jpg" alt="Fly View settings 1"><figcaption>Figure 11.4 &mdash; Fly View settings, upper part.</figcaption></figure>
+<table>
+  <tr><th>Setting</th><th>Meaning</th></tr>
+  <tr><td>Use Preflight Checklist / Enforce Preflight Checklist</td><td>See 3.7.</td></tr>
+  <tr><td>Enable Multi-Vehicle Panel</td><td>Shows a panel for selecting and commanding several aircraft when more than one is connected.</td></tr>
+  <tr><td>Keep Map Centered On Vehicle</td><td>The map follows the aircraft.</td></tr>
+  <tr><td>Show simple camera controls</td><td>Shows photo controls for cameras that only accept a basic trigger command.</td></tr>
+  <tr><td>Update return to home position based on device location</td><td>Sends the ground station's position to the aircraft as its home.</td></tr>
+  <tr><td>Show expand (&gt;) arrow on toolbar indicator panels</td><td>Adds an arrow to the toolbar drop-downs that reveals configuration options. Off by default to prevent accidental changes in flight.</td></tr>
+  <tr><td>Show telemetry values bar</td><td>Shows a bar of telemetry values at the bottom of the map: altitude, climb rate, ground speed, air speed or throttle, distance to home, flight time and flight distance.</td></tr>
+  <tr><td>Guided Commands: Minimum / Maximum Altitude</td><td>The range offered when changing altitude (2 m and 121.92 m unless changed).</td></tr>
+  <tr><td>Go To Location Max Distance</td><td>The farthest <span class="ui">Go to location</span> may send the aircraft.</td></tr>
+  <tr><td>Loiter Radius in Forward Flight Guided Mode</td><td>The circle a fixed-wing aircraft flies around a Go To point.</td></tr>
+  <tr><td>Require Confirmation for Go To Location in Guided Mode</td><td>Keeps the confirmation slider for Go To.</td></tr>
+  <tr><td>MAVLink Actions</td><td>Custom command buttons defined by your organisation.</td></tr>
+  <tr><td>Virtual Joystick</td><td>On-screen control sticks.</td></tr>
+</table>
+<figure><img src="assets/manual/appset-flyview-2.jpg" alt="Fly View settings 2"><figcaption>Figure 11.5 &mdash; Fly View settings, lower part, with Telemetry Alerts.</figcaption></figure>
+<p><b>Telemetry Alerts.</b> Each row has a switch and a limit. When the switch is on, the matching toolbar readout flashes red whenever the value crosses the limit. <span class="ui">Ground Speed below</span>, <span class="ui">Air Speed below</span>, <span class="ui">Relative Alt below</span> and <span class="ui">Terrain Alt below</span> warn when there is too little. <span class="ui">Distance To Home above</span>, <span class="ui">Flight Distance above</span> and <span class="ui">Time In Air above (sec)</span> warn when there is too much. Limits are in the units the readout is showing.</p>
+
+<h3>Plan View</h3>
+<figure><img src="assets/manual/appset-planview.jpg" alt="Plan View settings"><figcaption>Figure 11.6 &mdash; Plan View settings.</figcaption></figure>
+<table>
+  <tr><th>Setting</th><th>Meaning</th></tr>
+  <tr><td>Default Mission Altitude</td><td>The altitude given to new waypoints (50 m unless changed).</td></tr>
+  <tr><td>VTOL TransitionDistance</td><td>The distance allowed for a VTOL aircraft to change between hover and forward flight.</td></tr>
+  <tr><td>Missions do not require takeoff item</td><td>Allows a mission that does not begin with a take-off.</td></tr>
+  <tr><td>Allow configuring multiple landing sequences</td><td>Allows more than one landing pattern in a plan.</td></tr>
+</table>
+
+<h3>Maps (advanced)</h3>
+<figure><img src="assets/manual/appset-maps.jpg" alt="Advanced maps settings"><figcaption>Figure 11.7 &mdash; Advanced map settings.</figcaption></figure>
+<p>Access tokens for map providers that need an account, the address of a custom map server, and the size of the map cache on disk and in memory.</p>
+
+<h3>Follow</h3>
+<p>Gimbal follow. See chapter 6.</p>
+
+<h3>Telemetry</h3>
+<figure><img src="assets/manual/appset-telemetry.jpg" alt="Telemetry settings"><figcaption>Figure 11.8 &mdash; Telemetry settings.</figcaption></figure>
+<table>
+  <tr><th>Section</th><th>Meaning</th></tr>
+  <tr><td>Ground Station</td><td>The identity this ground station uses on the link, and whether it announces itself.</td></tr>
+  <tr><td>MAVLink 2 Signing</td><td>A key shared with the aircraft so that it accepts commands only from stations that hold it.</td></tr>
+  <tr><td>MAVLink Forwarding</td><td>Passes the aircraft's telemetry on to another computer.</td></tr>
+  <tr><td>Logging</td><td><span class="ui">Save log after each flight</span>, whether to save when the aircraft was never armed, and whether to also save telemetry as a CSV file.</td></tr>
+  <tr><td>Stream Rates (ArduPilot Only)</td><td>How often the aircraft sends each group of data.</td></tr>
+</table>
+
+<h3>ADSB Server and Remote ID</h3>
+<p><b>ADSB Server</b> connects to a receiver that reports nearby crewed aircraft, which are then drawn on the map. <b>Remote ID</b> configures the identification broadcast that some regulators require, for aircraft fitted with a Remote ID module.</p>
+
+<h3>Keyboard - RC Mapping</h3>
+<figure><img src="assets/manual/appset-keyboard-rc.jpg" alt="Keyboard RC mapping"><figcaption>Figure 11.9 &mdash; Keyboard - RC Mapping.</figcaption></figure>
+<p>Lets keys on the keyboard drive radio channels, for example to steer a gimbal or operate a payload. For each of channels 1 to 16 choose a key that pushes the channel one way, optionally a key that pushes it the other way, the <span class="ui">Idle</span> value sent when no key is held, and the <span class="ui">Step</span> by which a held key moves it. Keyboard control acts only while <span class="ui">Keyboard</span> is on in the camera panel.</p>
+<div class="danger"><b>Channels 1 to 4 normally fly the aircraft</b>Map keys only to channels that drive a payload, unless you fully understand the consequence.</div>
+
+<h3>Console and Help</h3>
+<p><b>Console</b> shows the application's own diagnostic messages. <span class="ui">Save App Log</span> writes them to a file to send to support. <b>Help</b> lists reference links.</p>
+
+<!-- ============================================================ -->
+<h1 id="vehicle">12. Vehicle Configuration</h1>
+<p>Open with <span class="ui">Advanced &gt; Vehicle Configuration</span> while an aircraft is connected. These pages set up the aircraft itself. Changes are stored in the autopilot.</p>
+<div class="danger"><b>For trained personnel</b>Wrong values here can make an aircraft unflyable. Do not change anything in this section unless you are responsible for the aircraft's configuration.</div>
+<figure><img src="assets/manual/vehicle-summary.jpg" alt="Vehicle summary"><figcaption>Figure 12.1 &mdash; Vehicle Configuration summary. A green dot means the item is set up.</figcaption></figure>
+<table>
+  <tr><th>Page</th><th>What it is for</th></tr>
+  <tr><td>Summary</td><td>One box per area, showing its main values and whether it needs attention.</td></tr>
+  <tr><td>Radio</td><td>Calibrating the radio control transmitter.</td></tr>
+  <tr><td>Flight Modes</td><td>Which mode each switch position selects.</td></tr>
+  <tr><td>Sensors</td><td>Calibrating the accelerometer, compass, level horizon and airspeed sensor.</td></tr>
+  <tr><td>Power</td><td>Battery monitoring.</td></tr>
+  <tr><td>Motors</td><td>Testing each motor. Remove propellers first.</td></tr>
+  <tr><td>Safety</td><td>What the aircraft does on low battery, lost link or a fence breach.</td></tr>
+  <tr><td>Camera</td><td>Gimbal and camera trigger outputs.</td></tr>
+  <tr><td>Parameters</td><td>Every setting in the autopilot, searchable.</td></tr>
+  <tr><td>Firmware</td><td>Loading autopilot firmware.</td></tr>
+</table>
+<figure><img src="assets/manual/vehicle-sensors.jpg" alt="Sensors"><figcaption>Figure 12.2 &mdash; Sensors page. Each button starts one calibration and gives instructions on the right.</figcaption></figure>
+<figure><img src="assets/manual/vehicle-parameters.jpg" alt="Parameters"><figcaption>Figure 12.3 &mdash; Parameters. Groups are on the left. Type in the search box to find a parameter by name.</figcaption></figure>
+<p>On the Parameters page, click a parameter to change it. <span class="ui">Tools</span> saves all parameters to a file, loads them from a file, or compares the aircraft with a file. Keep a saved copy of a known good configuration for every aircraft.</p>
+
+<!-- ============================================================ -->
+<h1 id="updates">13. Updates, licence and configuration files</h1>
+<h2>13.1 Updates</h2>
+<p>In <span class="ui">General &gt; Updates</span> (Figure 11.1).</p>
+<table>
+  <tr><th>Control</th><th>What it does</th></tr>
+  <tr><td>Status line</td><td>The installed version, then what the updater is doing: checking, up to date, downloading with a percentage, or ready.</td></tr>
+  <tr><td>Check Now</td><td>Looks for a newer version immediately.</td></tr>
+  <tr><td>Install Now</td><td>Appears when an update has been downloaded and verified. Closes SkyShield and installs it.</td></tr>
+  <tr><td>What's new</td><td>A short note about the downloaded version.</td></tr>
+  <tr><td>Check for updates and download them automatically</td><td>Downloads new versions in the background. An interrupted download resumes where it stopped.</td></tr>
+  <tr><td>Install a downloaded update the next time SkyShield starts</td><td>Installs at the next start, before anything is connected.</td></tr>
+</table>
+<ul>
+  <li>An update is <b>never installed while an aircraft is armed</b>. <span class="ui">Install Now</span> is refused until it is disarmed.</li>
+  <li>A download is checked against the published size and fingerprint before it can be installed. A file that does not match is not installed.</li>
+  <li>Updates are large (several hundred megabytes). On a metered connection, turn automatic download off and use <span class="ui">Check Now</span> when convenient.</li>
+</ul>
+
+<h2>13.2 Licence</h2>
+<p>Open <span class="ui">Licence</span> from the application menu. The page shows:</p>
+<ul>
+  <li>The licence status in green when valid, with <span class="ui">Licensed to</span>, <span class="ui">Expires</span> and <span class="ui">Features</span>.</li>
+  <li>A warning when the licence expires within 14 days.</li>
+  <li><span class="ui">Device ID</span>, with <span class="ui">Save licence request&hellip;</span> and <span class="ui">Import licence&hellip;</span> for renewing or changing a licence.</li>
+</ul>
+<p>The features of a licence decide which parts of the AI layer run: detection, scene conditions, alerts and autonomous actions. A licence without AI features still gives the full ground station. If AI detection will not start although it is enabled, check here that the licence includes it.</p>
+
+<h2>13.3 Configuration files</h2>
+<p><span class="ui">General &gt; Configuration file</span> copies settings between ground stations so that a fleet is set up once.</p>
+<ol class="steps">
+  <li>On the station that is set up as you want, click <span class="ui">Save configuration...</span> and choose where to save the file.</li>
+  <li>On each other station, click <span class="ui">Load configuration...</span> and select the file.</li>
+  <li>Restart SkyShield on that station for all settings to take effect.</li>
+</ol>
+<p>Licence and activation are never included. Each station needs its own licence.</p>
+
+<!-- ============================================================ -->
+<h1 id="usecases">14. Use cases, step by step</h1>
+
+<h2>14.1 A first flight, from power-on to landing</h2>
+<ol class="steps">
+  <li>Start SkyShield. Power the aircraft and its data link. Wait for the status to leave <span class="ui">No Vehicle Connected</span> and for parameter loading to finish.</li>
+  <li>Read the toolbar: GNSS has a lock with a low HDOP, <span class="ui">LINK</span> is high, <span class="ui">Drone Battery</span> is full.</li>
+  <li>Click the status. Read the vehicle messages and confirm the sensors show <span class="ui">Normal</span>.</li>
+  <li>Check the video is showing and, if you use AI, that the AI status line has a green dot.</li>
+  <li>Open <span class="ui">Plan</span>, build or load the mission, clear any red sections, and <span class="ui">Upload</span> (chapter 7).</li>
+  <li>Back in the Fly View, complete the pre-flight checklist if it is in use.</li>
+  <li>Choose <span class="ui">Actions &gt; Start Mission</span>. Read the confirmation, check the area is clear, and slide.</li>
+  <li>During the flight, watch altitude, distance to home, link and battery. Use <span class="ui">Pause</span> to hold and <span class="ui">Actions &gt; Continue Mission</span> to resume.</li>
+  <li>To end early, click <span class="ui">Return</span> and confirm.</li>
+  <li>After landing, confirm the aircraft has disarmed, or click <span class="ui">Disarm</span>.</li>
+</ol>
+
+<h2>14.2 Searching for a missing person</h2>
+<p><b>Goal:</b> cover an area and be told when a person, or a sign of one, comes into view.</p>
+<ol class="steps">
+  <li>In <span class="ui">AI Detection</span>, turn on <span class="ui">Enable AI detection</span>. In <span class="ui">Classes</span>, tick <span class="ui">Person</span> and the vehicle types. Leave animals unticked.</li>
+  <li>Set <span class="ui">Bounding boxes</span> to <span class="ui">All objects</span>. Choose an alert voice and make sure audio is not muted.</li>
+  <li>In Plan View, trace or load the search area and use <span class="ui">Auto Plan</span> or a survey pattern to cover it. Choose terrain-relative altitude over hills. Check the route in <span class="ui">3D View</span>.</li>
+  <li>Fly the mission. Give the video most of the screen by dragging the divider.</li>
+  <li>On an alert such as <span class="ui">Person seen</span>, <span class="ui">Person not moving</span>, <span class="ui">Signs of someone camping</span> or <span class="ui">Ground signal</span>, click <span class="ui">Pause</span>.</li>
+  <li>Use <span class="ui">Zoom</span> and the gimbal to confirm. To keep the camera on the spot, click the location on the map and choose <span class="ui">ROI at location</span>.</li>
+  <li>Choose <span class="ui">Mark location</span> on the map and read the coordinates to the ground team.</li>
+  <li>Resume with <span class="ui">Actions &gt; Continue Mission</span>.</li>
+</ol>
+
+<h2>14.3 Assessing a fire or a flood</h2>
+<ol class="steps">
+  <li>Enable AI detection as above. Consider <span class="ui">Bounding boxes: Only critical objects</span>, so that boxes appear only for people and vehicles inside an affected area.</li>
+  <li>Fly towards the incident from upwind and at a safe height. Watch for <span class="ui">Power lines</span> and <span class="ui">Mast or tower</span> hazard alerts and <span class="ui">Poor visibility</span>.</li>
+  <li>Read each alert's action text: <span class="ui">Building on fire &mdash; Investigate for occupants</span>, <span class="ui">Road under water &mdash; Route may be impassable</span>, <span class="ui">People cut off by water &mdash; Investigate immediately</span>.</li>
+  <li>The count in the banner tells you how many people or vehicles are inside the affected area.</li>
+  <li>Click <span class="ui">Record</span> to keep the footage and <span class="ui">Photo</span> for stills.</li>
+  <li>Mark blocked roads and damaged bridges on the map for the teams planning access.</li>
+</ol>
+
+<h2>14.4 Giving the incident commander a live picture</h2>
+<ol class="steps">
+  <li>Open <span class="ui">Video Terminal</span> and turn on <span class="ui">Enable Remote Video Terminal</span>.</li>
+  <li>With no site network, turn on <span class="ui">Broadcast a Wi-Fi network for viewers</span>. Have the commander scan <span class="ui">1. JOIN</span>, then <span class="ui">2. WATCH</span>.</li>
+  <li>On the page, they choose <span class="ui">Split</span> to see video and map together.</li>
+  <li>Confirm <span class="ui">Viewers connected</span> has gone up and <span class="ui">Video</span> reads <span class="ui">Receiving from aircraft</span>.</li>
+  <li>For someone at headquarters, use a VPN and send them the link with <span class="ui">Copy link</span>.</li>
+  <li>Turn the Video Terminal off at the end of the operation.</li>
+</ol>
+
+<h2>14.5 Keeping the camera on a moving vehicle</h2>
+<ol class="steps">
+  <li>Once, on the ground: set up <span class="ui">Follow</span> with the gimbal's channels, <span class="ui">Dry run</span> on, and confirm the direction of movement (chapter 6). Then turn <span class="ui">Dry run</span> off.</li>
+  <li>In flight, click <span class="ui">Track</span> and drag a box around the vehicle.</li>
+  <li>The gimbal keeps it centred. If the target is lost for longer than <span class="ui">Stop after target lost</span>, the gimbal is released and you select again.</li>
+  <li>Click <span class="ui">Track</span> to stop.</li>
+</ol>
+
+<h2>14.6 Rehearsing at a desk</h2>
+<ol class="steps">
+  <li>In <span class="ui">Payload Configuration</span>, set <span class="ui">Source</span> to <span class="ui">Local Video File</span> and choose a recorded aerial video.</li>
+  <li>In <span class="ui">General</span>, click <span class="ui">Start Simulator</span>.</li>
+  <li>Plan, upload and fly a mission exactly as you would for real. Practise pausing, changing altitude, returning, and responding to alerts.</li>
+  <li>Click <span class="ui">Stop Simulator</span> when done and set the video source back to your camera.</li>
+</ol>
+
+<h2>14.7 Reviewing a flight afterwards</h2>
+<ol class="steps">
+  <li>Turn on <span class="ui">General &gt; Show Flight Replay Bar</span>.</li>
+  <li>Pick the flight by aircraft, number and date, and press play.</li>
+  <li>Watch the flight unfold on the map with the recorded video alongside.</li>
+  <li>For a deeper look, download the aircraft's own log with <span class="ui">Analyze Tools &gt; Log Download</span>.</li>
+</ol>
+
+<h2>14.8 Preparing for a site with no internet</h2>
+<ol class="steps">
+  <li>While connected, open <span class="ui">Maps &gt; Add New Set</span> and download the operating area at the zoom levels you will use.</li>
+  <li>Open Plan View over the area, and open the 3D view once, so that terrain for the area is stored.</li>
+  <li>Check <span class="ui">General &gt; Updates</span> and install any pending update now, not in the field.</li>
+  <li>Check <span class="ui">Licence</span> for the expiry date.</li>
+</ol>
+
+<!-- ============================================================ -->
+<h1 id="trouble">15. Troubleshooting</h1>
+<table>
+  <tr><th>Symptom</th><th>Likely cause</th><th>What to do</th></tr>
+  <tr><td>Only an activation window opens</td><td>No valid licence for this computer</td><td>Follow 2.1. A licence from another computer will not work.</td></tr>
+  <tr><td><span class="ui">No Vehicle Connected</span></td><td>Link not powered, wrong port, or AutoConnect off for that link type</td><td>Check cables and power. Check <span class="ui">Communication Link</span>.</td></tr>
+  <tr><td>A message says parameters are missing from firmware</td><td>The aircraft's firmware version does not have a setting the page expects</td><td>Click <span class="ui">Ok</span>. Report it to whoever maintains the aircraft if it concerns a feature you use.</td></tr>
+  <tr><td>Aircraft will not arm</td><td>A pre-arm check is failing</td><td>Click the status and read the vehicle messages.</td></tr>
+  <tr><td>No video</td><td>Wrong source or address, or the camera has not started</td><td>Check <span class="ui">Payload Configuration</span>.</td></tr>
+  <tr><td>Video stutters or breaks up</td><td>Poor link, or the computer is overloaded</td><td>Raise <span class="ui">Video buffer</span> a little. Raise <span class="ui">Detect every N frames</span>. Close other programs.</td></tr>
+  <tr><td>Video is clearly delayed</td><td><span class="ui">Video buffer</span> set high</td><td>Lower it. Do not fly on a delayed picture.</td></tr>
+  <tr><td>No AI status line on the video</td><td>AI is off</td><td>Turn on <span class="ui">Enable AI detection</span> and the <span class="ui">AI</span> button. Check the licence includes AI.</td></tr>
+  <tr><td>AI runs but never finds anything</td><td>Graphics chip returns empty results</td><td>Set <span class="ui">Compute device</span> to <span class="ui">Processor (CPU)</span>.</td></tr>
+  <tr><td>Too many wrong boxes</td><td>Threshold too low, or unneeded classes ticked</td><td>Raise <span class="ui">Confidence threshold</span>. Untick animal classes.</td></tr>
+  <tr><td>Alerts are not spoken</td><td>Audio muted, or still inside the gap</td><td>Check <span class="ui">Mute all audio output</span> and <span class="ui">Minimum gap between announcements</span>.</td></tr>
+  <tr><td>Track does not move the gimbal</td><td>Follow not enabled, dry run on, or no channel chosen</td><td>See chapter 6.</td></tr>
+  <tr><td><span class="ui">3D View</span> button greyed out</td><td>3D view not enabled</td><td>Turn on <span class="ui">General &gt; Show 3D view</span>.</td></tr>
+  <tr><td>Video Terminal: the service could not start</td><td>Another program is using the port</td><td>Change <span class="ui">Web page port</span>.</td></tr>
+  <tr><td>Video Terminal: <span class="ui">No video yet</span></td><td>The ground station is not receiving video</td><td>Normal before the camera starts. Fix the video on the ground station first.</td></tr>
+  <tr><td>Viewer page loads but stays black</td><td>The viewer cannot reach the ground station for video</td><td>Check the viewer is on the same network. Try another listed address. Reload the page.</td></tr>
+  <tr><td>Viewer picture is poor on the ground station's Wi-Fi</td><td>The Wi-Fi radio is also providing internet</td><td>Give the computer internet by cable or USB.</td></tr>
+  <tr><td>Yesterday's viewer link does not work</td><td>The access key changes each session</td><td>Share the new code or link.</td></tr>
+  <tr><td>Route drawn in red</td><td>The path meets the terrain</td><td>See 7.3.</td></tr>
+  <tr><td><span class="ui">Install Now</span> refused</td><td>An aircraft is armed</td><td>Disarm first.</td></tr>
+</table>
+<p>When contacting support, include the SkyShield version (bottom of the application menu), a description of what you did and saw, the application log from <span class="ui">Application Settings &gt; Console &gt; Save App Log</span>, and for AI or Video Terminal problems the contents of the <span class="ui">AILogs</span> folder.</p>
+
+<!-- ============================================================ -->
+<h1 id="alerts">Appendix A. Alert reference</h1>
+<p>Severity runs from Info (for awareness) through Advisory and High to Critical (act now).</p>
+<table>
+  <tr><th>Category</th><th>Alert</th><th>Guidance shown</th><th>Severity</th></tr>
+  <tr><td>PEOPLE</td><td>Person seen</td><td>One person visible</td><td>Info</td></tr>
+  <tr><td>PEOPLE</td><td>Group of people seen</td><td>Several people together</td><td>Advisory</td></tr>
+  <tr><td>PEOPLE</td><td>Person in water</td><td>Investigate immediately</td><td>Critical</td></tr>
+  <tr><td>PEOPLE</td><td>People cut off by water</td><td>Investigate immediately</td><td>Critical</td></tr>
+  <tr><td>PEOPLE</td><td>People close to fire</td><td>Investigate immediately</td><td>Critical</td></tr>
+  <tr><td>PEOPLE</td><td>Person not moving</td><td>Investigate - may be a casualty</td><td>High</td></tr>
+  <tr><td>PEOPLE</td><td>Person signalling</td><td>Investigate immediately</td><td>Critical</td></tr>
+  <tr><td>VEHICLE</td><td>Vehicle seen</td><td>Car, truck or bus</td><td>Info</td></tr>
+  <tr><td>VEHICLE</td><td>Vehicle in water</td><td>Investigate - occupants unknown</td><td>High</td></tr>
+  <tr><td>VEHICLE</td><td>Vehicle on fire</td><td>Investigate for occupants</td><td>High</td></tr>
+  <tr><td>VEHICLE</td><td>Vehicle overturned</td><td>Investigate for occupants</td><td>High</td></tr>
+  <tr><td>VEHICLE</td><td>Boat seen</td><td>Any small craft</td><td>Info</td></tr>
+  <tr><td>VEHICLE</td><td>Boat in trouble</td><td>Investigate immediately</td><td>High</td></tr>
+  <tr><td>FIRE</td><td>Fire seen</td><td>Investigate extent</td><td>High</td></tr>
+  <tr><td>FIRE</td><td>Smoke, no fire visible</td><td>Investigate upwind - source is out of frame</td><td>Advisory</td></tr>
+  <tr><td>FIRE</td><td>Building on fire</td><td>Investigate for occupants</td><td>High</td></tr>
+  <tr><td>FIRE</td><td>Fire spreading</td><td>Investigate - assess route risk</td><td>High</td></tr>
+  <tr><td>FLOOD</td><td>Flooding</td><td>Investigate extent and access</td><td>Advisory</td></tr>
+  <tr><td>FLOOD</td><td>Road under water</td><td>Route may be impassable</td><td>High</td></tr>
+  <tr><td>FLOOD</td><td>Buildings in water</td><td>Occupants may be cut off - investigate</td><td>High</td></tr>
+  <tr><td>FLOOD</td><td>Fast-moving water</td><td>Dangerous current</td><td>Advisory</td></tr>
+  <tr><td>ROUTE</td><td>Road blocked</td><td>Route constraint - verify before planning through</td><td>Advisory</td></tr>
+  <tr><td>ROUTE</td><td>Road washed away</td><td>Route constraint - verify before planning through</td><td>High</td></tr>
+  <tr><td>ROUTE</td><td>Bridge damaged</td><td>Crossing unsafe</td><td>High</td></tr>
+  <tr><td>DAMAGE</td><td>Building collapsed</td><td>Investigate - people may be underneath</td><td>Critical</td></tr>
+  <tr><td>DAMAGE</td><td>Building damaged</td><td>Standing but not intact</td><td>Advisory</td></tr>
+  <tr><td>SEARCH</td><td>Signs of someone camping</td><td>Investigate - someone may be here</td><td>Advisory</td></tr>
+  <tr><td>SEARCH</td><td>Vehicle parked away from a road</td><td>Investigate - someone may have set off on foot</td><td>Advisory</td></tr>
+  <tr><td>SEARCH</td><td>Tracks or a trail</td><td>Investigate - recent passage</td><td>Advisory</td></tr>
+  <tr><td>SEARCH</td><td>Wreckage</td><td>Investigate immediately</td><td>High</td></tr>
+  <tr><td>SEARCH</td><td>Ground signal</td><td>Investigate immediately</td><td>Critical</td></tr>
+  <tr><td>SEARCH</td><td>Debris floating on water</td><td>Investigate immediately</td><td>High</td></tr>
+  <tr><td>HAZARD</td><td>Power lines</td><td>Flight hazard - wires across the path</td><td>High</td></tr>
+  <tr><td>HAZARD</td><td>Mast or tower</td><td>Flight hazard - tall obstruction</td><td>Advisory</td></tr>
+  <tr><td>HAZARD</td><td>Other aircraft nearby</td><td>Flight hazard - deconflict</td><td>High</td></tr>
+  <tr><td>HAZARD</td><td>Clear ground to land on</td><td>Usable in an emergency</td><td>Info</td></tr>
+  <tr><td>ACTIVITY</td><td>Something changed since last pass</td><td>Compare with the previous flight</td><td>Advisory</td></tr>
+  <tr><td>ACTIVITY</td><td>Crowd forming</td><td>People gathering</td><td>Advisory</td></tr>
+  <tr><td>ACTIVITY</td><td>Crowd breaking up</td><td>People moving away quickly</td><td>Advisory</td></tr>
+  <tr><td>ACTIVITY</td><td>Vehicle convoy</td><td>Several vehicles travelling together</td><td>Advisory</td></tr>
+  <tr><td>ACTIVITY</td><td>Vehicles blocking a road</td><td>Checkpoint or deliberate obstruction</td><td>Advisory</td></tr>
+  <tr><td>ACTIVITY</td><td>Digging or earthworks</td><td>Ground being disturbed</td><td>Advisory</td></tr>
+  <tr><td>ACTIVITY</td><td>Several small boats together</td><td>Group of craft in one area</td><td>Advisory</td></tr>
+  <tr><td>INFO</td><td>Animals seen</td><td>Reported as animals, not people</td><td>Info</td></tr>
+  <tr><td>INFO</td><td>Emergency services on scene</td><td>Already attended - deconflict</td><td>Info</td></tr>
+  <tr><td>CONDITIONS</td><td>Poor visibility</td><td>Fog, haze or smoke over the area</td><td>Advisory</td></tr>
+  <tr><td>CONDITIONS</td><td>Landing area blocked</td><td>Obstruction where you intended to land</td><td>Advisory</td></tr>
+</table>
+
+<h1 id="glossary">Appendix B. Glossary</h1>
+<table>
+  <tr><th>Term</th><th>Meaning</th></tr>
+  <tr><td>AMSL</td><td>Above mean sea level.</td></tr>
+  <tr><td>Arm / disarm</td><td>Armed, the motors can run. Disarmed, they cannot.</td></tr>
+  <tr><td>Autopilot</td><td>The flight computer on the aircraft.</td></tr>
+  <tr><td>EO / IR</td><td>Electro-optical (daylight) camera / infrared (thermal) camera.</td></tr>
+  <tr><td>Fence (geofence)</td><td>A boundary the aircraft is not allowed to cross.</td></tr>
+  <tr><td>GCS</td><td>Ground control station: this computer and SkyShield.</td></tr>
+  <tr><td>Gimbal</td><td>The stabilised mount that points the camera.</td></tr>
+  <tr><td>GNSS</td><td>Satellite positioning (GPS and similar systems).</td></tr>
+  <tr><td>HDOP</td><td>A measure of GNSS accuracy. Lower is better.</td></tr>
+  <tr><td>Home</td><td>The point the aircraft returns to, normally where it took off.</td></tr>
+  <tr><td>MAVLink</td><td>The language the ground station and the aircraft use to talk to each other.</td></tr>
+  <tr><td>Mission</td><td>A sequence of steps the aircraft flies by itself.</td></tr>
+  <tr><td>PWM</td><td>The signal value on a radio channel, in microseconds. 1500 is normally centre.</td></tr>
+  <tr><td>ROI</td><td>Region of interest: a point the camera is kept on.</td></tr>
+  <tr><td>RTL / Return</td><td>Return to launch: fly back to home.</td></tr>
+  <tr><td>RVT</td><td>Remote Video Terminal (chapter 9).</td></tr>
+  <tr><td>Telemetry</td><td>The data the aircraft sends about itself.</td></tr>
+  <tr><td>VTOL</td><td>An aircraft that takes off and lands vertically and cruises on a wing.</td></tr>
+  <tr><td>Waypoint</td><td>A position in a mission.</td></tr>
+</table>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="fbrand"><img src="assets/logo.svg" alt=""><b>SkyShield Technology</b></div>
+    <div class="note">© 2026 SkyShield Technology · Autonomous Aerial Systems</div>
+  </div>
+</footer>
+
+<script src="assets/site.js"></script>
+</body>
+</html>
