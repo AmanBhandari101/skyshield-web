@@ -1,7 +1,7 @@
 {
-  "version": "2.0.2",
-  "url": "https://github.com/AmanBhandari101/skyshield-web/releases/download/gcs-v2.0.2/SkyShield-2.0.2-Setup.exe",
-  "sha256": "536b20663db3e7a3a11f86ae2a003f43f7ce97ac8ad0d81ed3e3f2e08399b5b5",
-  "size": 675135608,
-  "notes": "Updates itself from now on. Gimbal controls in the camera panel, smoother Remote Video Terminal video, and matching alerts for remote viewers."
+  "version": "2.0.3",
+  "url": "https://github.com/AmanBhandari101/skyshield-web/releases/download/gcs-v2.0.3/SkyShield-2.0.3-Setup.exe",
+  "sha256": "2eec6bbeaa2b2dadc4272326a81740245c7b3d6db6cb014e004a25ded4ea08a2",
+  "size": 892125906,
+  "notes": "3D view now works with no internet, with camera modes, on-screen controls and terrain clearance colours. Remote Video Terminal adds a station name, an optional fixed viewer link, a viewer list and link quality. The Fly View map shows the terrain check."
 }
