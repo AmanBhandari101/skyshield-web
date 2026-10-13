@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Multi-Drone Viewer — SkyShield Technology</title>
+<meta name="description" content="SkyShield RVT Multi: watch the live video, map and AI alerts of several drones at once on one screen, in a browser, with nothing to install. Free download.">
+<link rel="icon" href="assets/logo.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@600;700;800&family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+.steps { counter-reset: step; list-style: none; padding: 0; margin: 0; display: grid; gap: 14px; max-width: 78ch; }
+.steps li { counter-increment: step; position: relative; padding: 14px 16px 14px 58px; border: 1px solid var(--line-soft); border-radius: 8px; color: var(--muted); }
+.steps li::before { content: counter(step); position: absolute; left: 16px; top: 12px; width: 28px; height: 28px; border-radius: 50%;
+  background: var(--accent); color: var(--ink); font-weight: 700; display: grid; place-items: center; font-size: 14px; }
+.steps li b { color: var(--text); }
+.facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px; margin-top: 8px; }
+.facts div { border: 1px solid var(--line-soft); border-radius: 8px; padding: 16px; color: var(--muted); }
+.facts b { display: block; color: var(--text); margin-bottom: 6px; }
+.plainnote { max-width: 78ch; border-left: 3px solid var(--accent); padding: 10px 16px; color: var(--muted); margin-top: 22px; }
+.plainnote b { color: var(--text); }
+code.k { font-family: "IBM Plex Mono", monospace; font-size: .92em; color: var(--text); }
+</style>
+<script>document.documentElement.classList.add('js')</script>
+</head>
+<body>
+
+<header>
+  <div class="navbar">
+    <a class="brand" href="index.html">
+      <img src="assets/logo.svg" alt="">
+      <span class="brand-name"><b>Sky<i>Shield</i></b><span>Technology</span></span>
+    </a>
+    <nav class="links" id="siteNav" aria-label="Main">
+      <a href="index.html">Home</a>
+      <a href="ravin.html">Ravin UAV</a>
+      <a href="gcs.html" aria-current="page">Ground Station</a>
+      <a href="rent.html">Rent the GCS</a>
+      <a href="partner.html">Partner With Us</a>
+    </nav>
+    <a class="nav-contact" href="index.html#contact">Contact</a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="siteNav" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<section class="pagehead">
+  <div class="wrap">
+    <p class="eyebrow">Remote Video Terminal — Multi-Drone Viewer</p>
+    <h1>Every drone in the air, <em>on one screen.</em></h1>
+    <p class="lede">
+      A control room, a command post or a base can watch several SkyShield ground stations at
+      once: live video, the map, the AI boxes and the alerts of each drone, side by side in a
+      browser. It is free, it is one small file, and it needs no internet connection.
+    </p>
+    <div class="actions" style="margin-top:28px">
+      <a class="btn btn-primary" href="downloads/SkyShield-RVT-Multi.zip">Download the viewer (ZIP)</a>
+      <a class="btn btn-ghost" href="gcs.html#rvt">About the Remote Video Terminal</a>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <div class="window">
+      <div class="window-media">
+        <div class="screenframe">
+          <img src="assets/rvt-multi-grid.jpg"
+               alt="The multi-drone viewer showing two drones side by side, each tile with live aerial video of a church and its grounds, the drone's name and a green Live mark, and a bar of controls across the top.">
+        </div>
+        <p class="shot-cap">All drones together. Open any one of them full screen with a double-click.</p>
+      </div>
+      <div class="window-body">
+        <span class="winlabel">What it does</span>
+        <h3>One viewer for the whole operation</h3>
+        <ul class="ticks">
+          <li><b>All streams together</b> — the screen opens on a grid of every drone you have added. Double-click a tile, or press its Full button, to give one drone the whole screen; Esc brings the grid back.</li>
+          <li><b>Not only video</b> — each drone brings its map position and track, the AI detection boxes and its alerts. An alert on a drone you are not looking at is still shown.</li>
+          <li><b>Daylight and thermal</b> — switch each drone between its EO and IR camera from the viewer, without disturbing the operator.</li>
+          <li><b>Flight reports</b> — when a flight ends, its report (flight ID, place, route and figures) can be opened from the same screen.</li>
+          <li><b>Watch only</b> — the viewer cannot command an aircraft or change anything on a ground station.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band alt">
+  <div class="wrap">
+    <div class="sechead">
+      <p class="eyebrow">How to use it</p>
+      <h2 class="h2">Running in about two minutes.</h2>
+    </div>
+    <ol class="steps">
+      <li><b>Download and unzip</b> the viewer on the computer that will show the drones.</li>
+      <li><b>Open <code class="k">index.html</code></b> by double-clicking it. It opens in your browser. Chrome or Edge is recommended.</li>
+      <li><b>On each ground station</b>, open <b>Video Terminal</b> from the main menu, turn on <b>Enable Remote Video Terminal</b> and press <b>Copy link</b>.</li>
+      <li><b>In the viewer</b>, press <b>Add drone</b>, paste the link and give the drone a name. Repeat for each ground station.</li>
+      <li><b>Watch.</b> The drones are remembered, so next time the viewer opens they connect by themselves.</li>
+    </ol>
+    <p class="plainnote">
+      <b>To show it on other screens too</b> (a tablet, a second PC), run <code class="k">Start RVT Multi.cmd</code>
+      from the same folder. It serves the viewer to your local network and prints the address to open
+      on the other devices. This needs Python installed on that one computer.
+    </p>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <div class="sechead">
+      <p class="eyebrow">What you need</p>
+      <h2 class="h2">Good to know before you start.</h2>
+    </div>
+    <div class="facts">
+      <div><b>The same network</b>The viewer and the ground stations must be able to reach each other: the same LAN or Wi-Fi, or the same VPN for a base in another city. No internet is needed.</div>
+      <div><b>SkyShield GCS on each drone</b>Each drone is flown from a SkyShield ground station with the Remote Video Terminal turned on. The viewer joins each one as an ordinary viewer.</div>
+      <div><b>A link per ground station</b>The link carries an access key. By default a ground station makes a new key each time its video terminal is turned on, and the drone must then be added again with the new link.</div>
+      <div><b>One viewer place per drone</b>The viewer uses one of the ground station's viewer places (four by default) and receives each drone's video the whole time, so switching between drones is instant.</div>
+    </div>
+    <p class="plainnote">
+      <b>Why is it a download and not a page on this website?</b>
+      This website is served over a secure connection (https), and browsers do not allow a secure
+      page to connect to a ground station on your own network. Opened from your computer, the
+      viewer has no such limit. Your video never passes through this website or any SkyShield server:
+      it goes straight from each ground station to your screen.
+    </p>
+    <div class="actions" style="margin-top:28px">
+      <a class="btn btn-primary" href="downloads/SkyShield-RVT-Multi.zip">Download the viewer (ZIP)</a>
+      <a class="btn btn-ghost" href="gcs.html#download">Get SkyShield GCS</a>
+      <a class="btn btn-ghost" href="index.html#contact">Ask a question</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="fbrand"><img src="assets/logo.svg" alt=""><b>SkyShield Technology</b></div>
+    <div class="note">© 2026 SkyShield Technology · Autonomous Aerial Systems</div>
+  </div>
+</footer>
+
+<script src="assets/site.js"></script>
+</body>
+</html>
