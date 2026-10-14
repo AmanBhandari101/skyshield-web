@@ -431,3 +431,17 @@
   }
 
 })();
+
+/* Videos marked data-autoplay start when they come into view and pause when they leave it. The
+   poster shows until then, and nothing of the video is downloaded for a visitor who never
+   scrolls that far -- on a slow connection the page itself comes first. */
+(function () {
+  var videos = document.querySelectorAll('video[data-autoplay]');
+  if (!videos.length) return;
+  var play = function (v) { var p = v.play(); if (p && p.catch) p.catch(function () {}); };
+  if (!('IntersectionObserver' in window)) { videos.forEach(function (v) { v.preload = 'auto'; play(v); }); return; }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) { if (e.isIntersecting) play(e.target); else e.target.pause(); });
+  }, { rootMargin: '200px 0px' });
+  videos.forEach(function (v) { io.observe(v); });
+})();

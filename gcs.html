@@ -58,7 +58,7 @@
           <div class="rotator">
             <img class="active" src="assets/gcs-map-video.jpg"
                  alt="Fly View: satellite map with the flight path on the left, live aerial video of a shoreline and field on the right showing vehicles and people on the ground, telemetry across the top.">
-            <img src="assets/gcs-map-video-2.jpg"
+            <img loading="lazy" decoding="async" src="assets/gcs-map-video-2.jpg"
                  alt="Fly View in full-map mode: an RTL return pattern looping over a river and airstrip, with the aircraft icon on its final approach and telemetry across the top.">
           </div>
         </div>
@@ -78,7 +78,7 @@
     <div class="window flip">
       <div class="window-media">
         <div class="screenframe">
-          <img src="assets/gcs-plan-view.jpg"
+          <img loading="lazy" decoding="async" src="assets/gcs-plan-view.jpg"
                alt="Plan View: an eight-waypoint mission drawn over satellite terrain with a VTOL transition marker, and an editable mission table below listing sequence, command, latitude, longitude, altitude and altitude frame for every item.">
         </div>
         <p class="shot-cap">Plan View — mission and editable item table.</p>
@@ -104,7 +104,7 @@
              box: the poster frame (a real still from this same recording) shows immediately
              and stays put if the video itself is ever unreachable. -->
         <div class="screenframe">
-          <video autoplay muted loop playsinline preload="auto" poster="assets/gcs-demo-poster.jpg">
+          <video data-autoplay muted loop playsinline preload="none" poster="assets/gcs-demo-poster.jpg">
             <source src="assets/skyshield-gcs-demo.mp4" type="video/mp4">
           </video>
         </div>
@@ -125,7 +125,7 @@
     <div class="window flip">
       <div class="window-media">
         <div class="screenframe">
-          <img src="assets/gcs-video-mountain.jpg"
+          <img loading="lazy" decoding="async" src="assets/gcs-video-mountain.jpg"
                alt="The station in full-screen video over a mountain road, cars and pack animals visible along the route, with only the telemetry bar and camera toolbar over the picture — no floating panels, no analytics overlay.">
         </div>
         <p class="shot-cap">Video window — the feed, and nothing else.</p>
@@ -153,9 +153,9 @@
       <div class="window-media">
         <div class="screenframe">
           <div class="rotator">
-            <img class="active" src="assets/gcs-sar-flood.jpg"
+            <img loading="lazy" decoding="async" class="active" src="assets/gcs-sar-flood.jpg"
                  alt="The ground station running detection on a flooded neighbourhood: twenty-three objects tracked, a cluster of people on a rooftop each boxed and numbered with confidences from 88 to 98 percent, a group ring drawn around a second cluster, and an amber SAR alert reading 'Priority Group Detected — Possible Evacuation Needed (95%)'. A status line reads 'Intelligence Processing: Critical group detection in Zone 4 (Floodplain)'.">
-            <img src="assets/gcs-mine-rollover.jpg"
+            <img loading="lazy" decoding="async" src="assets/gcs-mine-rollover.jpg"
                  alt="The ground station running detection at a rock quarry: a haul truck on its side boxed in red and labelled 'TRUCK DETECTED: #TRK1002, Confidence 99%', with an orange alert reading 'MINE SITE ALERT: Vehicle Rollover, Critical Event (100%)' and the zone's GPS coordinates shown. A status line reads 'Intelligence Processing: High-Priority event in Quarry Zone 7 (Mining Operations)'.">
           </div>
         </div>
