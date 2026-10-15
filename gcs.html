@@ -56,13 +56,13 @@
       <div class="window-media">
         <div class="screenframe">
           <div class="rotator">
-            <img class="active" src="assets/gcs-map-video.jpg"
-                 alt="Fly View with three aircraft: the Aircraft panel lists Ravin 001, 007 and 002 with their modes, altitudes and speeds over the satellite map, and the selected aircraft's camera on the right shows a mountain road with people boxed by the AI, the other two aircraft's cameras in small tiles below it.">
-            <img loading="lazy" decoding="async" src="assets/gcs-map-video-2.jpg"
-                 alt="Fly View in full-map mode: three aircraft flying their own missions over mountain terrain, the selected aircraft's instruments in a floating panel and the controls for all aircraft at the right.">
+            <img class="active" src="assets/gcs-fly-split.jpg"
+                 alt="Fly View with the aircraft ready on the ground: the satellite map with its mission and the attitude display on the left, and on the right the live camera over a quarry with two haul trucks boxed by the AI, telemetry across the top and the camera panel at the right edge.">
+            <img loading="lazy" decoding="async" src="assets/gcs-fly-map.jpg"
+                 alt="Fly View in full-map mode: a mission drawn over mountain villages, the aircraft at its position with heading, speed, climb and height in the instrument panel, and the camera picture in a strip at the right.">
           </div>
         </div>
-        <p class="shot-cap">Fly View — split map and live feed, every aircraft in one window.</p>
+        <p class="shot-cap">Fly View — split map and live feed.</p>
       </div>
       <div class="window-body">
         <span class="winlabel">Fly View</span>
@@ -76,6 +76,30 @@
     </div>
 
     <div class="window flip">
+      <div class="window-media">
+        <div class="screenframe">
+          <div class="rotator">
+            <img loading="lazy" decoding="async" class="active" src="assets/gcs-multi-panel.jpg"
+                 alt="Three aircraft flown from one station: the Aircraft panel lists Ravin 001, Ravin 007 and Ravin 002 with their flight modes, state, height, speed, battery and distance from home, with group buttons for Arm, Start, Pause, Return, Land and Disarm. The aircraft in control fills the video with a mountain road and people boxed by the AI; the other two aircraft's cameras play in tiles below.">
+            <img loading="lazy" decoding="async" src="assets/gcs-multi-map.jpg"
+                 alt="Three aircraft on their own missions over mountain terrain, each drawn with its route on the map, the selected aircraft's instruments in a floating panel and the multi-aircraft selection and group actions at the right.">
+          </div>
+        </div>
+        <p class="shot-cap">Several aircraft — three on missions from one station, each with its own camera.</p>
+      </div>
+      <div class="window-body">
+        <span class="winlabel">Several aircraft</span>
+        <h3>One station, a whole flight of aircraft</h3>
+        <ul class="ticks">
+          <li><b>Every aircraft on one screen</b> — the Aircraft panel shows each one's flight mode, state, height, speed, battery, GPS and distance from home, and turns its card red the moment its link is lost.</li>
+          <li><b>Command a group at once</b> — select some or all, then Arm, Start mission, Pause, Return or Land them together, each behind a slide-to-confirm.</li>
+          <li><b>Take any one in hand</b> — one click makes that aircraft the one the toolbar, instruments and actions follow; the others carry on with their missions.</li>
+          <li><b>A camera per aircraft</b> — the aircraft in control fills the main picture with the AI running on it, and up to three others play live in tiles below. Click a tile to switch.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="window">
       <div class="window-media">
         <div class="screenframe">
           <img loading="lazy" decoding="async" src="assets/gcs-plan-view.jpg"
@@ -96,33 +120,35 @@
       </div>
     </div>
 
-    <div class="window">
+    <div class="window flip">
       <div class="window-media">
-        <!-- Real screen capture in place of a still shot -- same screenframe, same size, so
-             it sits exactly like every other window's screenshot rather than looking like a
-             different kind of element. autoplay+muted+poster means it never shows an empty
-             box: the poster frame (a real still from this same recording) shows immediately
-             and stays put if the video itself is ever unreachable. -->
         <div class="screenframe">
-          <video data-autoplay muted loop playsinline preload="none" poster="assets/gcs-demo-poster.jpg">
-            <source src="assets/skyshield-gcs-demo.mp4" type="video/mp4">
-          </video>
+          <div class="rotator">
+            <img loading="lazy" decoding="async" class="active" src="assets/gcs-3d-terrain.jpg"
+                 alt="The 3D view in flight over real mountain terrain: the leg that runs into the hillside drawn in red and marked 'Route hits ground here, between 2 and 3', a people alert pinned on the terrain where it was raised, heading, speed, climb, height and distance home at the top left, the clearance colour key at the bottom and the Follow, Top, Orbit, Free and Home camera buttons at the bottom right.">
+            <img loading="lazy" decoding="async" src="assets/gcs-3d-fly.jpg"
+                 alt="The 3D view in the Fly View: the aircraft on the ground at the edge of a village with its mission rising from it, drawn over real terrain and satellite imagery.">
+            <img loading="lazy" decoding="async" src="assets/gcs-3d-plan.jpg"
+                 alt="A mission previewed in 3D in Plan View with no aircraft connected: the route climbs steeply from the valley floor to a high loiter point, with the mountain range behind it.">
+          </div>
         </div>
-        <p class="shot-cap">3D View — recorded in the station, plan reviewed against real terrain.</p>
+        <p class="shot-cap">3D View — the terrain check in flight, the live aircraft, and a plan previewed before take-off.</p>
       </div>
       <div class="window-body">
         <span class="winlabel">3D View</span>
         <h3>Understand the mission before you fly it</h3>
         <ul class="ticks">
-          <li><b>Height is what a flat map hides</b> — in 3D a leg that clips a ridge is obvious at a glance instead of being a number in a column.</li>
-          <li><b>Walk the whole route</b> — climb-out, cruise legs, loiter orbits and the return, drawn over real elevation data.</li>
-          <li><b>Brief from it</b> — a crew can see the plan the way the aircraft will fly it, without reading coordinates.</li>
-          <li><b>Free camera</b> to look around from any angle, with one click to snap back to the aircraft.</li>
+          <li><b>Every leg coloured by its clearance</b> — green clears the ground by 30 m or more, amber comes within 30 m, red passes through it, and the spot is marked <i>route hits ground here</i>.</li>
+          <li><b>The aircraft's real height over the ground</b> — a line straight down to the terrain with the clearance beside it, and heading, speed, climb, height and distance home in the corner.</li>
+          <li><b>Alerts where they happened</b> — each AI alert is pinned on the terrain at the place the aircraft was when it was raised.</li>
+          <li><b>Check a plan before anything flies</b> — in Plan View the mission is shown over the terrain with no aircraft connected.</li>
+          <li><b>Follow, Top, Orbit or Free camera</b>, with buttons to move, turn, tilt and zoom, and a quality setting for slower computers.</li>
+          <li><b>Works with no internet</b> — imagery and terrain downloaded beforehand are used from the computer.</li>
         </ul>
       </div>
     </div>
 
-    <div class="window flip">
+    <div class="window">
       <div class="window-media">
         <div class="screenframe">
           <img loading="lazy" decoding="async" src="assets/gcs-video-mountain.jpg"
@@ -149,7 +175,7 @@
          sweep on the same 3s rotator as Fly View above, rather than sitting as two
          separate window blocks, since they are two examples of one capability, not two
          different screens. -->
-    <div class="window">
+    <div class="window flip">
       <div class="window-media">
         <div class="screenframe">
           <div class="rotator">
@@ -173,7 +199,7 @@
       </div>
     </div>
 
-    <div class="window flip" id="rvt">
+    <div class="window" id="rvt">
       <div class="window-media">
         <div class="screenframe">
           <img src="assets/gcs-rvt-viewer.jpg" loading="lazy"
