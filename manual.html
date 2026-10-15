@@ -78,7 +78,7 @@
 <section class="cover">
   <h1>SkyShield</h1>
   <div class="sub">Ground Control Station &mdash; User Manual</div>
-  <p class="meta">For SkyShield 2.0 on Windows<br>Document edition 1 &middot; October 2026<br>&copy; 2026 SkyShield Technology</p>
+  <p class="meta">For SkyShield 2.0.4 on Windows<br>Document edition 2 &middot; October 2026<br>&copy; 2026 SkyShield Technology</p>
 </section>
 
 <section class="toc">
@@ -180,6 +180,8 @@
   <tr><td>Add New Link</td><td><span class="ui">Add</span> creates a serial, UDP, TCP or Bluetooth link, or a log replay link.</td></tr>
 </table>
 <p>The first time SkyShield loads an aircraft's parameters it shows a progress bar under the toolbar. Wait for it to finish before planning or arming.</p>
+<h3>Naming each aircraft</h3>
+<p>SkyShield names an aircraft from a number stored on its own autopilot: the parameter <b>BRD_SERIAL_NUM</b>. Set it once per airframe in <span class="ui">Vehicle Configuration &gt; Parameters</span>, for example 7, and that aircraft is called <b>Ravin 007</b> everywhere: in the aircraft panel, on its video tile, in the Remote Video Terminal and in its flight ids and reports (<span class="ui">Ravin_007_2026-10-15_4</span>). Give every aircraft a different number. While BRD_SERIAL_NUM is 0, the aircraft takes the ground station's own board number from General settings instead, which is fine for one aircraft but gives every aircraft the same name when several are connected.</p>
 
 <h2>2.5 Training without an aircraft</h2>
 <p>SkyShield can run a flight simulator on the ground station so that an operator can practise with nothing connected. The simulator behaves like a real aircraft in every screen of the application.</p>
@@ -295,6 +297,31 @@
 </ul>
 <div class="warn"><b>Terrain following is a pre-flight decision</b>Over rising ground, an aircraft that holds height above home gets closer to the terrain as it flies out. Check this item on every flight over hills.</div>
 
+<h2>3.8 Flying several aircraft</h2>
+<p>When more than one aircraft is connected, the <b>Aircraft</b> panel appears over the Fly View. It shows every aircraft at once and sends commands to several of them together.</p>
+<figure><img loading="lazy" decoding="async" src="assets/manual/fly-swarm.jpg" alt="Fly View with three aircraft"><figcaption>Figure 3.11 &mdash; Three aircraft: the Aircraft panel on the left, the selected aircraft's camera in the main picture and the other two aircraft's cameras in tiles below it.</figcaption></figure>
+<figure class="narrow"><img loading="lazy" decoding="async" src="assets/manual/swarm-panel.jpg" alt="Aircraft panel"><figcaption>Figure 3.12 &mdash; The Aircraft panel.</figcaption></figure>
+<table>
+  <tr><th>Item</th><th>What it does</th></tr>
+  <tr><td>Title bar</td><td>How many aircraft are connected and selected. Drag it to move the panel anywhere on the screen. The arrow button, or a double-click, folds the panel down to its title bar.</td></tr>
+  <tr><td>Tick box</td><td>Selects the aircraft for the group actions. Clicking anywhere on its card does the same.</td></tr>
+  <tr><td>Number and name</td><td>The aircraft's MAVLink id in the badge and its name (2.4). The aircraft the rest of the screen is showing has a blue badge and a blue bar on the left of its card.</td></tr>
+  <tr><td>Flight mode</td><td>Click it for that aircraft's modes and choose one. It changes only that aircraft, whichever are selected, and it acts at once, as the flight mode menu in the toolbar does.</td></tr>
+  <tr><td>State</td><td><span class="ui">DISARMED</span>, <span class="ui">ARMED</span> or <span class="ui">FLYING</span>.</td></tr>
+  <tr><td>Control / IN CONTROL</td><td><span class="ui">Control</span> (or a double-click on the card) makes that aircraft the one the toolbar, instruments, actions and main video show.</td></tr>
+  <tr><td>Figures</td><td>Height above take-off, ground speed, battery, GPS satellites and distance from home. Battery turns orange below 35% and red below 20%; GPS turns orange without a 3D fix. A card with a red border and <span class="ui">LINK LOST</span> has stopped hearing from its aircraft.</td></tr>
+  <tr><td>All / Flying / None</td><td>Selects every aircraft, only those in the air, or none.</td></tr>
+  <tr><td>Arm, Start mission, Pause, Return, Land, Disarm</td><td>Act on every selected aircraft at once. Each asks for the slide-to-confirm first. A button is greyed out when it applies to none of the selected aircraft, for example Return when none of them is flying.</td></tr>
+</table>
+<ol class="steps">
+  <li>Give each aircraft its own MAVLink id (1, 2, 3...) and its own BRD_SERIAL_NUM before the flight.</li>
+  <li>Upload each aircraft's mission: make it the active one with <span class="ui">Control</span>, then use Plan View as for a single aircraft.</li>
+  <li>Select the aircraft that should fly, then <span class="ui">Arm</span> and <span class="ui">Start mission</span>, confirming each.</li>
+  <li>Watch them on the map and in the panel. To work with one, press its <span class="ui">Control</span>.</li>
+  <li>To bring a group home, select it and press <span class="ui">Return</span>.</li>
+</ol>
+<div class="warn"><b>Group commands go to every selected aircraft</b>Read the "selected" count in the title bar before you confirm. Deselect an aircraft that must not take part.</div>
+
 <!-- ============================================================ -->
 <h1 id="video">4. Video and the camera panel</h1>
 
@@ -319,8 +346,22 @@
 <h2>4.2 Playing a recorded video file</h2>
 <p>Set <span class="ui">Source</span> to <span class="ui">Local Video File</span> and choose a file (mp4, mov, mkv, avi, ts, webm or m4v). The file plays in the Fly View exactly as a live camera would, including AI detection and alerts, and starts again when it reaches the end. Use this for training, for demonstrations, and to see how the AI responds to footage of your own.</p>
 
-<h2>4.3 The camera panel</h2>
-<figure class="small"><img loading="lazy" decoding="async" src="assets/manual/fly-camera-panel.jpg" alt="Camera panel"><figcaption>Figure 4.2 &mdash; The camera panel at the right of the video.</figcaption></figure>
+<h2>4.3 Video from several aircraft</h2>
+<p>With several aircraft, each can have its own camera on screen at the same time.</p>
+<ol class="steps">
+  <li>Give each aircraft's camera its own network address. Cameras of the same model usually come with the same address; change it with the camera maker's tool.</li>
+  <li>Open <span class="ui">Payload Configuration</span>. Under <span class="ui">Video per aircraft</span> there is a row for every connected aircraft. Enter each camera's RTSP address, for example <span class="ui">rtsp://192.168.2.120:8554/eo</span>.</li>
+</ol>
+<figure><img loading="lazy" decoding="async" src="assets/manual/swarm-video.jpg" alt="Video from several aircraft"><figcaption>Figure 4.2 &mdash; The selected aircraft's camera in the main picture, labelled, with the other aircraft's cameras in tiles.</figcaption></figure>
+<ul>
+  <li>The <b>main picture</b> shows the camera of the aircraft that is in control. The AI detection runs on this picture.</li>
+  <li>Up to <b>three other aircraft</b> each play live in a tile at the bottom of the video. Click a tile to put that aircraft in control; its camera moves to the main picture.</li>
+  <li>A label at the top says whose camera the main picture is. It turns orange if the aircraft in control has no camera address and an earlier aircraft's camera is still showing.</li>
+  <li>Each extra camera is a separate video stream to receive and decode. All of them share the video radio link, so check that the link can carry them.</li>
+</ul>
+
+<h2>4.4 The camera panel</h2>
+<figure class="small"><img loading="lazy" decoding="async" src="assets/manual/fly-camera-panel.jpg" alt="Camera panel"><figcaption>Figure 4.3 &mdash; The camera panel at the right of the video.</figcaption></figure>
 <table>
   <tr><th>Control</th><th>What it does</th></tr>
   <tr><td>Camera name</td><td>The camera in use, or <span class="ui">No Camera</span>.</td></tr>
@@ -334,7 +375,7 @@
   <tr><td>Keyboard</td><td>Turns keyboard control of radio channels on or off. See 11.3.</td></tr>
   <tr><td>Space / Batt</td><td>Free storage and battery of the camera, when it reports them.</td></tr>
 </table>
-<figure class="narrow"><img loading="lazy" decoding="async" src="assets/manual/fly-gimbal.jpg" alt="Gimbal controls"><figcaption>Figure 4.3 &mdash; Gimbal controls.</figcaption></figure>
+<figure class="narrow"><img loading="lazy" decoding="async" src="assets/manual/fly-gimbal.jpg" alt="Gimbal controls"><figcaption>Figure 4.4 &mdash; Gimbal controls.</figcaption></figure>
 <table>
   <tr><th>Gimbal control</th><th>What it does</th></tr>
   <tr><td>Yaw Lock</td><td>Holds the camera on a compass direction while the aircraft turns, or releases it to follow the aircraft's nose.</td></tr>
@@ -491,7 +532,7 @@
 <p>Click a row to select it. The selected step is highlighted on the map, and any extra values that the command needs can be edited for that row. <span class="ui">Center</span>, above the table, brings the mission into the middle of the map.</p>
 
 <h2>7.3 Terrain check</h2>
-<p>The route is drawn green where it is clear and <b>red where it would hit the ground</b>. SkyShield checks the whole path between waypoints against terrain height, not only the waypoints themselves, so a line that clips a hill between two safe waypoints is caught. Fix every red section before uploading: raise the altitude, move the waypoint, or switch the plan to terrain-relative altitude.</p>
+<p>The route is drawn green where it is clear and <b>red where it would hit the ground</b>. SkyShield checks the whole path between waypoints against terrain height, not only the waypoints themselves, so a line that clips a hill between two safe waypoints is caught. Fix every red section before uploading: raise the altitude, move the waypoint, or switch the plan to terrain-relative altitude. The Fly View map draws the aircraft's mission with the same check, so a red leg is red in flight too.</p>
 
 <h2>7.4 Uploading and flying</h2>
 <ol class="steps">
@@ -513,9 +554,26 @@
 <table>
   <tr><th></th><th>Item</th><th>What it is for</th></tr>
   <tr><td class="n">1</td><td>3D View</td><td>Switches between the 3D view and the flat map with video.</td></tr>
-  <tr><td class="n">2</td><td>Recenter on Vehicle</td><td>Brings the camera back to the aircraft after you have moved the view.</td></tr>
+  <tr><td class="n">2</td><td>View controls</td><td>Buttons to choose how the camera behaves and to move, turn, tilt and zoom the view (see 8.3).</td></tr>
 </table>
-<p>The 3D view takes over the main area of the Fly View. The toolbar, action strip and camera panel stay in place, so every flight control remains available. The camera follows the aircraft. Drag to look around and use the mouse wheel to zoom, then click <span class="ui">Recenter on Vehicle</span> to return. The mission is drawn as a line through numbered points at their real heights.</p>
+<p>The 3D view fills the map area of the Fly View and is never drawn over the video. The toolbar, action strip and camera panel stay in place, so every flight control remains available. Heading, speed, climb, height and distance from home are printed in the top left corner of the view, in the units chosen in settings.</p>
+<p>In the view you will see:</p>
+<ul>
+  <li><b>The aircraft</b>, outlined in yellow so it can be found from a distance, with a thin white line straight down to the ground and its height above the ground beneath it. This is the real clearance over the terrain, not the height above take-off.</li>
+  <li><b>Home</b>, as a green point marked HOME, joined to the aircraft by a dashed green line.</li>
+  <li><b>The mission</b>, as numbered points at their real heights. Each point shows its height above the ground under it, and the point the aircraft is flying to is larger and yellow.</li>
+  <li><b>AI alerts</b>, as orange labels at the place the aircraft was when each alert was raised.</li>
+  <li><b>A north arrow</b> in the top right corner and <b>a scale bar</b> in the bottom left. Click the north arrow to turn the view north-up.</li>
+</ul>
+<p>Each leg of the mission is coloured by how far it clears the ground:</p>
+<table>
+  <tr><th>Colour</th><th>Meaning</th></tr>
+  <tr><td>Green</td><td>The leg clears the ground by 30 m or more along its whole length.</td></tr>
+  <tr><td>Amber</td><td>The leg comes within 30 m of the ground.</td></tr>
+  <tr><td>Red</td><td>The leg passes through the ground.</td></tr>
+  <tr><td>Grey</td><td>Terrain is not available for part of the leg, so nothing is claimed about it.</td></tr>
+</table>
+<div class="note"><b>The colours are a guide</b>They are worked out from terrain data at about 30 m resolution, along straight lines between points. They do not include trees, buildings, masts or wires, or the wider path the aircraft takes in a turn. Keep the margin your operation requires.</div>
 
 <h2>8.2 In Plan View</h2>
 <figure><img loading="lazy" decoding="async" src="assets/manual/plan-3d.jpg" alt="3D preview in Plan View"><figcaption>Figure 8.2 &mdash; A mission previewed in 3D in Plan View. This mission climbs steeply to a high loiter point.</figcaption></figure>
@@ -523,11 +581,31 @@
   <tr><th></th><th>Item</th><th>What it is for</th></tr>
   <tr><td class="n">1</td><td>3D View</td><td>Switches between the 3D preview and the flat planning map.</td></tr>
   <tr><td class="n">2</td><td>Mission path</td><td>Each numbered point is a step of the mission, drawn at its planned altitude above the terrain.</td></tr>
-  <tr><td class="n">3</td><td>Recenter on Vehicle</td><td>Returns the camera to the aircraft.</td></tr>
+  <tr><td class="n">3</td><td>View controls</td><td>Move, turn, tilt and zoom the preview (see 8.3).</td></tr>
 </table>
 <p>The mission is previewed over the terrain, even with no aircraft connected. This is the quickest way to see whether a route clears a ridge, and how high a step really is compared with the ground around it. The mission table is reduced to its row numbers while the preview is open. Click <span class="ui">3D View</span> again to edit the plan.</p>
 <p>Terrain is shown at about 30 m resolution for the area in view.</p>
-<p>Map imagery and terrain that you have already viewed or downloaded are used without an internet connection. The first time the 3D view is opened on a computer it needs an internet connection to load its display component.</p>
+
+<h2>8.3 Moving the view</h2>
+<p>The view controls are in the bottom right corner. <span class="ui">Hide</span> folds them away to a single <span class="ui">Controls</span> button; they start folded when the map area is narrow.</p>
+<table>
+  <tr><th>Button</th><th>What it does</th></tr>
+  <tr><td>Follow</td><td>The camera stays behind the aircraft and turns with it. This is how the view opens.</td></tr>
+  <tr><td>Top</td><td>Looks straight down on the aircraft with north at the top, like the flat map but with real terrain.</td></tr>
+  <tr><td>Orbit</td><td>The camera circles slowly round the aircraft.</td></tr>
+  <tr><td>Free</td><td>The view stays where you put it and the aircraft flies through it.</td></tr>
+  <tr><td>Home</td><td>Moves the view to the home position.</td></tr>
+  <tr><td>&#9650; &#9660; &#9664; &#9654;</td><td>Move the view forward, back, left and right over the ground.</td></tr>
+  <tr><td>&#10226; &#10227;</td><td>Turn the view left and right about the middle of the screen.</td></tr>
+  <tr><td>Tilt &#9650; / Tilt &#9660;</td><td>Look more towards the horizon, or more straight down.</td></tr>
+  <tr><td>+ / &minus;</td><td>Zoom in and out.</td></tr>
+  <tr><td>N up</td><td>Turns the view so north is at the top.</td></tr>
+  <tr><td>Quality</td><td>Switches between Low, Medium and High picture quality. Lower is smoother on a less powerful computer. The view lowers the quality once by itself if it is running slowly.</td></tr>
+</table>
+<p>Hold a button down to keep moving. Zooming keeps the current camera mode; moving, turning or tilting switches to <span class="ui">Free</span>, as does dragging the view with the mouse or a finger. Click <span class="ui">Follow</span> to return to the aircraft. With the mouse, drag to move, hold the wheel down (or Ctrl) and drag to turn and tilt, and roll the wheel to zoom.</p>
+
+<h2>8.4 Without an internet connection</h2>
+<p>The 3D view works with no internet connection. Map imagery and terrain that have already been viewed or downloaded are used from the computer. Before going to a site with no internet, download the area in <span class="ui">Offline Maps</span> with <span class="ui">Fetch elevation data</span> ticked, so that both the imagery and the terrain are stored. Where terrain is not stored the ground is drawn flat and the view says so; mission legs over it are shown grey.</p>
 <div class="note"><b>Dialogs and the 3D view</b>While a dialog box is open, the 3D view hides itself so that the dialog can be seen. It returns when the dialog closes.</div>
 
 <!-- ============================================================ -->
@@ -547,8 +625,11 @@
   <tr><td>Service</td><td><span class="ui">Running</span> when the page is being served.</td></tr>
   <tr><td>Viewers connected</td><td>How many people are watching, out of the maximum allowed.</td></tr>
   <tr><td>Video</td><td><span class="ui">Receiving from aircraft</span>, or <span class="ui">No video yet</span>. The second is normal before the aircraft's camera starts.</td></tr>
+  <tr><td>Viewer list</td><td>One line per connected browser: its address, the camera it is watching and its link quality (good, weak or poor, with picture size, frames per second and data rate) as that browser measures it. <span class="ui">Remove</span> disconnects that viewer and keeps its address out until the service is next turned on.</td></tr>
+  <tr><td>Station name</td><td>The name viewers see for this ground station. Left empty, the computer's name is used.</td></tr>
   <tr><td>Web page port</td><td>The network port of the page (8081 unless changed). The next port up is also used.</td></tr>
   <tr><td>Maximum viewers</td><td>From 1 to 16 (4 unless changed). Further viewers are refused with a reason.</td></tr>
+  <tr><td>Keep the same viewer link</td><td>Off: the link gets a new access key every time the service starts. On: the same link works every time, for a base screen or a saved link. <span class="ui">New key</span> replaces it and disconnects everyone.</td></tr>
 </table>
 <p>Changing the port or the viewer limit restarts the service and disconnects everyone watching.</p>
 
@@ -573,17 +654,18 @@
   <tr><th>Control</th><th>What it does</th></tr>
   <tr><td>Video / Map / Split</td><td>Shows the video, the map, or both side by side.</td></tr>
   <tr><td>EO / IR</td><td>Chooses the daylight or thermal camera. A camera that is not being received is greyed out.</td></tr>
+  <tr><td>Aircraft buttons</td><td>With several aircraft (4.3), one button per other aircraft's camera, named after the aircraft.</td></tr>
   <tr><td>Pause</td><td>Freezes the picture to study it. Alerts still arrive while paused. Resuming jumps to live.</td></tr>
   <tr><td>AI boxes</td><td>Shows or hides detection boxes.</td></tr>
   <tr><td>Fullscreen</td><td>Fills the screen.</td></tr>
-  <tr><td>Status</td><td>Picture size, data rate and frames received, and <span class="ui">Live</span> when connected.</td></tr>
+  <tr><td>Status</td><td>Link quality first (Good, Weak or Poor link), then picture size, frames per second and data rate, and <span class="ui">Live</span> when connected. If the picture stops, for example while a camera restarts, the page reconnects by itself.</td></tr>
 </table>
 <p>The map shows the aircraft pointing the way it is heading (green when armed), its recent track, flight mode, altitude, ground speed and position. Buttons at the bottom right follow the aircraft and zoom. Alerts appear as a banner in the same colours as on the ground station.</p>
 <p>Each viewer's choices affect only their own screen. The map shows the areas the operator has already viewed on the ground station. Other areas appear as blank squares when the ground station has no internet connection.</p>
 
 <h2>9.4 Security</h2>
 <ul>
-  <li>The link contains an access key that is created fresh each time the service starts. A link from an earlier session does not work.</li>
+  <li>The link contains an access key. Normally it is created fresh each time the service starts, and a link from an earlier session does not work. With <span class="ui">Keep the same viewer link</span> on, the same link keeps working until you press <span class="ui">New key</span>; anyone who has it can watch while the service is on.</li>
   <li>The connection is not encrypted by SkyShield. It relies on the network underneath: the Wi-Fi password, your own network, or the VPN.</li>
   <li>Do not expose the ground station directly to the internet.</li>
   <li>Turn the Video Terminal off when you have finished.</li>
@@ -622,7 +704,7 @@
   <tr><th>Setting</th><th>Meaning</th></tr>
   <tr><td>Remote Video Terminal (serve video to browsers)</td><td>The same switch as on the Video Terminal page (chapter 9).</td></tr>
   <tr><td>Show Flight Replay Bar</td><td>Shows the replay bar (10.1).</td></tr>
-  <tr><td>Show all camera and gimbal controls (no MAVLink needed)</td><td>Keeps every camera and gimbal control visible without the hardware connected (4.3).</td></tr>
+  <tr><td>Show all camera and gimbal controls (no MAVLink needed)</td><td>Keeps every camera and gimbal control visible without the hardware connected (4.4).</td></tr>
   <tr><td>Language</td><td>Language of the application.</td></tr>
   <tr><td>Color Scheme</td><td><span class="ui">Indoor</span> (dark) or <span class="ui">Outdoor</span>.</td></tr>
   <tr><td>Stream GCS Position</td><td>Whether the ground station sends its own position to the aircraft: never, always, or only in Follow Me flight mode.</td></tr>
@@ -864,6 +946,8 @@
   <tr><td>A message says parameters are missing from firmware</td><td>The aircraft's firmware version does not have a setting the page expects</td><td>Click <span class="ui">Ok</span>. Report it to whoever maintains the aircraft if it concerns a feature you use.</td></tr>
   <tr><td>Aircraft will not arm</td><td>A pre-arm check is failing</td><td>Click the status and read the vehicle messages.</td></tr>
   <tr><td>No video</td><td>Wrong source or address, or the camera has not started</td><td>Check <span class="ui">Payload Configuration</span>.</td></tr>
+  <tr><td>Several aircraft all have the same name</td><td>Their BRD_SERIAL_NUM is still 0, so they all use the ground station's board number</td><td>Set a different BRD_SERIAL_NUM on each aircraft (2.4) and reconnect.</td></tr>
+  <tr><td>An aircraft's video tile stays black</td><td>Wrong address, or several cameras on the same address</td><td>Check its row in <span class="ui">Video per aircraft</span> and give every camera its own address (4.3).</td></tr>
   <tr><td>Video stutters or breaks up</td><td>Poor link, or the computer is overloaded</td><td>Raise <span class="ui">Video buffer</span> a little. Raise <span class="ui">Detect every N frames</span>. Close other programs.</td></tr>
   <tr><td>Video is clearly delayed</td><td><span class="ui">Video buffer</span> set high</td><td>Lower it. Do not fly on a delayed picture.</td></tr>
   <tr><td>No AI status line on the video</td><td>AI is off</td><td>Turn on <span class="ui">Enable AI detection</span> and the <span class="ui">AI</span> button. Check the licence includes AI.</td></tr>
