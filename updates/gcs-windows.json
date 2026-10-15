@@ -1,7 +1,7 @@
 {
-  "version": "2.0.3",
-  "url": "https://github.com/AmanBhandari101/skyshield-web/releases/download/gcs-v2.0.3/SkyShield-2.0.3-Setup.exe",
-  "sha256": "2eec6bbeaa2b2dadc4272326a81740245c7b3d6db6cb014e004a25ded4ea08a2",
-  "size": 892125906,
-  "notes": "3D view now works with no internet, with camera modes, on-screen controls and terrain clearance colours. Remote Video Terminal adds a station name, an optional fixed viewer link, a viewer list and link quality. The Fly View map shows the terrain check."
+  "version": "2.0.4",
+  "url": "https://github.com/AmanBhandari101/skyshield-web/releases/download/gcs-v2.0.4/SkyShield-2.0.4-Setup.exe",
+  "sha256": "8c0d12d6bd3c34d1508afa2da7866e2d56948b93dc6818e5afc144abecb0dede",
+  "size": 892140712,
+  "notes": "Several aircraft from one ground station: a redesigned Aircraft panel with group actions and per-aircraft flight modes, every aircraft's camera on screen at once, aircraft named from their board. Remote Video Terminal: station name, kept link, viewer list and link quality."
 }
