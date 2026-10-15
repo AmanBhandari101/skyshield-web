@@ -355,8 +355,10 @@ section.band.alt{background:rgba(7,16,28,.34)}
    and simply doesn't rotate, so this degrades to a normal static screenshot rather than
    an empty frame. aspect-ratio holds the frame's height since absolutely positioned
    slides contribute none of their own. */
-.rotator{position:relative;aspect-ratio:2880/1661;border-radius:2px;overflow:hidden}
-.rotator img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+/* contain, not cover: the captures are not all one shape, and cover trimmed the right edge of the 16:9 ones,
+   which is where the alert banner sits. */
+.rotator{position:relative;aspect-ratio:2880/1661;border-radius:2px;overflow:hidden;background:#000}
+.rotator img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;
              display:block;opacity:0;transition:opacity .7s ease}
 .rotator img.active{opacity:1}
 
@@ -404,7 +406,7 @@ section.band.alt{background:rgba(7,16,28,.34)}
    shunt everything below it up and down on every crossfade. */
 .alertstage{position:relative;aspect-ratio:1600/938;border-radius:2px;overflow:hidden;background:#000}
 .alertstage img{
-  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;
+  position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:block;
   opacity:0;transition:opacity .7s ease;
 }
 .alertstage img.active{opacity:1}

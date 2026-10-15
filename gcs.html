@@ -57,12 +57,12 @@
         <div class="screenframe">
           <div class="rotator">
             <img class="active" src="assets/gcs-map-video.jpg"
-                 alt="Fly View: satellite map with the flight path on the left, live aerial video of a shoreline and field on the right showing vehicles and people on the ground, telemetry across the top.">
+                 alt="Fly View with three aircraft: the Aircraft panel lists Ravin 001, 007 and 002 with their modes, altitudes and speeds over the satellite map, and the selected aircraft's camera on the right shows a mountain road with people boxed by the AI, the other two aircraft's cameras in small tiles below it.">
             <img loading="lazy" decoding="async" src="assets/gcs-map-video-2.jpg"
-                 alt="Fly View in full-map mode: an RTL return pattern looping over a river and airstrip, with the aircraft icon on its final approach and telemetry across the top.">
+                 alt="Fly View in full-map mode: three aircraft flying their own missions over mountain terrain, the selected aircraft's instruments in a floating panel and the controls for all aircraft at the right.">
           </div>
         </div>
-        <p class="shot-cap">Fly View — split map and live feed.</p>
+        <p class="shot-cap">Fly View — split map and live feed, every aircraft in one window.</p>
       </div>
       <div class="window-body">
         <span class="winlabel">Fly View</span>
@@ -79,7 +79,7 @@
       <div class="window-media">
         <div class="screenframe">
           <img loading="lazy" decoding="async" src="assets/gcs-plan-view.jpg"
-               alt="Plan View: an eight-waypoint mission drawn over satellite terrain with a VTOL transition marker, and an editable mission table below listing sequence, command, latitude, longitude, altitude and altitude frame for every item.">
+               alt="Plan View: a mission of a VTOL takeoff, a waypoint, a loiter and a return to launch drawn over satellite imagery of a hillside village, with the editable mission table below listing command, latitude, longitude, altitude and altitude frame for every item.">
         </div>
         <p class="shot-cap">Plan View — mission and editable item table.</p>
       </div>
@@ -145,7 +145,7 @@
     <!-- One window, not two: this is still the same Video window above, not a separate
          screen. What changes is what is running on it -- the detector's output passed to
          an incident classifier and a rule engine, so the alert names the situation (a
-         priority group, a rollover) rather than just the object. The two real captures
+         people cut off by water, a person in water) rather than just the object. The two real captures
          sweep on the same 3s rotator as Fly View above, rather than sitting as two
          separate window blocks, since they are two examples of one capability, not two
          different screens. -->
@@ -153,19 +153,19 @@
       <div class="window-media">
         <div class="screenframe">
           <div class="rotator">
-            <img loading="lazy" decoding="async" class="active" src="assets/gcs-sar-flood.jpg"
-                 alt="The ground station running detection on a flooded neighbourhood: twenty-three objects tracked, a cluster of people on a rooftop each boxed and numbered with confidences from 88 to 98 percent, a group ring drawn around a second cluster, and an amber SAR alert reading 'Priority Group Detected — Possible Evacuation Needed (95%)'. A status line reads 'Intelligence Processing: Critical group detection in Zone 4 (Floodplain)'.">
-            <img loading="lazy" decoding="async" src="assets/gcs-mine-rollover.jpg"
-                 alt="The ground station running detection at a rock quarry: a haul truck on its side boxed in red and labelled 'TRUCK DETECTED: #TRK1002, Confidence 99%', with an orange alert reading 'MINE SITE ALERT: Vehicle Rollover, Critical Event (100%)' and the zone's GPS coordinates shown. A status line reads 'Intelligence Processing: High-Priority event in Quarry Zone 7 (Mining Operations)'.">
+            <img loading="lazy" decoding="async" class="active" src="assets/gcs-people-cut-off.jpg"
+                 alt="The ground station with an aircraft flying: its position and instruments on the map at the left, and on the video a flooded house with three people in orange gear on the roof, each boxed as a person, under an orange alert reading 'PEOPLE ALERT: People cut off by water - investigate immediately', 3 people, 79 percent.">
+            <img loading="lazy" decoding="async" src="assets/gcs-person-in-water.jpg"
+                 alt="The ground station with an aircraft flying: its position and instruments on the map at the left, and on the video open turquoise water with a single swimmer boxed as a person, under an orange alert reading 'PEOPLE ALERT: Person in water - investigate immediately', 1 person, 74 percent.">
           </div>
         </div>
-        <p class="shot-cap">Two real incidents — a flood rescue, a quarry rollover — read and raised automatically.</p>
+        <p class="shot-cap">Two flood rescues — people cut off on a roof, a person in the water — read and raised automatically.</p>
       </div>
       <div class="window-body">
         <span class="winlabel">Situational awareness</span>
         <h3>Not a detector. A model that reads the situation</h3>
         <ul class="ticks">
-          <li><b>Reads the situation, not just the object</b> — a cluster of people becomes a priority group, an overturned truck becomes a rollover, named by the incident classifier rather than left as a plain box.</li>
+          <li><b>Reads the situation, not just the object</b> — people stranded on a roof in floodwater become &ldquo;people cut off by water&rdquo;, a lone swimmer becomes &ldquo;person in water&rdquo;, named by the scene model rather than left as a plain box.</li>
           <li><b>Severity is assigned, not left to the operator</b> — graded and raised as an alert with a confidence score, ready to be triaged like an incoming report.</li>
           <li><b>Position travels with the alert</b> — the zone and coordinates are logged automatically, so a tasking arrives with a location already attached.</li>
           <li><b>The same engine, any situation</b> — no separate model per scenario; one detector and rule engine reads whatever the mission puts in front of it, on the live feed as it happens.</li>
