@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy — SkyShield Technology</title>
+<meta name="description" content="What SkyShield Technology's website records about visits, and how to turn it off.">
+<link rel="icon" href="assets/logo.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@600;700;800&family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/site.css">
+<script>document.documentElement.classList.add('js')</script>
+</head>
+<body>
+<header>
+  <div class="navbar">
+    <a class="brand" href="index.html">
+      <img src="assets/logo.svg" alt="">
+      <span class="brand-name"><b>Sky<i>Shield</i></b><span>Technology</span></span>
+    </a>
+    <nav class="links" id="siteNav" aria-label="Main">
+      <a href="index.html">Home</a>
+      <a href="ravin.html">Ravin UAV</a>
+      <a href="gcs.html">Ground Station</a>
+      <a href="rent.html">Rent the GCS</a>
+      <a href="partner.html">Partner With Us</a>
+    </nav>
+    <a class="nav-contact" href="index.html#contact">Contact</a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="siteNav" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+<main>
+<section class="band">
+  <div class="wrap" style="max-width:820px">
+    <p class="eyebrow">Privacy</p>
+    <h1 style="font-size:clamp(34px,4vw,52px);margin-bottom:22px">What this website records</h1>
+    <p class="lede">If you accept the cookie notice, this site counts visits and records how pages are used, so we
+      can see what is useful and fix what is not. If you decline, nothing is recorded.</p>
+
+    <h2 style="font-size:26px;margin:36px 0 10px">What is collected</h2>
+    <ul>
+      <li>Pages viewed, time spent, how far down a page you scrolled, and where you clicked.</li>
+      <li>Which file you downloaded and whether a form was sent (not what you wrote in it).</li>
+      <li>Approximate location (country and city, from the network), browser, device type and the site that linked here.</li>
+    </ul>
+    <p>This is done with Google Analytics and Microsoft Clarity. Clarity can replay a visit as a recording of the page;
+      text typed into forms is masked and never recorded. Neither is used for advertising, and we do not sell or
+      share this information.</p>
+
+    <h2 style="font-size:26px;margin:36px 0 10px">What is not collected</h2>
+    <p>Your name, email or phone number are only known to us if you send them through the partner form or contact
+      us directly. They are used only to reply to you.</p>
+
+    <h2 style="font-size:26px;margin:36px 0 10px">Changing your choice</h2>
+    <p>Your choice is kept in this browser.</p>
+    <p style="display:flex;gap:12px;flex-wrap:wrap">
+      <button type="button" class="btn btn-ghost" onclick="window.skyshieldConsent && window.skyshieldConsent('no')">Turn recording off</button>
+      <button type="button" class="btn btn-primary" onclick="window.skyshieldConsent && window.skyshieldConsent('yes')">Turn recording on</button>
+    </p>
+    <p>Questions: <a href="mailto:aman101bhandari@outlook.com">aman101bhandari@outlook.com</a></p>
+  </div>
+</section>
+</main>
+<footer>
+  <div class="wrap">
+    <div class="fbrand"><img src="assets/logo.svg" alt=""><b>SkyShield Technology</b></div>
+    <div class="note">© 2026 SkyShield Technology · Autonomous Aerial Systems · <a href="privacy.html">Privacy</a></div>
+  </div>
+</footer>
+<script src="assets/analytics.js"></script>
+<script src="assets/site.js"></script>
+</body>
+</html>
