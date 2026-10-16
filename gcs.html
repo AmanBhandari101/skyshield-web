@@ -44,7 +44,9 @@
       ever leaves it.
     </p>
     <div class="actions" style="margin-top:28px">
-      <a class="btn btn-primary" href="#download">Download for Windows</a>
+      <a class="btn btn-primary" href="rent.html">Rent the GCS</a>
+      <a class="btn btn-ghost" href="rent.html#showreel">Watch the showreel</a>
+      <a class="btn btn-ghost" href="#download">Download for Windows</a>
     </div>
   </div>
 </section>
@@ -143,7 +145,7 @@
           <li><b>Alerts where they happened</b> — each AI alert is pinned on the terrain at the place the aircraft was when it was raised.</li>
           <li><b>Check a plan before anything flies</b> — in Plan View the mission is shown over the terrain with no aircraft connected.</li>
           <li><b>Follow, Top, Orbit or Free camera</b>, with buttons to move, turn, tilt and zoom, and a quality setting for slower computers.</li>
-          <li><b>Works with no internet</b> — imagery and terrain downloaded beforehand are used from the computer.</li>
+          <li><b>Save an area for offline in one press</b> — <i>Save area offline</i> stores the map and terrain of the ground in view, so the 3D view and the map both work on a site with no internet.</li>
         </ul>
       </div>
     </div>
@@ -151,19 +153,24 @@
     <div class="window">
       <div class="window-media">
         <div class="screenframe">
-          <img loading="lazy" decoding="async" src="assets/gcs-video-mountain.jpg"
-               alt="The station in full-screen video over a mountain road, cars and pack animals visible along the route, with only the telemetry bar and camera toolbar over the picture — no floating panels, no analytics overlay.">
+          <div class="rotator">
+            <img loading="lazy" decoding="async" class="active" src="assets/gcs-camera-rec.jpg"
+                 alt="The Fly View while the camera records: in the camera panel at the right a red Stop button and a blinking REC timer, a red REC badge with the running time on the video, and the AI's alert banner clear of it at the top right.">
+            <img loading="lazy" decoding="async" src="assets/gcs-video-mountain.jpg"
+                 alt="The station in full-screen video over a mountain road, cars and pack animals visible along the route, with only the telemetry bar and camera toolbar over the picture.">
+          </div>
         </div>
-        <p class="shot-cap">Video window — the feed, and nothing else.</p>
+        <p class="shot-cap">Camera and video — recording on the camera, a photo at any moment.</p>
       </div>
       <div class="window-body">
-        <span class="winlabel">Video window</span>
-        <h3>Nothing sitting between the operator and the picture</h3>
+        <span class="winlabel">Camera and video</span>
+        <h3>Work the camera without taking your eyes off it</h3>
         <ul class="ticks">
-          <li><b>The feed fills the screen</b> — no floating panels, no docked widgets, nothing laid over the part of the frame being watched.</li>
-          <li><b>Telemetry stays on the bar</b>, so going full-frame costs no aircraft state.</li>
-          <li><b>Detection boxes are the only overlay</b>, and they switch off when the operator wants the raw picture.</li>
-          <li><b>Thermal alongside EO</b> — picture-in-picture, full frame, or blended with adjustable opacity.</li>
+          <li><b>Photo and Record are separate buttons</b> — take a photo at any moment, including while the camera is recording.</li>
+          <li><b>Recording you cannot miss</b> — the button turns red, a REC timer blinks beneath it, and a red REC badge with the running time sits on the picture itself.</li>
+          <li><b>Every photo kept twice</b> — on the camera, and as a frame of the received video on the station.</li>
+          <li><b>Zoom, track and gimbal</b> in the same panel, and thermal beside the daylight camera — picture-in-picture, full frame or blended.</li>
+          <li><b>The feed fills the screen</b> when you want it to, with only the telemetry bar over it.</li>
         </ul>
       </div>
     </div>
@@ -199,20 +206,53 @@
       </div>
     </div>
 
-    <div class="window" id="rvt">
+    <div class="window" id="reports">
       <div class="window-media">
         <div class="screenframe">
-          <img src="assets/gcs-rvt-viewer.jpg" loading="lazy"
-               alt="The Remote Video Terminal open in a plain browser: a control bar with Video, Map and Split views, EO and IR camera sources, Pause and an AI boxes toggle, a green Live indicator and the stream size, over sharp aerial video of a cargo ship on a wide estuary with a green detection box labelled boat 75 percent drawn around it.">
+          <div class="rotator">
+            <img loading="lazy" decoding="async" class="active" src="assets/gcs-report-mission.jpg"
+                 alt="The first page of a SkyShield mission report: a dark banner with the aircraft and flight, the mission status, headline figures, cards for the battery before take-off and after landing, the flight time and the aircraft's messages, the flight details, and the route map with numbered findings.">
+            <img loading="lazy" decoding="async" src="assets/gcs-report-findings.jpg"
+                 alt="The findings page of a mission report: a summary table of what the AI found, then one card per finding with its picture, when it was seen, how sure the AI was and its position in decimal and degrees.">
+            <img loading="lazy" decoding="async" src="assets/gcs-report-health.jpg"
+                 alt="The first page of an aircraft health report: the fit-for-next-flight verdict in large type, and a summary with an OK, Watch or Act verdict for power, motors, vibration, navigation, control, radio links and the autopilot, with recommended actions.">
+          </div>
         </div>
-        <p class="shot-cap">Remote Video Terminal — the same feed in a browser, with nothing installed.</p>
+        <p class="shot-cap">Flight reports — written by the station the moment the aircraft lands.</p>
+      </div>
+      <div class="window-body">
+        <span class="winlabel">Flight reports</span>
+        <h3>Land, and the paperwork is already done</h3>
+        <ul class="ticks">
+          <li><b>A mission report for the client</b> — the route on a map, flight time, battery before take-off and after landing, and every AI finding as a card with its picture and position.</li>
+          <li><b>A health report for maintenance</b> — battery, motors, vibration, GPS, radio links and the autopilot's own errors, each judged <i>OK</i>, <i>Watch</i> or <i>Act</i>, with what to check and whether the aircraft is fit for its next flight.</li>
+          <li><b>Repeats grouped, the clearest picture kept</b> — a flooded road seen ten times is one finding, shown with its best frame.</li>
+          <li><b>Ready to hand over</b> — PDFs, the track for Google Earth, and the figures as a spreadsheet, in the flight's own folder and on the base screen.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="window flip" id="rvt">
+      <div class="window-media">
+        <div class="screenframe">
+          <div class="rotator">
+            <img loading="lazy" decoding="async" class="active" src="assets/gcs-rvt-phone.jpg"
+                 alt="Two phones: the SkyShield viewer page asking for the passkey, and the live video on the phone with a person in the water boxed by the AI and the alert on screen.">
+            <img loading="lazy" decoding="async" src="assets/gcs-rvt-internet.jpg"
+                 alt="The Video Terminal settings: three switches for how viewers connect — this station's own Wi-Fi, the local network, or the internet — with Internet on, the passkey, a green Online status and the internet link as a QR code.">
+            <img loading="lazy" decoding="async" src="assets/gcs-rvt-viewer.jpg"
+                 alt="The Remote Video Terminal open in a laptop browser: Video, Map and Split views, EO and IR, Pause and AI boxes, over aerial video of a cargo ship.">
+          </div>
+        </div>
+        <p class="shot-cap">Remote Video Terminal — the live picture on any phone, on site or over the internet.</p>
       </div>
       <div class="window-body">
         <span class="winlabel">Remote Video Terminal</span>
         <h3>Everyone who needs the picture can have it</h3>
         <ul class="ticks">
           <li><b>Nothing to install</b> — the station serves a web page, so any phone, tablet or laptop with a browser can watch. On an incident ground that counts for more than a native client would.</li>
-          <li><b>Viewers join by QR code</b> — the station can broadcast its own Wi-Fi, so people get on without a network to find or credentials to hand around.</li>
+          <li><b>Three ways in, one switch</b> — the station's own Wi-Fi when there is no network on site, the local network, or the internet. Choose one; only its QR code and settings appear.</li>
+          <li><b>From anywhere, with a passkey</b> — over the internet a viewer opens an https link and types the passkey. No VPN, no app, no router setup; wrong passkeys lock out, and you can admit each viewer by hand.</li>
           <li><b>The whole picture travels</b> — live video, the AI boxes, the alerts and the telemetry, and the map with the aircraft on it. Not just a video stream.</li>
           <li><b>The aircraft is not involved</b> — the copy is taken inside the station, so the radio link, the aircraft and the operator's own display are untouched whether anyone is watching or not.</li>
           <li><b>Several drones on one screen</b> — a control room can watch every ground station at once with the free multi-drone viewer.</li>
@@ -244,10 +284,12 @@
           <li>Plan View — waypoint planning</li>
           <li>Editable mission table</li>
           <li>3D terrain mission review</li>
+          <li>Save an area for offline use</li>
           <li>Terrain / AMSL / relative frames</li>
           <li>Vertical takeoff, loiter, return</li>
           <li>Geofence and boundary limits</li>
           <li>Pre-flight checklist</li>
+          <li>Several aircraft, group commands</li>
         </ul>
       </div>
       <div class="modgroup">
@@ -274,6 +316,8 @@
           <li>Thermal blended, adjustable opacity</li>
           <li>Laser rangefinder distance</li>
           <li>Photo and video recording</li>
+          <li>Photo while recording</li>
+          <li>REC badge and timer on the video</li>
           <li>Zoom and click-to-track</li>
         </ul>
       </div>
@@ -284,6 +328,8 @@
           <li>Nothing to install to watch</li>
           <li>Viewers join by QR code</li>
           <li>Station can host its own Wi-Fi</li>
+          <li>Internet viewing, no VPN</li>
+          <li>Passkey, lockout, admit by hand</li>
           <li>Map and AI boxes travel with it</li>
           <li>Alerts and telemetry on the page</li>
           <li>Viewer limit and page port</li>
@@ -299,6 +345,18 @@
           <li>Model-free visual tracker</li>
           <li>Situational-awareness review</li>
           <li>Graded incident alerts</li>
+        </ul>
+      </div>
+      <div class="modgroup">
+        <span>Reports</span>
+        <ul>
+          <li>Mission report PDF at landing</li>
+          <li>Aircraft health report PDF</li>
+          <li>AI findings with pictures</li>
+          <li>Battery before and after</li>
+          <li>OK / Watch / Act verdicts</li>
+          <li>Track for Google Earth (KML)</li>
+          <li>Figures as a spreadsheet</li>
         </ul>
       </div>
       <div class="modgroup">
