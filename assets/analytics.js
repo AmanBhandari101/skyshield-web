@@ -17,7 +17,7 @@
 (function () {
   'use strict';
 
-  var CF_TOKEN = '';                                  // e.g. '1a2b3c4d5e6f...'  (Cloudflare > Web Analytics > this site > the data-cf-beacon token)
+  var CF_TOKEN = '726e0f287bca477f9fe0718c2bf687eb';  // e.g. '1a2b3c4d5e6f...'  (Cloudflare > Web Analytics > this site > the data-cf-beacon token)
   var GA4_ID = '';        // e.g. 'G-ABC123XYZ9'  (Analytics > Admin > Data streams > the web stream > Measurement ID)
   var CLARITY_ID = '';    // e.g. 'abcd1234ef'    (Clarity > the project > Settings > Overview > Project ID)
 
