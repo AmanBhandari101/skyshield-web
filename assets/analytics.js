@@ -17,10 +17,33 @@
 (function () {
   'use strict';
 
+  var CF_TOKEN = '';                                  // e.g. '1a2b3c4d5e6f...'  (Cloudflare > Web Analytics > this site > the data-cf-beacon token)
   var GA4_ID = '';        // e.g. 'G-ABC123XYZ9'  (Analytics > Admin > Data streams > the web stream > Measurement ID)
   var CLARITY_ID = '';    // e.g. 'abcd1234ef'    (Clarity > the project > Settings > Overview > Project ID)
 
   var KEY = 'skyshield-consent';           // 'yes' or 'no', remembered in this browser
+
+  /* ---- Cloudflare Web Analytics: loaded at once, deliberately OUTSIDE the consent gate ------------------
+     It sets no cookie and writes nothing to the visitor's device, so it needs no consent, and that is the
+     whole point of having it: everything behind the notice below only ever counts the visitors who press
+     Accept, while this counts all of them.
+
+     The site is on GitHub Pages and its DNS records are grey-clouded, so traffic never passes through
+     Cloudflare's edge and the automatic server-side version cannot see it. This beacon is the only way
+     Cloudflare gets the data.
+
+     What it does NOT provide: no session recordings, no heatmaps, no custom events - so the download,
+     contact and partner-form tracking below never reaches it. Pageviews, referrers, countries, devices and
+     core web vitals only. Clarity is what answers "what did they actually do on the page". */
+  if (CF_TOKEN) {
+    var cf = document.createElement('script');
+    cf.defer = true;
+    cf.src = 'https://static.cloudflareinsights.com/beacon.min.js';
+    cf.setAttribute('data-cf-beacon', JSON.stringify({ token: CF_TOKEN }));
+    (document.head || document.documentElement).appendChild(cf);
+  }
+
+  // Nothing that sets a cookie is configured, so there is nothing to ask about and no notice is shown.
   if (!GA4_ID && !CLARITY_ID) { return; }
 
   function stored() { try { return localStorage.getItem(KEY); } catch (e) { return null; } }
