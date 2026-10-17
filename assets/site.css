@@ -282,6 +282,9 @@ section.band.alt{background:rgba(7,16,28,.34)}
    the column empty. Cap the paragraph instead and let the heading use the width. */
 .sechead{max-width:none;margin-bottom:clamp(30px,4vw,48px)}
 .sechead h2.h2{margin-bottom:14px;max-width:24ch}
+/* The accent half of a two-part heading, same as .statement h2 em below. Needed here too since the
+   rent page's showreel heading moved out of .statement and into a .sechead when the video was framed. */
+.sechead h2.h2 em{font-style:normal;color:var(--accent)}
 .sechead .lede,.sechead .sub{max-width:66ch}
 
 /* full-bleed visual rest: a statement and an image, no body copy */

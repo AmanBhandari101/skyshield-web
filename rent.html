@@ -63,14 +63,25 @@
   </div>
 </section>
 
-<!-- The showreel: real screen recordings and captures from the shipping build, cut together. -->
-<section class="statement" id="showreel">
-  <video data-autoplay muted loop playsinline preload="none" poster="assets/gcs-showreel-poster.jpg">
-    <source src="assets/gcs-showreel.mp4" type="video/mp4">
-  </video>
-  <div class="cap">
-    <p class="eyebrow">Showreel</p>
-    <h2>Plan it, fly it, find it, report it — <em>one station does it all.</em></h2>
+<!-- The showreel: real screen recordings and captures from the shipping build, cut together.
+     Framed like the flight footage on the Ravin page rather than run full-bleed. Full width, the
+     station's own interface bled into the page background and read as decoration; inside the frame it
+     reads as a screen, which is what it is. -->
+<section class="band" id="showreel">
+  <div class="wrap">
+    <div class="sechead">
+      <p class="eyebrow">Showreel</p>
+      <h2 class="h2">Plan it, fly it, find it, report it — <em>one station does it all.</em></h2>
+    </div>
+    <figure class="flightslot">
+      <div class="screenframe">
+        <video data-autoplay controls muted loop playsinline preload="none"
+               poster="assets/gcs-showreel-poster.jpg">
+          <source src="assets/gcs-showreel.mp4" type="video/mp4">
+        </video>
+      </div>
+      <p class="shot-cap">Screen recordings from the shipping build — no mock-ups.</p>
+    </figure>
   </div>
 </section>
 
