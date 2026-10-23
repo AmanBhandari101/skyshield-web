@@ -132,6 +132,10 @@
     var showSlot = function () {
       slotVideo.hidden = false;
       slotPlaceholder.style.display = 'none';
+      // muted loop: start it once it is visible, unless the visitor asked for reduced motion
+      if (!(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches)) {
+        var pr = slotVideo.play(); if (pr && pr.catch) { pr.catch(function () {}); }
+      } else { slotVideo.removeAttribute('autoplay'); slotVideo.pause(); }
     };
     // whenReady, not a bare listener: on a repeat visit the file comes from cache and
     // loadedmetadata can fire before this script runs, so a listener alone misses it and

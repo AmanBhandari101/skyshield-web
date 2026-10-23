@@ -530,6 +530,8 @@ ul.ticks li b{color:var(--text);font-weight:600}
 @media (max-width:900px){.ravin-stage{grid-template-columns:1fr;gap:0}}
 /* backdrop is keyed out of the asset itself, so no mask or filter is needed here */
 .stage-art{width:100%;display:block}
+.ravin-views{margin-top:clamp(20px,3vw,32px)}
+.ravin-views .view{width:100%;height:auto;aspect-ratio:16/10;object-fit:contain;display:block;margin-bottom:18px}
 
 .specgrid{margin:0;display:grid;gap:0}
 .specgrid>div{
