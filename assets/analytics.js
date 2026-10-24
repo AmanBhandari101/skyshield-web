@@ -101,10 +101,6 @@
     }
   }, true);
 
-  document.addEventListener('submit', function (e) {
-    if (e.target && e.target.id === 'partnerForm') { track('generate_lead', { form: 'partner', page: location.pathname }); }
-  }, true);
-
   /* ---- the notice ---------------------------------------------------------------------------------------- */
   function notice() {
     var box = document.createElement('div');

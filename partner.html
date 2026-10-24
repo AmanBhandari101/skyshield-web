@@ -40,7 +40,7 @@
     <h1>Become a <em>partner.</em></h1>
     <p class="lede">
       A role, a partnership, a supplier relationship, or something that doesn't fit
-      any of those labels — tell us who you are and what you're proposing, and it
+      any of those labels — email us who you are and what you're proposing, and it
       goes to the team directly.
     </p>
   </div>
@@ -52,90 +52,26 @@
       <div class="cell">
         <span class="tag">Careers</span>
         <h3>Join the team</h3>
-        <p>Engineering, operations, or something adjacent we haven't listed formally yet — say what you'd bring.</p>
+        <p>Engineering, operations, or something adjacent we haven't listed formally yet — say what you'd bring, and attach your CV.</p>
+        <p><a href="mailto:info@skyshieldtech.in?subject=Careers">Email about a role &rarr;</a></p>
       </div>
       <div class="cell">
         <span class="tag">Partnerships</span>
         <h3>Integrate or resell</h3>
         <p>Systems integrators, distributors, and platforms looking to build on or alongside SkyShield.</p>
+        <p><a href="mailto:info@skyshieldtech.in?subject=Partnership">Email about a partnership &rarr;</a></p>
       </div>
       <div class="cell">
         <span class="tag">Anything else</span>
         <h3>Suppliers, offers, ideas</h3>
         <p>Hardware, components, research collaboration, or a proposal that doesn't fit a category — send it anyway.</p>
+        <p><a href="mailto:info@skyshieldtech.in?subject=Proposal">Email a proposal &rarr;</a></p>
       </div>
     </div>
 
-    <!-- Posts straight into a Google Form, so an entry lands as a row in the sheet linked from
-         that form's Responses tab, not just an email. The page can't see Google's reply, so a
-         closed or edited form drops entries silently: .github/workflows/partner-form-check.yml
-         checks the form every morning and fails loudly if that happens. Field `name`
-         attributes are the form's own entry.NNNNNN ids -- Google reads the POST body by
-         name, not by field order, so these have to match exactly. target="hidden_iframe"
-         is what lets this submit cross-origin without JavaScript: a plain form POST to
-         another origin is not a CORS request the way fetch()/XHR would be, so this works
-         even with JS entirely off -- the visitor just won't see the on-page confirmation.
-         "Interested in" is folded into the Details text rather than sent as its own field:
-         the form's own "Interested in" question is still a placeholder with only "Option 1"
-         as a valid choice, and Google Forms silently drops a value that doesn't match a
-         defined choice on a strict multiple-choice question -- free text has no such
-         restriction, so this is where the value survives. Give that question real choices
-         in Google Forms and it can get its own entry.NNNNNN mapping later. -->
-    <form id="partnerForm"
-          action="https://docs.google.com/forms/d/e/1FAIpQLSctPcAwtDVjB-R4T5U6rBdxc9J7ZnZX15RA9fGKBdx6l93xQg/formResponse"
-          method="POST" target="hidden_iframe">
-      <div class="formgrid">
-        <div class="field">
-          <label for="pfName">Name</label>
-          <input type="text" id="pfName" name="entry.618568336" placeholder="Your name" required>
-        </div>
-        <div class="field">
-          <label for="pfEmail">Email</label>
-          <input type="email" id="pfEmail" name="entry.1453946027" placeholder="you@example.com" required>
-        </div>
-        <div class="field">
-          <label for="pfPhone">Phone</label>
-          <input type="tel" id="pfPhone" name="entry.152203526" placeholder="Optional">
-        </div>
-        <div class="field">
-          <label for="pfInterest">Interested in</label>
-          <select id="pfInterest">
-            <option value="Careers">Careers</option>
-            <option value="Partnership">Partnership</option>
-            <option value="Supplier">Supplier</option>
-            <option value="Rent the GCS">Rent the GCS</option>
-            <option value="Other">Other</option>
-          </select>
-        </div>
-        <div class="field full">
-          <label for="pfMessage">Details</label>
-          <textarea id="pfMessage" name="entry.519035198" placeholder="What you're proposing, your background, or what you'd like to discuss." required></textarea>
-        </div>
-
-        <!-- Resume / CV. A file cannot be posted to a Google Form's formResponse endpoint -- its
-             file-upload questions only work inside Google's own UI with the respondent signed in,
-             and adding such a question to THIS form would force sign-in on every submission and
-             break the plain POST above (the one that works with JavaScript off). So a CV goes to a
-             second, dedicated form, carrying everything already typed here as prefill. Hidden until
-             that form is configured in site.js, so the page never offers a button to nowhere. -->
-        <div class="field full cvrow" id="pfCvField" hidden>
-          <label>Resume / CV</label>
-          <a class="btn btn-ghost" id="pfCvLink" href="#" target="_blank" rel="noopener">Attach a CV</a>
-          <p class="cvnote">Opens our upload form in a new tab, with what you have typed already filled
-            in. Attaching a file needs a Google account; nothing else on this page does.</p>
-        </div>
-      </div>
-
-      <div class="actions" style="margin-top:22px">
-        <button type="submit" class="btn btn-primary">Send to the team</button>
-      </div>
-
-      <p class="form-status" id="partnerFormStatus" role="status"></p>
-    </form>
-    <!-- Swallows the cross-origin response so the visitor's own page never navigates away.
-         Google's response can't be read from here (a different origin), which is why the
-         confirmation message is optimistic — see the iframe's load listener in site.js. -->
-    <iframe name="hidden_iframe" id="partnerHiddenFrame" hidden></iframe>
+    <div class="cbox">
+      <div><span>Email</span><a href="mailto:info@skyshieldtech.in">info@skyshieldtech.in</a></div>
+    </div>
   </div>
 </section>
 
